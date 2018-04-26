@@ -138,7 +138,7 @@ Encode ChronologicalOrder
 
 ``` purescript
 newtype Compliance
-  = Compliance { "ComplianceType" :: NullOrUndefined (ComplianceType), "ComplianceContributorCount" :: NullOrUndefined (ComplianceContributorCount) }
+  = Compliance { "ComplianceType" :: Maybe (ComplianceType), "ComplianceContributorCount" :: Maybe (ComplianceContributorCount) }
 ```
 
 <p>Indicates whether an AWS resource or AWS Config rule is compliant and provides the number of contributors that affect the compliance.</p>
@@ -163,7 +163,7 @@ Constructs Compliance from required parameters
 #### `newCompliance'`
 
 ``` purescript
-newCompliance' :: ({ "ComplianceType" :: NullOrUndefined (ComplianceType), "ComplianceContributorCount" :: NullOrUndefined (ComplianceContributorCount) } -> { "ComplianceType" :: NullOrUndefined (ComplianceType), "ComplianceContributorCount" :: NullOrUndefined (ComplianceContributorCount) }) -> Compliance
+newCompliance' :: ({ "ComplianceType" :: Maybe (ComplianceType), "ComplianceContributorCount" :: Maybe (ComplianceContributorCount) } -> { "ComplianceType" :: Maybe (ComplianceType), "ComplianceContributorCount" :: Maybe (ComplianceContributorCount) }) -> Compliance
 ```
 
 Constructs Compliance's fields from required parameters
@@ -172,7 +172,7 @@ Constructs Compliance's fields from required parameters
 
 ``` purescript
 newtype ComplianceByConfigRule
-  = ComplianceByConfigRule { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "Compliance" :: NullOrUndefined (Compliance) }
+  = ComplianceByConfigRule { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "Compliance" :: Maybe (Compliance) }
 ```
 
 <p>Indicates whether an AWS Config rule is compliant. A rule is compliant if all of the resources that the rule evaluated comply with it, and it is noncompliant if any of these resources do not comply.</p>
@@ -197,7 +197,7 @@ Constructs ComplianceByConfigRule from required parameters
 #### `newComplianceByConfigRule'`
 
 ``` purescript
-newComplianceByConfigRule' :: ({ "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "Compliance" :: NullOrUndefined (Compliance) } -> { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "Compliance" :: NullOrUndefined (Compliance) }) -> ComplianceByConfigRule
+newComplianceByConfigRule' :: ({ "ConfigRuleName" :: Maybe (StringWithCharLimit64), "Compliance" :: Maybe (Compliance) } -> { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "Compliance" :: Maybe (Compliance) }) -> ComplianceByConfigRule
 ```
 
 Constructs ComplianceByConfigRule's fields from required parameters
@@ -222,7 +222,7 @@ Encode ComplianceByConfigRules
 
 ``` purescript
 newtype ComplianceByResource
-  = ComplianceByResource { "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId), "Compliance" :: NullOrUndefined (Compliance) }
+  = ComplianceByResource { "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId), "Compliance" :: Maybe (Compliance) }
 ```
 
 <p>Indicates whether an AWS resource that is evaluated according to one or more AWS Config rules is compliant. A resource is compliant if it complies with all of the rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p>
@@ -247,7 +247,7 @@ Constructs ComplianceByResource from required parameters
 #### `newComplianceByResource'`
 
 ``` purescript
-newComplianceByResource' :: ({ "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId), "Compliance" :: NullOrUndefined (Compliance) } -> { "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId), "Compliance" :: NullOrUndefined (Compliance) }) -> ComplianceByResource
+newComplianceByResource' :: ({ "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId), "Compliance" :: Maybe (Compliance) } -> { "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId), "Compliance" :: Maybe (Compliance) }) -> ComplianceByResource
 ```
 
 Constructs ComplianceByResource's fields from required parameters
@@ -272,7 +272,7 @@ Encode ComplianceByResources
 
 ``` purescript
 newtype ComplianceContributorCount
-  = ComplianceContributorCount { "CappedCount" :: NullOrUndefined (Int), "CapExceeded" :: NullOrUndefined (Boolean) }
+  = ComplianceContributorCount { "CappedCount" :: Maybe (Int), "CapExceeded" :: Maybe (Boolean) }
 ```
 
 <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item, up to a maximum number.</p>
@@ -297,7 +297,7 @@ Constructs ComplianceContributorCount from required parameters
 #### `newComplianceContributorCount'`
 
 ``` purescript
-newComplianceContributorCount' :: ({ "CappedCount" :: NullOrUndefined (Int), "CapExceeded" :: NullOrUndefined (Boolean) } -> { "CappedCount" :: NullOrUndefined (Int), "CapExceeded" :: NullOrUndefined (Boolean) }) -> ComplianceContributorCount
+newComplianceContributorCount' :: ({ "CappedCount" :: Maybe (Int), "CapExceeded" :: Maybe (Boolean) } -> { "CappedCount" :: Maybe (Int), "CapExceeded" :: Maybe (Boolean) }) -> ComplianceContributorCount
 ```
 
 Constructs ComplianceContributorCount's fields from required parameters
@@ -338,7 +338,7 @@ Encode ComplianceSummariesByResourceType
 
 ``` purescript
 newtype ComplianceSummary
-  = ComplianceSummary { "CompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount), "NonCompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount), "ComplianceSummaryTimestamp" :: NullOrUndefined (Date) }
+  = ComplianceSummary { "CompliantResourceCount" :: Maybe (ComplianceContributorCount), "NonCompliantResourceCount" :: Maybe (ComplianceContributorCount), "ComplianceSummaryTimestamp" :: Maybe (Date) }
 ```
 
 <p>The number of AWS Config rules or AWS resources that are compliant and noncompliant.</p>
@@ -363,7 +363,7 @@ Constructs ComplianceSummary from required parameters
 #### `newComplianceSummary'`
 
 ``` purescript
-newComplianceSummary' :: ({ "CompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount), "NonCompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount), "ComplianceSummaryTimestamp" :: NullOrUndefined (Date) } -> { "CompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount), "NonCompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount), "ComplianceSummaryTimestamp" :: NullOrUndefined (Date) }) -> ComplianceSummary
+newComplianceSummary' :: ({ "CompliantResourceCount" :: Maybe (ComplianceContributorCount), "NonCompliantResourceCount" :: Maybe (ComplianceContributorCount), "ComplianceSummaryTimestamp" :: Maybe (Date) } -> { "CompliantResourceCount" :: Maybe (ComplianceContributorCount), "NonCompliantResourceCount" :: Maybe (ComplianceContributorCount), "ComplianceSummaryTimestamp" :: Maybe (Date) }) -> ComplianceSummary
 ```
 
 Constructs ComplianceSummary's fields from required parameters
@@ -372,7 +372,7 @@ Constructs ComplianceSummary's fields from required parameters
 
 ``` purescript
 newtype ComplianceSummaryByResourceType
-  = ComplianceSummaryByResourceType { "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) }
+  = ComplianceSummaryByResourceType { "ResourceType" :: Maybe (StringWithCharLimit256), "ComplianceSummary" :: Maybe (ComplianceSummary) }
 ```
 
 <p>The number of AWS resources of a specific type that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
@@ -397,7 +397,7 @@ Constructs ComplianceSummaryByResourceType from required parameters
 #### `newComplianceSummaryByResourceType'`
 
 ``` purescript
-newComplianceSummaryByResourceType' :: ({ "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) } -> { "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) }) -> ComplianceSummaryByResourceType
+newComplianceSummaryByResourceType' :: ({ "ResourceType" :: Maybe (StringWithCharLimit256), "ComplianceSummary" :: Maybe (ComplianceSummary) } -> { "ResourceType" :: Maybe (StringWithCharLimit256), "ComplianceSummary" :: Maybe (ComplianceSummary) }) -> ComplianceSummaryByResourceType
 ```
 
 Constructs ComplianceSummaryByResourceType's fields from required parameters
@@ -438,7 +438,7 @@ Encode ComplianceTypes
 
 ``` purescript
 newtype ConfigExportDeliveryInfo
-  = ConfigExportDeliveryInfo { lastStatus :: NullOrUndefined (DeliveryStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastAttemptTime :: NullOrUndefined (Date), lastSuccessfulTime :: NullOrUndefined (Date), nextDeliveryTime :: NullOrUndefined (Date) }
+  = ConfigExportDeliveryInfo { lastStatus :: Maybe (DeliveryStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastAttemptTime :: Maybe (Date), lastSuccessfulTime :: Maybe (Date), nextDeliveryTime :: Maybe (Date) }
 ```
 
 <p>Provides status of the delivery of the snapshot or the configuration history to the specified Amazon S3 bucket. Also provides the status of notifications about the Amazon S3 delivery to the specified Amazon SNS topic.</p>
@@ -463,7 +463,7 @@ Constructs ConfigExportDeliveryInfo from required parameters
 #### `newConfigExportDeliveryInfo'`
 
 ``` purescript
-newConfigExportDeliveryInfo' :: ({ lastStatus :: NullOrUndefined (DeliveryStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastAttemptTime :: NullOrUndefined (Date), lastSuccessfulTime :: NullOrUndefined (Date), nextDeliveryTime :: NullOrUndefined (Date) } -> { lastStatus :: NullOrUndefined (DeliveryStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastAttemptTime :: NullOrUndefined (Date), lastSuccessfulTime :: NullOrUndefined (Date), nextDeliveryTime :: NullOrUndefined (Date) }) -> ConfigExportDeliveryInfo
+newConfigExportDeliveryInfo' :: ({ lastStatus :: Maybe (DeliveryStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastAttemptTime :: Maybe (Date), lastSuccessfulTime :: Maybe (Date), nextDeliveryTime :: Maybe (Date) } -> { lastStatus :: Maybe (DeliveryStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastAttemptTime :: Maybe (Date), lastSuccessfulTime :: Maybe (Date), nextDeliveryTime :: Maybe (Date) }) -> ConfigExportDeliveryInfo
 ```
 
 Constructs ConfigExportDeliveryInfo's fields from required parameters
@@ -472,7 +472,7 @@ Constructs ConfigExportDeliveryInfo's fields from required parameters
 
 ``` purescript
 newtype ConfigRule
-  = ConfigRule { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ConfigRuleArn" :: NullOrUndefined (String), "ConfigRuleId" :: NullOrUndefined (String), "Description" :: NullOrUndefined (EmptiableStringWithCharLimit256), "Scope" :: NullOrUndefined (Scope), "Source" :: Source, "InputParameters" :: NullOrUndefined (StringWithCharLimit1024), "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency), "ConfigRuleState" :: NullOrUndefined (ConfigRuleState) }
+  = ConfigRule { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ConfigRuleArn" :: Maybe (String), "ConfigRuleId" :: Maybe (String), "Description" :: Maybe (EmptiableStringWithCharLimit256), "Scope" :: Maybe (Scope), "Source" :: Source, "InputParameters" :: Maybe (StringWithCharLimit1024), "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency), "ConfigRuleState" :: Maybe (ConfigRuleState) }
 ```
 
 <p>An AWS Config rule represents an AWS Lambda function that you create for a custom rule or a predefined function for an AWS managed rule. The function evaluates configuration items to assess whether your AWS resources comply with your desired configurations. This function can run when AWS Config detects a configuration change to an AWS resource and at a periodic frequency that you choose (for example, every 24 hours).</p> <note> <p>You can use the AWS CLI and AWS SDKs if you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </note> <p>For more information about developing and using AWS Config rules, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource Configurations with AWS Config</a> in the <i>AWS Config Developer Guide</i>.</p>
@@ -497,7 +497,7 @@ Constructs ConfigRule from required parameters
 #### `newConfigRule'`
 
 ``` purescript
-newConfigRule' :: Source -> ({ "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ConfigRuleArn" :: NullOrUndefined (String), "ConfigRuleId" :: NullOrUndefined (String), "Description" :: NullOrUndefined (EmptiableStringWithCharLimit256), "Scope" :: NullOrUndefined (Scope), "Source" :: Source, "InputParameters" :: NullOrUndefined (StringWithCharLimit1024), "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency), "ConfigRuleState" :: NullOrUndefined (ConfigRuleState) } -> { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ConfigRuleArn" :: NullOrUndefined (String), "ConfigRuleId" :: NullOrUndefined (String), "Description" :: NullOrUndefined (EmptiableStringWithCharLimit256), "Scope" :: NullOrUndefined (Scope), "Source" :: Source, "InputParameters" :: NullOrUndefined (StringWithCharLimit1024), "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency), "ConfigRuleState" :: NullOrUndefined (ConfigRuleState) }) -> ConfigRule
+newConfigRule' :: Source -> ({ "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ConfigRuleArn" :: Maybe (String), "ConfigRuleId" :: Maybe (String), "Description" :: Maybe (EmptiableStringWithCharLimit256), "Scope" :: Maybe (Scope), "Source" :: Source, "InputParameters" :: Maybe (StringWithCharLimit1024), "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency), "ConfigRuleState" :: Maybe (ConfigRuleState) } -> { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ConfigRuleArn" :: Maybe (String), "ConfigRuleId" :: Maybe (String), "Description" :: Maybe (EmptiableStringWithCharLimit256), "Scope" :: Maybe (Scope), "Source" :: Source, "InputParameters" :: Maybe (StringWithCharLimit1024), "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency), "ConfigRuleState" :: Maybe (ConfigRuleState) }) -> ConfigRule
 ```
 
 Constructs ConfigRule's fields from required parameters
@@ -506,7 +506,7 @@ Constructs ConfigRule's fields from required parameters
 
 ``` purescript
 newtype ConfigRuleEvaluationStatus
-  = ConfigRuleEvaluationStatus { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ConfigRuleArn" :: NullOrUndefined (String), "ConfigRuleId" :: NullOrUndefined (String), "LastSuccessfulInvocationTime" :: NullOrUndefined (Date), "LastFailedInvocationTime" :: NullOrUndefined (Date), "LastSuccessfulEvaluationTime" :: NullOrUndefined (Date), "LastFailedEvaluationTime" :: NullOrUndefined (Date), "FirstActivatedTime" :: NullOrUndefined (Date), "LastErrorCode" :: NullOrUndefined (String), "LastErrorMessage" :: NullOrUndefined (String), "FirstEvaluationStarted" :: NullOrUndefined (Boolean) }
+  = ConfigRuleEvaluationStatus { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ConfigRuleArn" :: Maybe (String), "ConfigRuleId" :: Maybe (String), "LastSuccessfulInvocationTime" :: Maybe (Date), "LastFailedInvocationTime" :: Maybe (Date), "LastSuccessfulEvaluationTime" :: Maybe (Date), "LastFailedEvaluationTime" :: Maybe (Date), "FirstActivatedTime" :: Maybe (Date), "LastErrorCode" :: Maybe (String), "LastErrorMessage" :: Maybe (String), "FirstEvaluationStarted" :: Maybe (Boolean) }
 ```
 
 <p>Status information for your AWS managed Config rules. The status includes information such as the last time the rule ran, the last time it failed, and the related error for the last failure.</p> <p>This action does not return status information about custom Config rules.</p>
@@ -531,7 +531,7 @@ Constructs ConfigRuleEvaluationStatus from required parameters
 #### `newConfigRuleEvaluationStatus'`
 
 ``` purescript
-newConfigRuleEvaluationStatus' :: ({ "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ConfigRuleArn" :: NullOrUndefined (String), "ConfigRuleId" :: NullOrUndefined (String), "LastSuccessfulInvocationTime" :: NullOrUndefined (Date), "LastFailedInvocationTime" :: NullOrUndefined (Date), "LastSuccessfulEvaluationTime" :: NullOrUndefined (Date), "LastFailedEvaluationTime" :: NullOrUndefined (Date), "FirstActivatedTime" :: NullOrUndefined (Date), "LastErrorCode" :: NullOrUndefined (String), "LastErrorMessage" :: NullOrUndefined (String), "FirstEvaluationStarted" :: NullOrUndefined (Boolean) } -> { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ConfigRuleArn" :: NullOrUndefined (String), "ConfigRuleId" :: NullOrUndefined (String), "LastSuccessfulInvocationTime" :: NullOrUndefined (Date), "LastFailedInvocationTime" :: NullOrUndefined (Date), "LastSuccessfulEvaluationTime" :: NullOrUndefined (Date), "LastFailedEvaluationTime" :: NullOrUndefined (Date), "FirstActivatedTime" :: NullOrUndefined (Date), "LastErrorCode" :: NullOrUndefined (String), "LastErrorMessage" :: NullOrUndefined (String), "FirstEvaluationStarted" :: NullOrUndefined (Boolean) }) -> ConfigRuleEvaluationStatus
+newConfigRuleEvaluationStatus' :: ({ "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ConfigRuleArn" :: Maybe (String), "ConfigRuleId" :: Maybe (String), "LastSuccessfulInvocationTime" :: Maybe (Date), "LastFailedInvocationTime" :: Maybe (Date), "LastSuccessfulEvaluationTime" :: Maybe (Date), "LastFailedEvaluationTime" :: Maybe (Date), "FirstActivatedTime" :: Maybe (Date), "LastErrorCode" :: Maybe (String), "LastErrorMessage" :: Maybe (String), "FirstEvaluationStarted" :: Maybe (Boolean) } -> { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ConfigRuleArn" :: Maybe (String), "ConfigRuleId" :: Maybe (String), "LastSuccessfulInvocationTime" :: Maybe (Date), "LastFailedInvocationTime" :: Maybe (Date), "LastSuccessfulEvaluationTime" :: Maybe (Date), "LastFailedEvaluationTime" :: Maybe (Date), "FirstActivatedTime" :: Maybe (Date), "LastErrorCode" :: Maybe (String), "LastErrorMessage" :: Maybe (String), "FirstEvaluationStarted" :: Maybe (Boolean) }) -> ConfigRuleEvaluationStatus
 ```
 
 Constructs ConfigRuleEvaluationStatus's fields from required parameters
@@ -604,7 +604,7 @@ Encode ConfigRules
 
 ``` purescript
 newtype ConfigSnapshotDeliveryProperties
-  = ConfigSnapshotDeliveryProperties { deliveryFrequency :: NullOrUndefined (MaximumExecutionFrequency) }
+  = ConfigSnapshotDeliveryProperties { deliveryFrequency :: Maybe (MaximumExecutionFrequency) }
 ```
 
 <p>Provides options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket in your delivery channel.</p> <note> <p>If you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot, see the following:</p> </note> <p>The frequency for a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot is set by one of two values, depending on which is less frequent:</p> <ul> <li> <p>The value for the <code>deliveryFrequency</code> parameter within the delivery channel configuration, which sets how often AWS Config delivers configuration snapshots. This value also sets how often AWS Config invokes evaluations for Config rules.</p> </li> <li> <p>The value for the <code>MaximumExecutionFrequency</code> parameter, which sets the maximum frequency with which AWS Config invokes evaluations for the rule. For more information, see <a>ConfigRule</a>.</p> </li> </ul> <p>If the <code>deliveryFrequency</code> value is less frequent than the <code>MaximumExecutionFrequency</code> value for a rule, AWS Config invokes the rule only as often as the <code>deliveryFrequency</code> value.</p> <ol> <li> <p>For example, you want your rule to run evaluations when AWS Config delivers the configuration snapshot.</p> </li> <li> <p>You specify the <code>MaximumExecutionFrequency</code> value for <code>Six_Hours</code>. </p> </li> <li> <p>You then specify the delivery channel <code>deliveryFrequency</code> value for <code>TwentyFour_Hours</code>.</p> </li> <li> <p>Because the value for <code>deliveryFrequency</code> is less frequent than <code>MaximumExecutionFrequency</code>, AWS Config invokes evaluations for the rule every 24 hours. </p> </li> </ol> <p>You should set the <code>MaximumExecutionFrequency</code> value to be at least as frequent as the <code>deliveryFrequency</code> value. You can view the <code>deliveryFrequency</code> value by using the <code>DescribeDeliveryChannnels</code> action.</p> <p>To update the <code>deliveryFrequency</code> with which AWS Config delivers your configuration snapshots, use the <code>PutDeliveryChannel</code> action.</p>
@@ -629,7 +629,7 @@ Constructs ConfigSnapshotDeliveryProperties from required parameters
 #### `newConfigSnapshotDeliveryProperties'`
 
 ``` purescript
-newConfigSnapshotDeliveryProperties' :: ({ deliveryFrequency :: NullOrUndefined (MaximumExecutionFrequency) } -> { deliveryFrequency :: NullOrUndefined (MaximumExecutionFrequency) }) -> ConfigSnapshotDeliveryProperties
+newConfigSnapshotDeliveryProperties' :: ({ deliveryFrequency :: Maybe (MaximumExecutionFrequency) } -> { deliveryFrequency :: Maybe (MaximumExecutionFrequency) }) -> ConfigSnapshotDeliveryProperties
 ```
 
 Constructs ConfigSnapshotDeliveryProperties's fields from required parameters
@@ -638,7 +638,7 @@ Constructs ConfigSnapshotDeliveryProperties's fields from required parameters
 
 ``` purescript
 newtype ConfigStreamDeliveryInfo
-  = ConfigStreamDeliveryInfo { lastStatus :: NullOrUndefined (DeliveryStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastStatusChangeTime :: NullOrUndefined (Date) }
+  = ConfigStreamDeliveryInfo { lastStatus :: Maybe (DeliveryStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastStatusChangeTime :: Maybe (Date) }
 ```
 
 <p>A list that contains the status of the delivery of the configuration stream notification to the Amazon SNS topic.</p>
@@ -663,7 +663,7 @@ Constructs ConfigStreamDeliveryInfo from required parameters
 #### `newConfigStreamDeliveryInfo'`
 
 ``` purescript
-newConfigStreamDeliveryInfo' :: ({ lastStatus :: NullOrUndefined (DeliveryStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastStatusChangeTime :: NullOrUndefined (Date) } -> { lastStatus :: NullOrUndefined (DeliveryStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastStatusChangeTime :: NullOrUndefined (Date) }) -> ConfigStreamDeliveryInfo
+newConfigStreamDeliveryInfo' :: ({ lastStatus :: Maybe (DeliveryStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastStatusChangeTime :: Maybe (Date) } -> { lastStatus :: Maybe (DeliveryStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastStatusChangeTime :: Maybe (Date) }) -> ConfigStreamDeliveryInfo
 ```
 
 Constructs ConfigStreamDeliveryInfo's fields from required parameters
@@ -688,7 +688,7 @@ Encode Configuration
 
 ``` purescript
 newtype ConfigurationItem
-  = ConfigurationItem { version :: NullOrUndefined (Version), accountId :: NullOrUndefined (AccountId), configurationItemCaptureTime :: NullOrUndefined (ConfigurationItemCaptureTime), configurationItemStatus :: NullOrUndefined (ConfigurationItemStatus), configurationStateId :: NullOrUndefined (ConfigurationStateId), configurationItemMD5Hash :: NullOrUndefined (ConfigurationItemMD5Hash), arn :: NullOrUndefined (ARN), resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), awsRegion :: NullOrUndefined (AwsRegion), availabilityZone :: NullOrUndefined (AvailabilityZone), resourceCreationTime :: NullOrUndefined (ResourceCreationTime), tags :: NullOrUndefined (Tags), relatedEvents :: NullOrUndefined (RelatedEventList), relationships :: NullOrUndefined (RelationshipList), configuration :: NullOrUndefined (Configuration), supplementaryConfiguration :: NullOrUndefined (SupplementaryConfiguration) }
+  = ConfigurationItem { version :: Maybe (Version), accountId :: Maybe (AccountId), configurationItemCaptureTime :: Maybe (ConfigurationItemCaptureTime), configurationItemStatus :: Maybe (ConfigurationItemStatus), configurationStateId :: Maybe (ConfigurationStateId), configurationItemMD5Hash :: Maybe (ConfigurationItemMD5Hash), arn :: Maybe (ARN), resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), awsRegion :: Maybe (AwsRegion), availabilityZone :: Maybe (AvailabilityZone), resourceCreationTime :: Maybe (ResourceCreationTime), tags :: Maybe (Tags), relatedEvents :: Maybe (RelatedEventList), relationships :: Maybe (RelationshipList), configuration :: Maybe (Configuration), supplementaryConfiguration :: Maybe (SupplementaryConfiguration) }
 ```
 
 <p>A list that contains detailed configurations of a specified resource.</p>
@@ -713,7 +713,7 @@ Constructs ConfigurationItem from required parameters
 #### `newConfigurationItem'`
 
 ``` purescript
-newConfigurationItem' :: ({ version :: NullOrUndefined (Version), accountId :: NullOrUndefined (AccountId), configurationItemCaptureTime :: NullOrUndefined (ConfigurationItemCaptureTime), configurationItemStatus :: NullOrUndefined (ConfigurationItemStatus), configurationStateId :: NullOrUndefined (ConfigurationStateId), configurationItemMD5Hash :: NullOrUndefined (ConfigurationItemMD5Hash), arn :: NullOrUndefined (ARN), resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), awsRegion :: NullOrUndefined (AwsRegion), availabilityZone :: NullOrUndefined (AvailabilityZone), resourceCreationTime :: NullOrUndefined (ResourceCreationTime), tags :: NullOrUndefined (Tags), relatedEvents :: NullOrUndefined (RelatedEventList), relationships :: NullOrUndefined (RelationshipList), configuration :: NullOrUndefined (Configuration), supplementaryConfiguration :: NullOrUndefined (SupplementaryConfiguration) } -> { version :: NullOrUndefined (Version), accountId :: NullOrUndefined (AccountId), configurationItemCaptureTime :: NullOrUndefined (ConfigurationItemCaptureTime), configurationItemStatus :: NullOrUndefined (ConfigurationItemStatus), configurationStateId :: NullOrUndefined (ConfigurationStateId), configurationItemMD5Hash :: NullOrUndefined (ConfigurationItemMD5Hash), arn :: NullOrUndefined (ARN), resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), awsRegion :: NullOrUndefined (AwsRegion), availabilityZone :: NullOrUndefined (AvailabilityZone), resourceCreationTime :: NullOrUndefined (ResourceCreationTime), tags :: NullOrUndefined (Tags), relatedEvents :: NullOrUndefined (RelatedEventList), relationships :: NullOrUndefined (RelationshipList), configuration :: NullOrUndefined (Configuration), supplementaryConfiguration :: NullOrUndefined (SupplementaryConfiguration) }) -> ConfigurationItem
+newConfigurationItem' :: ({ version :: Maybe (Version), accountId :: Maybe (AccountId), configurationItemCaptureTime :: Maybe (ConfigurationItemCaptureTime), configurationItemStatus :: Maybe (ConfigurationItemStatus), configurationStateId :: Maybe (ConfigurationStateId), configurationItemMD5Hash :: Maybe (ConfigurationItemMD5Hash), arn :: Maybe (ARN), resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), awsRegion :: Maybe (AwsRegion), availabilityZone :: Maybe (AvailabilityZone), resourceCreationTime :: Maybe (ResourceCreationTime), tags :: Maybe (Tags), relatedEvents :: Maybe (RelatedEventList), relationships :: Maybe (RelationshipList), configuration :: Maybe (Configuration), supplementaryConfiguration :: Maybe (SupplementaryConfiguration) } -> { version :: Maybe (Version), accountId :: Maybe (AccountId), configurationItemCaptureTime :: Maybe (ConfigurationItemCaptureTime), configurationItemStatus :: Maybe (ConfigurationItemStatus), configurationStateId :: Maybe (ConfigurationStateId), configurationItemMD5Hash :: Maybe (ConfigurationItemMD5Hash), arn :: Maybe (ARN), resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), awsRegion :: Maybe (AwsRegion), availabilityZone :: Maybe (AvailabilityZone), resourceCreationTime :: Maybe (ResourceCreationTime), tags :: Maybe (Tags), relatedEvents :: Maybe (RelatedEventList), relationships :: Maybe (RelationshipList), configuration :: Maybe (Configuration), supplementaryConfiguration :: Maybe (SupplementaryConfiguration) }) -> ConfigurationItem
 ```
 
 Constructs ConfigurationItem's fields from required parameters
@@ -786,7 +786,7 @@ Encode ConfigurationItemStatus
 
 ``` purescript
 newtype ConfigurationRecorder
-  = ConfigurationRecorder { name :: NullOrUndefined (RecorderName), roleARN :: NullOrUndefined (String), recordingGroup :: NullOrUndefined (RecordingGroup) }
+  = ConfigurationRecorder { name :: Maybe (RecorderName), roleARN :: Maybe (String), recordingGroup :: Maybe (RecordingGroup) }
 ```
 
 <p>An object that represents the recording of configuration changes of an AWS resource.</p>
@@ -811,7 +811,7 @@ Constructs ConfigurationRecorder from required parameters
 #### `newConfigurationRecorder'`
 
 ``` purescript
-newConfigurationRecorder' :: ({ name :: NullOrUndefined (RecorderName), roleARN :: NullOrUndefined (String), recordingGroup :: NullOrUndefined (RecordingGroup) } -> { name :: NullOrUndefined (RecorderName), roleARN :: NullOrUndefined (String), recordingGroup :: NullOrUndefined (RecordingGroup) }) -> ConfigurationRecorder
+newConfigurationRecorder' :: ({ name :: Maybe (RecorderName), roleARN :: Maybe (String), recordingGroup :: Maybe (RecordingGroup) } -> { name :: Maybe (RecorderName), roleARN :: Maybe (String), recordingGroup :: Maybe (RecordingGroup) }) -> ConfigurationRecorder
 ```
 
 Constructs ConfigurationRecorder's fields from required parameters
@@ -852,7 +852,7 @@ Encode ConfigurationRecorderNameList
 
 ``` purescript
 newtype ConfigurationRecorderStatus
-  = ConfigurationRecorderStatus { name :: NullOrUndefined (String), lastStartTime :: NullOrUndefined (Date), lastStopTime :: NullOrUndefined (Date), recording :: NullOrUndefined (Boolean), lastStatus :: NullOrUndefined (RecorderStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastStatusChangeTime :: NullOrUndefined (Date) }
+  = ConfigurationRecorderStatus { name :: Maybe (String), lastStartTime :: Maybe (Date), lastStopTime :: Maybe (Date), recording :: Maybe (Boolean), lastStatus :: Maybe (RecorderStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastStatusChangeTime :: Maybe (Date) }
 ```
 
 <p>The current status of the configuration recorder.</p>
@@ -877,7 +877,7 @@ Constructs ConfigurationRecorderStatus from required parameters
 #### `newConfigurationRecorderStatus'`
 
 ``` purescript
-newConfigurationRecorderStatus' :: ({ name :: NullOrUndefined (String), lastStartTime :: NullOrUndefined (Date), lastStopTime :: NullOrUndefined (Date), recording :: NullOrUndefined (Boolean), lastStatus :: NullOrUndefined (RecorderStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastStatusChangeTime :: NullOrUndefined (Date) } -> { name :: NullOrUndefined (String), lastStartTime :: NullOrUndefined (Date), lastStopTime :: NullOrUndefined (Date), recording :: NullOrUndefined (Boolean), lastStatus :: NullOrUndefined (RecorderStatus), lastErrorCode :: NullOrUndefined (String), lastErrorMessage :: NullOrUndefined (String), lastStatusChangeTime :: NullOrUndefined (Date) }) -> ConfigurationRecorderStatus
+newConfigurationRecorderStatus' :: ({ name :: Maybe (String), lastStartTime :: Maybe (Date), lastStopTime :: Maybe (Date), recording :: Maybe (Boolean), lastStatus :: Maybe (RecorderStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastStatusChangeTime :: Maybe (Date) } -> { name :: Maybe (String), lastStartTime :: Maybe (Date), lastStopTime :: Maybe (Date), recording :: Maybe (Boolean), lastStatus :: Maybe (RecorderStatus), lastErrorCode :: Maybe (String), lastErrorMessage :: Maybe (String), lastStatusChangeTime :: Maybe (Date) }) -> ConfigurationRecorderStatus
 ```
 
 Constructs ConfigurationRecorderStatus's fields from required parameters
@@ -1122,7 +1122,7 @@ Constructs DeliverConfigSnapshotRequest's fields from required parameters
 
 ``` purescript
 newtype DeliverConfigSnapshotResponse
-  = DeliverConfigSnapshotResponse { configSnapshotId :: NullOrUndefined (String) }
+  = DeliverConfigSnapshotResponse { configSnapshotId :: Maybe (String) }
 ```
 
 <p>The output for the <a>DeliverConfigSnapshot</a> action in JSON format.</p>
@@ -1147,7 +1147,7 @@ Constructs DeliverConfigSnapshotResponse from required parameters
 #### `newDeliverConfigSnapshotResponse'`
 
 ``` purescript
-newDeliverConfigSnapshotResponse' :: ({ configSnapshotId :: NullOrUndefined (String) } -> { configSnapshotId :: NullOrUndefined (String) }) -> DeliverConfigSnapshotResponse
+newDeliverConfigSnapshotResponse' :: ({ configSnapshotId :: Maybe (String) } -> { configSnapshotId :: Maybe (String) }) -> DeliverConfigSnapshotResponse
 ```
 
 Constructs DeliverConfigSnapshotResponse's fields from required parameters
@@ -1156,7 +1156,7 @@ Constructs DeliverConfigSnapshotResponse's fields from required parameters
 
 ``` purescript
 newtype DeliveryChannel
-  = DeliveryChannel { name :: NullOrUndefined (ChannelName), s3BucketName :: NullOrUndefined (String), s3KeyPrefix :: NullOrUndefined (String), snsTopicARN :: NullOrUndefined (String), configSnapshotDeliveryProperties :: NullOrUndefined (ConfigSnapshotDeliveryProperties) }
+  = DeliveryChannel { name :: Maybe (ChannelName), s3BucketName :: Maybe (String), s3KeyPrefix :: Maybe (String), snsTopicARN :: Maybe (String), configSnapshotDeliveryProperties :: Maybe (ConfigSnapshotDeliveryProperties) }
 ```
 
 <p>The channel through which AWS Config delivers notifications and updated configuration states.</p>
@@ -1181,7 +1181,7 @@ Constructs DeliveryChannel from required parameters
 #### `newDeliveryChannel'`
 
 ``` purescript
-newDeliveryChannel' :: ({ name :: NullOrUndefined (ChannelName), s3BucketName :: NullOrUndefined (String), s3KeyPrefix :: NullOrUndefined (String), snsTopicARN :: NullOrUndefined (String), configSnapshotDeliveryProperties :: NullOrUndefined (ConfigSnapshotDeliveryProperties) } -> { name :: NullOrUndefined (ChannelName), s3BucketName :: NullOrUndefined (String), s3KeyPrefix :: NullOrUndefined (String), snsTopicARN :: NullOrUndefined (String), configSnapshotDeliveryProperties :: NullOrUndefined (ConfigSnapshotDeliveryProperties) }) -> DeliveryChannel
+newDeliveryChannel' :: ({ name :: Maybe (ChannelName), s3BucketName :: Maybe (String), s3KeyPrefix :: Maybe (String), snsTopicARN :: Maybe (String), configSnapshotDeliveryProperties :: Maybe (ConfigSnapshotDeliveryProperties) } -> { name :: Maybe (ChannelName), s3BucketName :: Maybe (String), s3KeyPrefix :: Maybe (String), snsTopicARN :: Maybe (String), configSnapshotDeliveryProperties :: Maybe (ConfigSnapshotDeliveryProperties) }) -> DeliveryChannel
 ```
 
 Constructs DeliveryChannel's fields from required parameters
@@ -1222,7 +1222,7 @@ Encode DeliveryChannelNameList
 
 ``` purescript
 newtype DeliveryChannelStatus
-  = DeliveryChannelStatus { name :: NullOrUndefined (String), configSnapshotDeliveryInfo :: NullOrUndefined (ConfigExportDeliveryInfo), configHistoryDeliveryInfo :: NullOrUndefined (ConfigExportDeliveryInfo), configStreamDeliveryInfo :: NullOrUndefined (ConfigStreamDeliveryInfo) }
+  = DeliveryChannelStatus { name :: Maybe (String), configSnapshotDeliveryInfo :: Maybe (ConfigExportDeliveryInfo), configHistoryDeliveryInfo :: Maybe (ConfigExportDeliveryInfo), configStreamDeliveryInfo :: Maybe (ConfigStreamDeliveryInfo) }
 ```
 
 <p>The status of a specified delivery channel.</p> <p>Valid values: <code>Success</code> | <code>Failure</code> </p>
@@ -1247,7 +1247,7 @@ Constructs DeliveryChannelStatus from required parameters
 #### `newDeliveryChannelStatus'`
 
 ``` purescript
-newDeliveryChannelStatus' :: ({ name :: NullOrUndefined (String), configSnapshotDeliveryInfo :: NullOrUndefined (ConfigExportDeliveryInfo), configHistoryDeliveryInfo :: NullOrUndefined (ConfigExportDeliveryInfo), configStreamDeliveryInfo :: NullOrUndefined (ConfigStreamDeliveryInfo) } -> { name :: NullOrUndefined (String), configSnapshotDeliveryInfo :: NullOrUndefined (ConfigExportDeliveryInfo), configHistoryDeliveryInfo :: NullOrUndefined (ConfigExportDeliveryInfo), configStreamDeliveryInfo :: NullOrUndefined (ConfigStreamDeliveryInfo) }) -> DeliveryChannelStatus
+newDeliveryChannelStatus' :: ({ name :: Maybe (String), configSnapshotDeliveryInfo :: Maybe (ConfigExportDeliveryInfo), configHistoryDeliveryInfo :: Maybe (ConfigExportDeliveryInfo), configStreamDeliveryInfo :: Maybe (ConfigStreamDeliveryInfo) } -> { name :: Maybe (String), configSnapshotDeliveryInfo :: Maybe (ConfigExportDeliveryInfo), configHistoryDeliveryInfo :: Maybe (ConfigExportDeliveryInfo), configStreamDeliveryInfo :: Maybe (ConfigStreamDeliveryInfo) }) -> DeliveryChannelStatus
 ```
 
 Constructs DeliveryChannelStatus's fields from required parameters
@@ -1288,7 +1288,7 @@ Encode DeliveryStatus
 
 ``` purescript
 newtype DescribeComplianceByConfigRuleRequest
-  = DescribeComplianceByConfigRuleRequest { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "NextToken" :: NullOrUndefined (String) }
+  = DescribeComplianceByConfigRuleRequest { "ConfigRuleNames" :: Maybe (ConfigRuleNames), "ComplianceTypes" :: Maybe (ComplianceTypes), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -1313,7 +1313,7 @@ Constructs DescribeComplianceByConfigRuleRequest from required parameters
 #### `newDescribeComplianceByConfigRuleRequest'`
 
 ``` purescript
-newDescribeComplianceByConfigRuleRequest' :: ({ "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "NextToken" :: NullOrUndefined (String) } -> { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "NextToken" :: NullOrUndefined (String) }) -> DescribeComplianceByConfigRuleRequest
+newDescribeComplianceByConfigRuleRequest' :: ({ "ConfigRuleNames" :: Maybe (ConfigRuleNames), "ComplianceTypes" :: Maybe (ComplianceTypes), "NextToken" :: Maybe (String) } -> { "ConfigRuleNames" :: Maybe (ConfigRuleNames), "ComplianceTypes" :: Maybe (ComplianceTypes), "NextToken" :: Maybe (String) }) -> DescribeComplianceByConfigRuleRequest
 ```
 
 Constructs DescribeComplianceByConfigRuleRequest's fields from required parameters
@@ -1322,7 +1322,7 @@ Constructs DescribeComplianceByConfigRuleRequest's fields from required paramete
 
 ``` purescript
 newtype DescribeComplianceByConfigRuleResponse
-  = DescribeComplianceByConfigRuleResponse { "ComplianceByConfigRules" :: NullOrUndefined (ComplianceByConfigRules), "NextToken" :: NullOrUndefined (String) }
+  = DescribeComplianceByConfigRuleResponse { "ComplianceByConfigRules" :: Maybe (ComplianceByConfigRules), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -1347,7 +1347,7 @@ Constructs DescribeComplianceByConfigRuleResponse from required parameters
 #### `newDescribeComplianceByConfigRuleResponse'`
 
 ``` purescript
-newDescribeComplianceByConfigRuleResponse' :: ({ "ComplianceByConfigRules" :: NullOrUndefined (ComplianceByConfigRules), "NextToken" :: NullOrUndefined (String) } -> { "ComplianceByConfigRules" :: NullOrUndefined (ComplianceByConfigRules), "NextToken" :: NullOrUndefined (String) }) -> DescribeComplianceByConfigRuleResponse
+newDescribeComplianceByConfigRuleResponse' :: ({ "ComplianceByConfigRules" :: Maybe (ComplianceByConfigRules), "NextToken" :: Maybe (String) } -> { "ComplianceByConfigRules" :: Maybe (ComplianceByConfigRules), "NextToken" :: Maybe (String) }) -> DescribeComplianceByConfigRuleResponse
 ```
 
 Constructs DescribeComplianceByConfigRuleResponse's fields from required parameters
@@ -1356,7 +1356,7 @@ Constructs DescribeComplianceByConfigRuleResponse's fields from required paramet
 
 ``` purescript
 newtype DescribeComplianceByResourceRequest
-  = DescribeComplianceByResourceRequest { "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId), "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "Limit" :: NullOrUndefined (Limit), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeComplianceByResourceRequest { "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId), "ComplianceTypes" :: Maybe (ComplianceTypes), "Limit" :: Maybe (Limit), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p/>
@@ -1381,7 +1381,7 @@ Constructs DescribeComplianceByResourceRequest from required parameters
 #### `newDescribeComplianceByResourceRequest'`
 
 ``` purescript
-newDescribeComplianceByResourceRequest' :: ({ "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId), "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "Limit" :: NullOrUndefined (Limit), "NextToken" :: NullOrUndefined (NextToken) } -> { "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId), "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "Limit" :: NullOrUndefined (Limit), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeComplianceByResourceRequest
+newDescribeComplianceByResourceRequest' :: ({ "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId), "ComplianceTypes" :: Maybe (ComplianceTypes), "Limit" :: Maybe (Limit), "NextToken" :: Maybe (NextToken) } -> { "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId), "ComplianceTypes" :: Maybe (ComplianceTypes), "Limit" :: Maybe (Limit), "NextToken" :: Maybe (NextToken) }) -> DescribeComplianceByResourceRequest
 ```
 
 Constructs DescribeComplianceByResourceRequest's fields from required parameters
@@ -1390,7 +1390,7 @@ Constructs DescribeComplianceByResourceRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeComplianceByResourceResponse
-  = DescribeComplianceByResourceResponse { "ComplianceByResources" :: NullOrUndefined (ComplianceByResources), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeComplianceByResourceResponse { "ComplianceByResources" :: Maybe (ComplianceByResources), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p/>
@@ -1415,7 +1415,7 @@ Constructs DescribeComplianceByResourceResponse from required parameters
 #### `newDescribeComplianceByResourceResponse'`
 
 ``` purescript
-newDescribeComplianceByResourceResponse' :: ({ "ComplianceByResources" :: NullOrUndefined (ComplianceByResources), "NextToken" :: NullOrUndefined (NextToken) } -> { "ComplianceByResources" :: NullOrUndefined (ComplianceByResources), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeComplianceByResourceResponse
+newDescribeComplianceByResourceResponse' :: ({ "ComplianceByResources" :: Maybe (ComplianceByResources), "NextToken" :: Maybe (NextToken) } -> { "ComplianceByResources" :: Maybe (ComplianceByResources), "NextToken" :: Maybe (NextToken) }) -> DescribeComplianceByResourceResponse
 ```
 
 Constructs DescribeComplianceByResourceResponse's fields from required parameters
@@ -1424,7 +1424,7 @@ Constructs DescribeComplianceByResourceResponse's fields from required parameter
 
 ``` purescript
 newtype DescribeConfigRuleEvaluationStatusRequest
-  = DescribeConfigRuleEvaluationStatusRequest { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "NextToken" :: NullOrUndefined (String), "Limit" :: NullOrUndefined (RuleLimit) }
+  = DescribeConfigRuleEvaluationStatusRequest { "ConfigRuleNames" :: Maybe (ConfigRuleNames), "NextToken" :: Maybe (String), "Limit" :: Maybe (RuleLimit) }
 ```
 
 <p/>
@@ -1449,7 +1449,7 @@ Constructs DescribeConfigRuleEvaluationStatusRequest from required parameters
 #### `newDescribeConfigRuleEvaluationStatusRequest'`
 
 ``` purescript
-newDescribeConfigRuleEvaluationStatusRequest' :: ({ "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "NextToken" :: NullOrUndefined (String), "Limit" :: NullOrUndefined (RuleLimit) } -> { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "NextToken" :: NullOrUndefined (String), "Limit" :: NullOrUndefined (RuleLimit) }) -> DescribeConfigRuleEvaluationStatusRequest
+newDescribeConfigRuleEvaluationStatusRequest' :: ({ "ConfigRuleNames" :: Maybe (ConfigRuleNames), "NextToken" :: Maybe (String), "Limit" :: Maybe (RuleLimit) } -> { "ConfigRuleNames" :: Maybe (ConfigRuleNames), "NextToken" :: Maybe (String), "Limit" :: Maybe (RuleLimit) }) -> DescribeConfigRuleEvaluationStatusRequest
 ```
 
 Constructs DescribeConfigRuleEvaluationStatusRequest's fields from required parameters
@@ -1458,7 +1458,7 @@ Constructs DescribeConfigRuleEvaluationStatusRequest's fields from required para
 
 ``` purescript
 newtype DescribeConfigRuleEvaluationStatusResponse
-  = DescribeConfigRuleEvaluationStatusResponse { "ConfigRulesEvaluationStatus" :: NullOrUndefined (ConfigRuleEvaluationStatusList), "NextToken" :: NullOrUndefined (String) }
+  = DescribeConfigRuleEvaluationStatusResponse { "ConfigRulesEvaluationStatus" :: Maybe (ConfigRuleEvaluationStatusList), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -1483,7 +1483,7 @@ Constructs DescribeConfigRuleEvaluationStatusResponse from required parameters
 #### `newDescribeConfigRuleEvaluationStatusResponse'`
 
 ``` purescript
-newDescribeConfigRuleEvaluationStatusResponse' :: ({ "ConfigRulesEvaluationStatus" :: NullOrUndefined (ConfigRuleEvaluationStatusList), "NextToken" :: NullOrUndefined (String) } -> { "ConfigRulesEvaluationStatus" :: NullOrUndefined (ConfigRuleEvaluationStatusList), "NextToken" :: NullOrUndefined (String) }) -> DescribeConfigRuleEvaluationStatusResponse
+newDescribeConfigRuleEvaluationStatusResponse' :: ({ "ConfigRulesEvaluationStatus" :: Maybe (ConfigRuleEvaluationStatusList), "NextToken" :: Maybe (String) } -> { "ConfigRulesEvaluationStatus" :: Maybe (ConfigRuleEvaluationStatusList), "NextToken" :: Maybe (String) }) -> DescribeConfigRuleEvaluationStatusResponse
 ```
 
 Constructs DescribeConfigRuleEvaluationStatusResponse's fields from required parameters
@@ -1492,7 +1492,7 @@ Constructs DescribeConfigRuleEvaluationStatusResponse's fields from required par
 
 ``` purescript
 newtype DescribeConfigRulesRequest
-  = DescribeConfigRulesRequest { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "NextToken" :: NullOrUndefined (String) }
+  = DescribeConfigRulesRequest { "ConfigRuleNames" :: Maybe (ConfigRuleNames), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -1517,7 +1517,7 @@ Constructs DescribeConfigRulesRequest from required parameters
 #### `newDescribeConfigRulesRequest'`
 
 ``` purescript
-newDescribeConfigRulesRequest' :: ({ "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "NextToken" :: NullOrUndefined (String) } -> { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames), "NextToken" :: NullOrUndefined (String) }) -> DescribeConfigRulesRequest
+newDescribeConfigRulesRequest' :: ({ "ConfigRuleNames" :: Maybe (ConfigRuleNames), "NextToken" :: Maybe (String) } -> { "ConfigRuleNames" :: Maybe (ConfigRuleNames), "NextToken" :: Maybe (String) }) -> DescribeConfigRulesRequest
 ```
 
 Constructs DescribeConfigRulesRequest's fields from required parameters
@@ -1526,7 +1526,7 @@ Constructs DescribeConfigRulesRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeConfigRulesResponse
-  = DescribeConfigRulesResponse { "ConfigRules" :: NullOrUndefined (ConfigRules), "NextToken" :: NullOrUndefined (String) }
+  = DescribeConfigRulesResponse { "ConfigRules" :: Maybe (ConfigRules), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -1551,7 +1551,7 @@ Constructs DescribeConfigRulesResponse from required parameters
 #### `newDescribeConfigRulesResponse'`
 
 ``` purescript
-newDescribeConfigRulesResponse' :: ({ "ConfigRules" :: NullOrUndefined (ConfigRules), "NextToken" :: NullOrUndefined (String) } -> { "ConfigRules" :: NullOrUndefined (ConfigRules), "NextToken" :: NullOrUndefined (String) }) -> DescribeConfigRulesResponse
+newDescribeConfigRulesResponse' :: ({ "ConfigRules" :: Maybe (ConfigRules), "NextToken" :: Maybe (String) } -> { "ConfigRules" :: Maybe (ConfigRules), "NextToken" :: Maybe (String) }) -> DescribeConfigRulesResponse
 ```
 
 Constructs DescribeConfigRulesResponse's fields from required parameters
@@ -1560,7 +1560,7 @@ Constructs DescribeConfigRulesResponse's fields from required parameters
 
 ``` purescript
 newtype DescribeConfigurationRecorderStatusRequest
-  = DescribeConfigurationRecorderStatusRequest { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) }
+  = DescribeConfigurationRecorderStatusRequest { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) }
 ```
 
 <p>The input for the <a>DescribeConfigurationRecorderStatus</a> action.</p>
@@ -1585,7 +1585,7 @@ Constructs DescribeConfigurationRecorderStatusRequest from required parameters
 #### `newDescribeConfigurationRecorderStatusRequest'`
 
 ``` purescript
-newDescribeConfigurationRecorderStatusRequest' :: ({ "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) } -> { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) }) -> DescribeConfigurationRecorderStatusRequest
+newDescribeConfigurationRecorderStatusRequest' :: ({ "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) } -> { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) }) -> DescribeConfigurationRecorderStatusRequest
 ```
 
 Constructs DescribeConfigurationRecorderStatusRequest's fields from required parameters
@@ -1594,7 +1594,7 @@ Constructs DescribeConfigurationRecorderStatusRequest's fields from required par
 
 ``` purescript
 newtype DescribeConfigurationRecorderStatusResponse
-  = DescribeConfigurationRecorderStatusResponse { "ConfigurationRecordersStatus" :: NullOrUndefined (ConfigurationRecorderStatusList) }
+  = DescribeConfigurationRecorderStatusResponse { "ConfigurationRecordersStatus" :: Maybe (ConfigurationRecorderStatusList) }
 ```
 
 <p>The output for the <a>DescribeConfigurationRecorderStatus</a> action in JSON format.</p>
@@ -1619,7 +1619,7 @@ Constructs DescribeConfigurationRecorderStatusResponse from required parameters
 #### `newDescribeConfigurationRecorderStatusResponse'`
 
 ``` purescript
-newDescribeConfigurationRecorderStatusResponse' :: ({ "ConfigurationRecordersStatus" :: NullOrUndefined (ConfigurationRecorderStatusList) } -> { "ConfigurationRecordersStatus" :: NullOrUndefined (ConfigurationRecorderStatusList) }) -> DescribeConfigurationRecorderStatusResponse
+newDescribeConfigurationRecorderStatusResponse' :: ({ "ConfigurationRecordersStatus" :: Maybe (ConfigurationRecorderStatusList) } -> { "ConfigurationRecordersStatus" :: Maybe (ConfigurationRecorderStatusList) }) -> DescribeConfigurationRecorderStatusResponse
 ```
 
 Constructs DescribeConfigurationRecorderStatusResponse's fields from required parameters
@@ -1628,7 +1628,7 @@ Constructs DescribeConfigurationRecorderStatusResponse's fields from required pa
 
 ``` purescript
 newtype DescribeConfigurationRecordersRequest
-  = DescribeConfigurationRecordersRequest { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) }
+  = DescribeConfigurationRecordersRequest { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) }
 ```
 
 <p>The input for the <a>DescribeConfigurationRecorders</a> action.</p>
@@ -1653,7 +1653,7 @@ Constructs DescribeConfigurationRecordersRequest from required parameters
 #### `newDescribeConfigurationRecordersRequest'`
 
 ``` purescript
-newDescribeConfigurationRecordersRequest' :: ({ "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) } -> { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) }) -> DescribeConfigurationRecordersRequest
+newDescribeConfigurationRecordersRequest' :: ({ "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) } -> { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) }) -> DescribeConfigurationRecordersRequest
 ```
 
 Constructs DescribeConfigurationRecordersRequest's fields from required parameters
@@ -1662,7 +1662,7 @@ Constructs DescribeConfigurationRecordersRequest's fields from required paramete
 
 ``` purescript
 newtype DescribeConfigurationRecordersResponse
-  = DescribeConfigurationRecordersResponse { "ConfigurationRecorders" :: NullOrUndefined (ConfigurationRecorderList) }
+  = DescribeConfigurationRecordersResponse { "ConfigurationRecorders" :: Maybe (ConfigurationRecorderList) }
 ```
 
 <p>The output for the <a>DescribeConfigurationRecorders</a> action.</p>
@@ -1687,7 +1687,7 @@ Constructs DescribeConfigurationRecordersResponse from required parameters
 #### `newDescribeConfigurationRecordersResponse'`
 
 ``` purescript
-newDescribeConfigurationRecordersResponse' :: ({ "ConfigurationRecorders" :: NullOrUndefined (ConfigurationRecorderList) } -> { "ConfigurationRecorders" :: NullOrUndefined (ConfigurationRecorderList) }) -> DescribeConfigurationRecordersResponse
+newDescribeConfigurationRecordersResponse' :: ({ "ConfigurationRecorders" :: Maybe (ConfigurationRecorderList) } -> { "ConfigurationRecorders" :: Maybe (ConfigurationRecorderList) }) -> DescribeConfigurationRecordersResponse
 ```
 
 Constructs DescribeConfigurationRecordersResponse's fields from required parameters
@@ -1696,7 +1696,7 @@ Constructs DescribeConfigurationRecordersResponse's fields from required paramet
 
 ``` purescript
 newtype DescribeDeliveryChannelStatusRequest
-  = DescribeDeliveryChannelStatusRequest { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) }
+  = DescribeDeliveryChannelStatusRequest { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) }
 ```
 
 <p>The input for the <a>DeliveryChannelStatus</a> action.</p>
@@ -1721,7 +1721,7 @@ Constructs DescribeDeliveryChannelStatusRequest from required parameters
 #### `newDescribeDeliveryChannelStatusRequest'`
 
 ``` purescript
-newDescribeDeliveryChannelStatusRequest' :: ({ "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) } -> { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) }) -> DescribeDeliveryChannelStatusRequest
+newDescribeDeliveryChannelStatusRequest' :: ({ "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) } -> { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) }) -> DescribeDeliveryChannelStatusRequest
 ```
 
 Constructs DescribeDeliveryChannelStatusRequest's fields from required parameters
@@ -1730,7 +1730,7 @@ Constructs DescribeDeliveryChannelStatusRequest's fields from required parameter
 
 ``` purescript
 newtype DescribeDeliveryChannelStatusResponse
-  = DescribeDeliveryChannelStatusResponse { "DeliveryChannelsStatus" :: NullOrUndefined (DeliveryChannelStatusList) }
+  = DescribeDeliveryChannelStatusResponse { "DeliveryChannelsStatus" :: Maybe (DeliveryChannelStatusList) }
 ```
 
 <p>The output for the <a>DescribeDeliveryChannelStatus</a> action.</p>
@@ -1755,7 +1755,7 @@ Constructs DescribeDeliveryChannelStatusResponse from required parameters
 #### `newDescribeDeliveryChannelStatusResponse'`
 
 ``` purescript
-newDescribeDeliveryChannelStatusResponse' :: ({ "DeliveryChannelsStatus" :: NullOrUndefined (DeliveryChannelStatusList) } -> { "DeliveryChannelsStatus" :: NullOrUndefined (DeliveryChannelStatusList) }) -> DescribeDeliveryChannelStatusResponse
+newDescribeDeliveryChannelStatusResponse' :: ({ "DeliveryChannelsStatus" :: Maybe (DeliveryChannelStatusList) } -> { "DeliveryChannelsStatus" :: Maybe (DeliveryChannelStatusList) }) -> DescribeDeliveryChannelStatusResponse
 ```
 
 Constructs DescribeDeliveryChannelStatusResponse's fields from required parameters
@@ -1764,7 +1764,7 @@ Constructs DescribeDeliveryChannelStatusResponse's fields from required paramete
 
 ``` purescript
 newtype DescribeDeliveryChannelsRequest
-  = DescribeDeliveryChannelsRequest { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) }
+  = DescribeDeliveryChannelsRequest { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) }
 ```
 
 <p>The input for the <a>DescribeDeliveryChannels</a> action.</p>
@@ -1789,7 +1789,7 @@ Constructs DescribeDeliveryChannelsRequest from required parameters
 #### `newDescribeDeliveryChannelsRequest'`
 
 ``` purescript
-newDescribeDeliveryChannelsRequest' :: ({ "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) } -> { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) }) -> DescribeDeliveryChannelsRequest
+newDescribeDeliveryChannelsRequest' :: ({ "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) } -> { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) }) -> DescribeDeliveryChannelsRequest
 ```
 
 Constructs DescribeDeliveryChannelsRequest's fields from required parameters
@@ -1798,7 +1798,7 @@ Constructs DescribeDeliveryChannelsRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeDeliveryChannelsResponse
-  = DescribeDeliveryChannelsResponse { "DeliveryChannels" :: NullOrUndefined (DeliveryChannelList) }
+  = DescribeDeliveryChannelsResponse { "DeliveryChannels" :: Maybe (DeliveryChannelList) }
 ```
 
 <p>The output for the <a>DescribeDeliveryChannels</a> action.</p>
@@ -1823,7 +1823,7 @@ Constructs DescribeDeliveryChannelsResponse from required parameters
 #### `newDescribeDeliveryChannelsResponse'`
 
 ``` purescript
-newDescribeDeliveryChannelsResponse' :: ({ "DeliveryChannels" :: NullOrUndefined (DeliveryChannelList) } -> { "DeliveryChannels" :: NullOrUndefined (DeliveryChannelList) }) -> DescribeDeliveryChannelsResponse
+newDescribeDeliveryChannelsResponse' :: ({ "DeliveryChannels" :: Maybe (DeliveryChannelList) } -> { "DeliveryChannels" :: Maybe (DeliveryChannelList) }) -> DescribeDeliveryChannelsResponse
 ```
 
 Constructs DescribeDeliveryChannelsResponse's fields from required parameters
@@ -1864,7 +1864,7 @@ Encode EmptiableStringWithCharLimit256
 
 ``` purescript
 newtype Evaluation
-  = Evaluation { "ComplianceResourceType" :: StringWithCharLimit256, "ComplianceResourceId" :: BaseResourceId, "ComplianceType" :: ComplianceType, "Annotation" :: NullOrUndefined (StringWithCharLimit256), "OrderingTimestamp" :: OrderingTimestamp }
+  = Evaluation { "ComplianceResourceType" :: StringWithCharLimit256, "ComplianceResourceId" :: BaseResourceId, "ComplianceType" :: ComplianceType, "Annotation" :: Maybe (StringWithCharLimit256), "OrderingTimestamp" :: OrderingTimestamp }
 ```
 
 <p>Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.</p>
@@ -1889,7 +1889,7 @@ Constructs Evaluation from required parameters
 #### `newEvaluation'`
 
 ``` purescript
-newEvaluation' :: BaseResourceId -> StringWithCharLimit256 -> ComplianceType -> OrderingTimestamp -> ({ "ComplianceResourceType" :: StringWithCharLimit256, "ComplianceResourceId" :: BaseResourceId, "ComplianceType" :: ComplianceType, "Annotation" :: NullOrUndefined (StringWithCharLimit256), "OrderingTimestamp" :: OrderingTimestamp } -> { "ComplianceResourceType" :: StringWithCharLimit256, "ComplianceResourceId" :: BaseResourceId, "ComplianceType" :: ComplianceType, "Annotation" :: NullOrUndefined (StringWithCharLimit256), "OrderingTimestamp" :: OrderingTimestamp }) -> Evaluation
+newEvaluation' :: BaseResourceId -> StringWithCharLimit256 -> ComplianceType -> OrderingTimestamp -> ({ "ComplianceResourceType" :: StringWithCharLimit256, "ComplianceResourceId" :: BaseResourceId, "ComplianceType" :: ComplianceType, "Annotation" :: Maybe (StringWithCharLimit256), "OrderingTimestamp" :: OrderingTimestamp } -> { "ComplianceResourceType" :: StringWithCharLimit256, "ComplianceResourceId" :: BaseResourceId, "ComplianceType" :: ComplianceType, "Annotation" :: Maybe (StringWithCharLimit256), "OrderingTimestamp" :: OrderingTimestamp }) -> Evaluation
 ```
 
 Constructs Evaluation's fields from required parameters
@@ -1898,7 +1898,7 @@ Constructs Evaluation's fields from required parameters
 
 ``` purescript
 newtype EvaluationResult
-  = EvaluationResult { "EvaluationResultIdentifier" :: NullOrUndefined (EvaluationResultIdentifier), "ComplianceType" :: NullOrUndefined (ComplianceType), "ResultRecordedTime" :: NullOrUndefined (Date), "ConfigRuleInvokedTime" :: NullOrUndefined (Date), "Annotation" :: NullOrUndefined (StringWithCharLimit256), "ResultToken" :: NullOrUndefined (String) }
+  = EvaluationResult { "EvaluationResultIdentifier" :: Maybe (EvaluationResultIdentifier), "ComplianceType" :: Maybe (ComplianceType), "ResultRecordedTime" :: Maybe (Date), "ConfigRuleInvokedTime" :: Maybe (Date), "Annotation" :: Maybe (StringWithCharLimit256), "ResultToken" :: Maybe (String) }
 ```
 
 <p>The details of an AWS Config evaluation. Provides the AWS resource that was evaluated, the compliance of the resource, related timestamps, and supplementary information.</p>
@@ -1923,7 +1923,7 @@ Constructs EvaluationResult from required parameters
 #### `newEvaluationResult'`
 
 ``` purescript
-newEvaluationResult' :: ({ "EvaluationResultIdentifier" :: NullOrUndefined (EvaluationResultIdentifier), "ComplianceType" :: NullOrUndefined (ComplianceType), "ResultRecordedTime" :: NullOrUndefined (Date), "ConfigRuleInvokedTime" :: NullOrUndefined (Date), "Annotation" :: NullOrUndefined (StringWithCharLimit256), "ResultToken" :: NullOrUndefined (String) } -> { "EvaluationResultIdentifier" :: NullOrUndefined (EvaluationResultIdentifier), "ComplianceType" :: NullOrUndefined (ComplianceType), "ResultRecordedTime" :: NullOrUndefined (Date), "ConfigRuleInvokedTime" :: NullOrUndefined (Date), "Annotation" :: NullOrUndefined (StringWithCharLimit256), "ResultToken" :: NullOrUndefined (String) }) -> EvaluationResult
+newEvaluationResult' :: ({ "EvaluationResultIdentifier" :: Maybe (EvaluationResultIdentifier), "ComplianceType" :: Maybe (ComplianceType), "ResultRecordedTime" :: Maybe (Date), "ConfigRuleInvokedTime" :: Maybe (Date), "Annotation" :: Maybe (StringWithCharLimit256), "ResultToken" :: Maybe (String) } -> { "EvaluationResultIdentifier" :: Maybe (EvaluationResultIdentifier), "ComplianceType" :: Maybe (ComplianceType), "ResultRecordedTime" :: Maybe (Date), "ConfigRuleInvokedTime" :: Maybe (Date), "Annotation" :: Maybe (StringWithCharLimit256), "ResultToken" :: Maybe (String) }) -> EvaluationResult
 ```
 
 Constructs EvaluationResult's fields from required parameters
@@ -1932,7 +1932,7 @@ Constructs EvaluationResult's fields from required parameters
 
 ``` purescript
 newtype EvaluationResultIdentifier
-  = EvaluationResultIdentifier { "EvaluationResultQualifier" :: NullOrUndefined (EvaluationResultQualifier), "OrderingTimestamp" :: NullOrUndefined (Date) }
+  = EvaluationResultIdentifier { "EvaluationResultQualifier" :: Maybe (EvaluationResultQualifier), "OrderingTimestamp" :: Maybe (Date) }
 ```
 
 <p>Uniquely identifies an evaluation result.</p>
@@ -1957,7 +1957,7 @@ Constructs EvaluationResultIdentifier from required parameters
 #### `newEvaluationResultIdentifier'`
 
 ``` purescript
-newEvaluationResultIdentifier' :: ({ "EvaluationResultQualifier" :: NullOrUndefined (EvaluationResultQualifier), "OrderingTimestamp" :: NullOrUndefined (Date) } -> { "EvaluationResultQualifier" :: NullOrUndefined (EvaluationResultQualifier), "OrderingTimestamp" :: NullOrUndefined (Date) }) -> EvaluationResultIdentifier
+newEvaluationResultIdentifier' :: ({ "EvaluationResultQualifier" :: Maybe (EvaluationResultQualifier), "OrderingTimestamp" :: Maybe (Date) } -> { "EvaluationResultQualifier" :: Maybe (EvaluationResultQualifier), "OrderingTimestamp" :: Maybe (Date) }) -> EvaluationResultIdentifier
 ```
 
 Constructs EvaluationResultIdentifier's fields from required parameters
@@ -1966,7 +1966,7 @@ Constructs EvaluationResultIdentifier's fields from required parameters
 
 ``` purescript
 newtype EvaluationResultQualifier
-  = EvaluationResultQualifier { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId) }
+  = EvaluationResultQualifier { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId) }
 ```
 
 <p>Identifies an AWS Config rule that evaluated an AWS resource, and provides the type and ID of the resource that the rule evaluated.</p>
@@ -1991,7 +1991,7 @@ Constructs EvaluationResultQualifier from required parameters
 #### `newEvaluationResultQualifier'`
 
 ``` purescript
-newEvaluationResultQualifier' :: ({ "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId) } -> { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64), "ResourceType" :: NullOrUndefined (StringWithCharLimit256), "ResourceId" :: NullOrUndefined (BaseResourceId) }) -> EvaluationResultQualifier
+newEvaluationResultQualifier' :: ({ "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId) } -> { "ConfigRuleName" :: Maybe (StringWithCharLimit64), "ResourceType" :: Maybe (StringWithCharLimit256), "ResourceId" :: Maybe (BaseResourceId) }) -> EvaluationResultQualifier
 ```
 
 Constructs EvaluationResultQualifier's fields from required parameters
@@ -2048,7 +2048,7 @@ Encode EventSource
 
 ``` purescript
 newtype GetComplianceDetailsByConfigRuleRequest
-  = GetComplianceDetailsByConfigRuleRequest { "ConfigRuleName" :: StringWithCharLimit64, "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "Limit" :: NullOrUndefined (Limit), "NextToken" :: NullOrUndefined (NextToken) }
+  = GetComplianceDetailsByConfigRuleRequest { "ConfigRuleName" :: StringWithCharLimit64, "ComplianceTypes" :: Maybe (ComplianceTypes), "Limit" :: Maybe (Limit), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p/>
@@ -2073,7 +2073,7 @@ Constructs GetComplianceDetailsByConfigRuleRequest from required parameters
 #### `newGetComplianceDetailsByConfigRuleRequest'`
 
 ``` purescript
-newGetComplianceDetailsByConfigRuleRequest' :: StringWithCharLimit64 -> ({ "ConfigRuleName" :: StringWithCharLimit64, "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "Limit" :: NullOrUndefined (Limit), "NextToken" :: NullOrUndefined (NextToken) } -> { "ConfigRuleName" :: StringWithCharLimit64, "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "Limit" :: NullOrUndefined (Limit), "NextToken" :: NullOrUndefined (NextToken) }) -> GetComplianceDetailsByConfigRuleRequest
+newGetComplianceDetailsByConfigRuleRequest' :: StringWithCharLimit64 -> ({ "ConfigRuleName" :: StringWithCharLimit64, "ComplianceTypes" :: Maybe (ComplianceTypes), "Limit" :: Maybe (Limit), "NextToken" :: Maybe (NextToken) } -> { "ConfigRuleName" :: StringWithCharLimit64, "ComplianceTypes" :: Maybe (ComplianceTypes), "Limit" :: Maybe (Limit), "NextToken" :: Maybe (NextToken) }) -> GetComplianceDetailsByConfigRuleRequest
 ```
 
 Constructs GetComplianceDetailsByConfigRuleRequest's fields from required parameters
@@ -2082,7 +2082,7 @@ Constructs GetComplianceDetailsByConfigRuleRequest's fields from required parame
 
 ``` purescript
 newtype GetComplianceDetailsByConfigRuleResponse
-  = GetComplianceDetailsByConfigRuleResponse { "EvaluationResults" :: NullOrUndefined (EvaluationResults), "NextToken" :: NullOrUndefined (NextToken) }
+  = GetComplianceDetailsByConfigRuleResponse { "EvaluationResults" :: Maybe (EvaluationResults), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p/>
@@ -2107,7 +2107,7 @@ Constructs GetComplianceDetailsByConfigRuleResponse from required parameters
 #### `newGetComplianceDetailsByConfigRuleResponse'`
 
 ``` purescript
-newGetComplianceDetailsByConfigRuleResponse' :: ({ "EvaluationResults" :: NullOrUndefined (EvaluationResults), "NextToken" :: NullOrUndefined (NextToken) } -> { "EvaluationResults" :: NullOrUndefined (EvaluationResults), "NextToken" :: NullOrUndefined (NextToken) }) -> GetComplianceDetailsByConfigRuleResponse
+newGetComplianceDetailsByConfigRuleResponse' :: ({ "EvaluationResults" :: Maybe (EvaluationResults), "NextToken" :: Maybe (NextToken) } -> { "EvaluationResults" :: Maybe (EvaluationResults), "NextToken" :: Maybe (NextToken) }) -> GetComplianceDetailsByConfigRuleResponse
 ```
 
 Constructs GetComplianceDetailsByConfigRuleResponse's fields from required parameters
@@ -2116,7 +2116,7 @@ Constructs GetComplianceDetailsByConfigRuleResponse's fields from required param
 
 ``` purescript
 newtype GetComplianceDetailsByResourceRequest
-  = GetComplianceDetailsByResourceRequest { "ResourceType" :: StringWithCharLimit256, "ResourceId" :: BaseResourceId, "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "NextToken" :: NullOrUndefined (String) }
+  = GetComplianceDetailsByResourceRequest { "ResourceType" :: StringWithCharLimit256, "ResourceId" :: BaseResourceId, "ComplianceTypes" :: Maybe (ComplianceTypes), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -2141,7 +2141,7 @@ Constructs GetComplianceDetailsByResourceRequest from required parameters
 #### `newGetComplianceDetailsByResourceRequest'`
 
 ``` purescript
-newGetComplianceDetailsByResourceRequest' :: BaseResourceId -> StringWithCharLimit256 -> ({ "ResourceType" :: StringWithCharLimit256, "ResourceId" :: BaseResourceId, "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "NextToken" :: NullOrUndefined (String) } -> { "ResourceType" :: StringWithCharLimit256, "ResourceId" :: BaseResourceId, "ComplianceTypes" :: NullOrUndefined (ComplianceTypes), "NextToken" :: NullOrUndefined (String) }) -> GetComplianceDetailsByResourceRequest
+newGetComplianceDetailsByResourceRequest' :: BaseResourceId -> StringWithCharLimit256 -> ({ "ResourceType" :: StringWithCharLimit256, "ResourceId" :: BaseResourceId, "ComplianceTypes" :: Maybe (ComplianceTypes), "NextToken" :: Maybe (String) } -> { "ResourceType" :: StringWithCharLimit256, "ResourceId" :: BaseResourceId, "ComplianceTypes" :: Maybe (ComplianceTypes), "NextToken" :: Maybe (String) }) -> GetComplianceDetailsByResourceRequest
 ```
 
 Constructs GetComplianceDetailsByResourceRequest's fields from required parameters
@@ -2150,7 +2150,7 @@ Constructs GetComplianceDetailsByResourceRequest's fields from required paramete
 
 ``` purescript
 newtype GetComplianceDetailsByResourceResponse
-  = GetComplianceDetailsByResourceResponse { "EvaluationResults" :: NullOrUndefined (EvaluationResults), "NextToken" :: NullOrUndefined (String) }
+  = GetComplianceDetailsByResourceResponse { "EvaluationResults" :: Maybe (EvaluationResults), "NextToken" :: Maybe (String) }
 ```
 
 <p/>
@@ -2175,7 +2175,7 @@ Constructs GetComplianceDetailsByResourceResponse from required parameters
 #### `newGetComplianceDetailsByResourceResponse'`
 
 ``` purescript
-newGetComplianceDetailsByResourceResponse' :: ({ "EvaluationResults" :: NullOrUndefined (EvaluationResults), "NextToken" :: NullOrUndefined (String) } -> { "EvaluationResults" :: NullOrUndefined (EvaluationResults), "NextToken" :: NullOrUndefined (String) }) -> GetComplianceDetailsByResourceResponse
+newGetComplianceDetailsByResourceResponse' :: ({ "EvaluationResults" :: Maybe (EvaluationResults), "NextToken" :: Maybe (String) } -> { "EvaluationResults" :: Maybe (EvaluationResults), "NextToken" :: Maybe (String) }) -> GetComplianceDetailsByResourceResponse
 ```
 
 Constructs GetComplianceDetailsByResourceResponse's fields from required parameters
@@ -2184,7 +2184,7 @@ Constructs GetComplianceDetailsByResourceResponse's fields from required paramet
 
 ``` purescript
 newtype GetComplianceSummaryByConfigRuleResponse
-  = GetComplianceSummaryByConfigRuleResponse { "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) }
+  = GetComplianceSummaryByConfigRuleResponse { "ComplianceSummary" :: Maybe (ComplianceSummary) }
 ```
 
 <p/>
@@ -2209,7 +2209,7 @@ Constructs GetComplianceSummaryByConfigRuleResponse from required parameters
 #### `newGetComplianceSummaryByConfigRuleResponse'`
 
 ``` purescript
-newGetComplianceSummaryByConfigRuleResponse' :: ({ "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) } -> { "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) }) -> GetComplianceSummaryByConfigRuleResponse
+newGetComplianceSummaryByConfigRuleResponse' :: ({ "ComplianceSummary" :: Maybe (ComplianceSummary) } -> { "ComplianceSummary" :: Maybe (ComplianceSummary) }) -> GetComplianceSummaryByConfigRuleResponse
 ```
 
 Constructs GetComplianceSummaryByConfigRuleResponse's fields from required parameters
@@ -2218,7 +2218,7 @@ Constructs GetComplianceSummaryByConfigRuleResponse's fields from required param
 
 ``` purescript
 newtype GetComplianceSummaryByResourceTypeRequest
-  = GetComplianceSummaryByResourceTypeRequest { "ResourceTypes" :: NullOrUndefined (ResourceTypes) }
+  = GetComplianceSummaryByResourceTypeRequest { "ResourceTypes" :: Maybe (ResourceTypes) }
 ```
 
 <p/>
@@ -2243,7 +2243,7 @@ Constructs GetComplianceSummaryByResourceTypeRequest from required parameters
 #### `newGetComplianceSummaryByResourceTypeRequest'`
 
 ``` purescript
-newGetComplianceSummaryByResourceTypeRequest' :: ({ "ResourceTypes" :: NullOrUndefined (ResourceTypes) } -> { "ResourceTypes" :: NullOrUndefined (ResourceTypes) }) -> GetComplianceSummaryByResourceTypeRequest
+newGetComplianceSummaryByResourceTypeRequest' :: ({ "ResourceTypes" :: Maybe (ResourceTypes) } -> { "ResourceTypes" :: Maybe (ResourceTypes) }) -> GetComplianceSummaryByResourceTypeRequest
 ```
 
 Constructs GetComplianceSummaryByResourceTypeRequest's fields from required parameters
@@ -2252,7 +2252,7 @@ Constructs GetComplianceSummaryByResourceTypeRequest's fields from required para
 
 ``` purescript
 newtype GetComplianceSummaryByResourceTypeResponse
-  = GetComplianceSummaryByResourceTypeResponse { "ComplianceSummariesByResourceType" :: NullOrUndefined (ComplianceSummariesByResourceType) }
+  = GetComplianceSummaryByResourceTypeResponse { "ComplianceSummariesByResourceType" :: Maybe (ComplianceSummariesByResourceType) }
 ```
 
 <p/>
@@ -2277,7 +2277,7 @@ Constructs GetComplianceSummaryByResourceTypeResponse from required parameters
 #### `newGetComplianceSummaryByResourceTypeResponse'`
 
 ``` purescript
-newGetComplianceSummaryByResourceTypeResponse' :: ({ "ComplianceSummariesByResourceType" :: NullOrUndefined (ComplianceSummariesByResourceType) } -> { "ComplianceSummariesByResourceType" :: NullOrUndefined (ComplianceSummariesByResourceType) }) -> GetComplianceSummaryByResourceTypeResponse
+newGetComplianceSummaryByResourceTypeResponse' :: ({ "ComplianceSummariesByResourceType" :: Maybe (ComplianceSummariesByResourceType) } -> { "ComplianceSummariesByResourceType" :: Maybe (ComplianceSummariesByResourceType) }) -> GetComplianceSummaryByResourceTypeResponse
 ```
 
 Constructs GetComplianceSummaryByResourceTypeResponse's fields from required parameters
@@ -2286,7 +2286,7 @@ Constructs GetComplianceSummaryByResourceTypeResponse's fields from required par
 
 ``` purescript
 newtype GetDiscoveredResourceCountsRequest
-  = GetDiscoveredResourceCountsRequest { resourceTypes :: NullOrUndefined (ResourceTypes), limit :: NullOrUndefined (Limit), nextToken :: NullOrUndefined (NextToken) }
+  = GetDiscoveredResourceCountsRequest { resourceTypes :: Maybe (ResourceTypes), limit :: Maybe (Limit), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2309,7 +2309,7 @@ Constructs GetDiscoveredResourceCountsRequest from required parameters
 #### `newGetDiscoveredResourceCountsRequest'`
 
 ``` purescript
-newGetDiscoveredResourceCountsRequest' :: ({ resourceTypes :: NullOrUndefined (ResourceTypes), limit :: NullOrUndefined (Limit), nextToken :: NullOrUndefined (NextToken) } -> { resourceTypes :: NullOrUndefined (ResourceTypes), limit :: NullOrUndefined (Limit), nextToken :: NullOrUndefined (NextToken) }) -> GetDiscoveredResourceCountsRequest
+newGetDiscoveredResourceCountsRequest' :: ({ resourceTypes :: Maybe (ResourceTypes), limit :: Maybe (Limit), nextToken :: Maybe (NextToken) } -> { resourceTypes :: Maybe (ResourceTypes), limit :: Maybe (Limit), nextToken :: Maybe (NextToken) }) -> GetDiscoveredResourceCountsRequest
 ```
 
 Constructs GetDiscoveredResourceCountsRequest's fields from required parameters
@@ -2318,7 +2318,7 @@ Constructs GetDiscoveredResourceCountsRequest's fields from required parameters
 
 ``` purescript
 newtype GetDiscoveredResourceCountsResponse
-  = GetDiscoveredResourceCountsResponse { totalDiscoveredResources :: NullOrUndefined (Number), resourceCounts :: NullOrUndefined (ResourceCounts), nextToken :: NullOrUndefined (NextToken) }
+  = GetDiscoveredResourceCountsResponse { totalDiscoveredResources :: Maybe (Number), resourceCounts :: Maybe (ResourceCounts), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2341,7 +2341,7 @@ Constructs GetDiscoveredResourceCountsResponse from required parameters
 #### `newGetDiscoveredResourceCountsResponse'`
 
 ``` purescript
-newGetDiscoveredResourceCountsResponse' :: ({ totalDiscoveredResources :: NullOrUndefined (Number), resourceCounts :: NullOrUndefined (ResourceCounts), nextToken :: NullOrUndefined (NextToken) } -> { totalDiscoveredResources :: NullOrUndefined (Number), resourceCounts :: NullOrUndefined (ResourceCounts), nextToken :: NullOrUndefined (NextToken) }) -> GetDiscoveredResourceCountsResponse
+newGetDiscoveredResourceCountsResponse' :: ({ totalDiscoveredResources :: Maybe (Number), resourceCounts :: Maybe (ResourceCounts), nextToken :: Maybe (NextToken) } -> { totalDiscoveredResources :: Maybe (Number), resourceCounts :: Maybe (ResourceCounts), nextToken :: Maybe (NextToken) }) -> GetDiscoveredResourceCountsResponse
 ```
 
 Constructs GetDiscoveredResourceCountsResponse's fields from required parameters
@@ -2350,7 +2350,7 @@ Constructs GetDiscoveredResourceCountsResponse's fields from required parameters
 
 ``` purescript
 newtype GetResourceConfigHistoryRequest
-  = GetResourceConfigHistoryRequest { resourceType :: ResourceType, resourceId :: ResourceId, laterTime :: NullOrUndefined (LaterTime), earlierTime :: NullOrUndefined (EarlierTime), chronologicalOrder :: NullOrUndefined (ChronologicalOrder), limit :: NullOrUndefined (Limit), nextToken :: NullOrUndefined (NextToken) }
+  = GetResourceConfigHistoryRequest { resourceType :: ResourceType, resourceId :: ResourceId, laterTime :: Maybe (LaterTime), earlierTime :: Maybe (EarlierTime), chronologicalOrder :: Maybe (ChronologicalOrder), limit :: Maybe (Limit), nextToken :: Maybe (NextToken) }
 ```
 
 <p>The input for the <a>GetResourceConfigHistory</a> action.</p>
@@ -2375,7 +2375,7 @@ Constructs GetResourceConfigHistoryRequest from required parameters
 #### `newGetResourceConfigHistoryRequest'`
 
 ``` purescript
-newGetResourceConfigHistoryRequest' :: ResourceId -> ResourceType -> ({ resourceType :: ResourceType, resourceId :: ResourceId, laterTime :: NullOrUndefined (LaterTime), earlierTime :: NullOrUndefined (EarlierTime), chronologicalOrder :: NullOrUndefined (ChronologicalOrder), limit :: NullOrUndefined (Limit), nextToken :: NullOrUndefined (NextToken) } -> { resourceType :: ResourceType, resourceId :: ResourceId, laterTime :: NullOrUndefined (LaterTime), earlierTime :: NullOrUndefined (EarlierTime), chronologicalOrder :: NullOrUndefined (ChronologicalOrder), limit :: NullOrUndefined (Limit), nextToken :: NullOrUndefined (NextToken) }) -> GetResourceConfigHistoryRequest
+newGetResourceConfigHistoryRequest' :: ResourceId -> ResourceType -> ({ resourceType :: ResourceType, resourceId :: ResourceId, laterTime :: Maybe (LaterTime), earlierTime :: Maybe (EarlierTime), chronologicalOrder :: Maybe (ChronologicalOrder), limit :: Maybe (Limit), nextToken :: Maybe (NextToken) } -> { resourceType :: ResourceType, resourceId :: ResourceId, laterTime :: Maybe (LaterTime), earlierTime :: Maybe (EarlierTime), chronologicalOrder :: Maybe (ChronologicalOrder), limit :: Maybe (Limit), nextToken :: Maybe (NextToken) }) -> GetResourceConfigHistoryRequest
 ```
 
 Constructs GetResourceConfigHistoryRequest's fields from required parameters
@@ -2384,7 +2384,7 @@ Constructs GetResourceConfigHistoryRequest's fields from required parameters
 
 ``` purescript
 newtype GetResourceConfigHistoryResponse
-  = GetResourceConfigHistoryResponse { configurationItems :: NullOrUndefined (ConfigurationItemList), nextToken :: NullOrUndefined (NextToken) }
+  = GetResourceConfigHistoryResponse { configurationItems :: Maybe (ConfigurationItemList), nextToken :: Maybe (NextToken) }
 ```
 
 <p>The output for the <a>GetResourceConfigHistory</a> action.</p>
@@ -2409,7 +2409,7 @@ Constructs GetResourceConfigHistoryResponse from required parameters
 #### `newGetResourceConfigHistoryResponse'`
 
 ``` purescript
-newGetResourceConfigHistoryResponse' :: ({ configurationItems :: NullOrUndefined (ConfigurationItemList), nextToken :: NullOrUndefined (NextToken) } -> { configurationItems :: NullOrUndefined (ConfigurationItemList), nextToken :: NullOrUndefined (NextToken) }) -> GetResourceConfigHistoryResponse
+newGetResourceConfigHistoryResponse' :: ({ configurationItems :: Maybe (ConfigurationItemList), nextToken :: Maybe (NextToken) } -> { configurationItems :: Maybe (ConfigurationItemList), nextToken :: Maybe (NextToken) }) -> GetResourceConfigHistoryResponse
 ```
 
 Constructs GetResourceConfigHistoryResponse's fields from required parameters
@@ -2736,7 +2736,7 @@ Encode LimitExceededException
 
 ``` purescript
 newtype ListDiscoveredResourcesRequest
-  = ListDiscoveredResourcesRequest { resourceType :: ResourceType, resourceIds :: NullOrUndefined (ResourceIdList), resourceName :: NullOrUndefined (ResourceName), limit :: NullOrUndefined (Limit), includeDeletedResources :: NullOrUndefined (Boolean), nextToken :: NullOrUndefined (NextToken) }
+  = ListDiscoveredResourcesRequest { resourceType :: ResourceType, resourceIds :: Maybe (ResourceIdList), resourceName :: Maybe (ResourceName), limit :: Maybe (Limit), includeDeletedResources :: Maybe (Boolean), nextToken :: Maybe (NextToken) }
 ```
 
 <p/>
@@ -2761,7 +2761,7 @@ Constructs ListDiscoveredResourcesRequest from required parameters
 #### `newListDiscoveredResourcesRequest'`
 
 ``` purescript
-newListDiscoveredResourcesRequest' :: ResourceType -> ({ resourceType :: ResourceType, resourceIds :: NullOrUndefined (ResourceIdList), resourceName :: NullOrUndefined (ResourceName), limit :: NullOrUndefined (Limit), includeDeletedResources :: NullOrUndefined (Boolean), nextToken :: NullOrUndefined (NextToken) } -> { resourceType :: ResourceType, resourceIds :: NullOrUndefined (ResourceIdList), resourceName :: NullOrUndefined (ResourceName), limit :: NullOrUndefined (Limit), includeDeletedResources :: NullOrUndefined (Boolean), nextToken :: NullOrUndefined (NextToken) }) -> ListDiscoveredResourcesRequest
+newListDiscoveredResourcesRequest' :: ResourceType -> ({ resourceType :: ResourceType, resourceIds :: Maybe (ResourceIdList), resourceName :: Maybe (ResourceName), limit :: Maybe (Limit), includeDeletedResources :: Maybe (Boolean), nextToken :: Maybe (NextToken) } -> { resourceType :: ResourceType, resourceIds :: Maybe (ResourceIdList), resourceName :: Maybe (ResourceName), limit :: Maybe (Limit), includeDeletedResources :: Maybe (Boolean), nextToken :: Maybe (NextToken) }) -> ListDiscoveredResourcesRequest
 ```
 
 Constructs ListDiscoveredResourcesRequest's fields from required parameters
@@ -2770,7 +2770,7 @@ Constructs ListDiscoveredResourcesRequest's fields from required parameters
 
 ``` purescript
 newtype ListDiscoveredResourcesResponse
-  = ListDiscoveredResourcesResponse { resourceIdentifiers :: NullOrUndefined (ResourceIdentifierList), nextToken :: NullOrUndefined (NextToken) }
+  = ListDiscoveredResourcesResponse { resourceIdentifiers :: Maybe (ResourceIdentifierList), nextToken :: Maybe (NextToken) }
 ```
 
 <p/>
@@ -2795,7 +2795,7 @@ Constructs ListDiscoveredResourcesResponse from required parameters
 #### `newListDiscoveredResourcesResponse'`
 
 ``` purescript
-newListDiscoveredResourcesResponse' :: ({ resourceIdentifiers :: NullOrUndefined (ResourceIdentifierList), nextToken :: NullOrUndefined (NextToken) } -> { resourceIdentifiers :: NullOrUndefined (ResourceIdentifierList), nextToken :: NullOrUndefined (NextToken) }) -> ListDiscoveredResourcesResponse
+newListDiscoveredResourcesResponse' :: ({ resourceIdentifiers :: Maybe (ResourceIdentifierList), nextToken :: Maybe (NextToken) } -> { resourceIdentifiers :: Maybe (ResourceIdentifierList), nextToken :: Maybe (NextToken) }) -> ListDiscoveredResourcesResponse
 ```
 
 Constructs ListDiscoveredResourcesResponse's fields from required parameters
@@ -3180,7 +3180,7 @@ Constructs PutDeliveryChannelRequest's fields from required parameters
 
 ``` purescript
 newtype PutEvaluationsRequest
-  = PutEvaluationsRequest { "Evaluations" :: NullOrUndefined (Evaluations), "ResultToken" :: String, "TestMode" :: NullOrUndefined (Boolean) }
+  = PutEvaluationsRequest { "Evaluations" :: Maybe (Evaluations), "ResultToken" :: String, "TestMode" :: Maybe (Boolean) }
 ```
 
 <p/>
@@ -3205,7 +3205,7 @@ Constructs PutEvaluationsRequest from required parameters
 #### `newPutEvaluationsRequest'`
 
 ``` purescript
-newPutEvaluationsRequest' :: String -> ({ "Evaluations" :: NullOrUndefined (Evaluations), "ResultToken" :: String, "TestMode" :: NullOrUndefined (Boolean) } -> { "Evaluations" :: NullOrUndefined (Evaluations), "ResultToken" :: String, "TestMode" :: NullOrUndefined (Boolean) }) -> PutEvaluationsRequest
+newPutEvaluationsRequest' :: String -> ({ "Evaluations" :: Maybe (Evaluations), "ResultToken" :: String, "TestMode" :: Maybe (Boolean) } -> { "Evaluations" :: Maybe (Evaluations), "ResultToken" :: String, "TestMode" :: Maybe (Boolean) }) -> PutEvaluationsRequest
 ```
 
 Constructs PutEvaluationsRequest's fields from required parameters
@@ -3214,7 +3214,7 @@ Constructs PutEvaluationsRequest's fields from required parameters
 
 ``` purescript
 newtype PutEvaluationsResponse
-  = PutEvaluationsResponse { "FailedEvaluations" :: NullOrUndefined (Evaluations) }
+  = PutEvaluationsResponse { "FailedEvaluations" :: Maybe (Evaluations) }
 ```
 
 <p/>
@@ -3239,7 +3239,7 @@ Constructs PutEvaluationsResponse from required parameters
 #### `newPutEvaluationsResponse'`
 
 ``` purescript
-newPutEvaluationsResponse' :: ({ "FailedEvaluations" :: NullOrUndefined (Evaluations) } -> { "FailedEvaluations" :: NullOrUndefined (Evaluations) }) -> PutEvaluationsResponse
+newPutEvaluationsResponse' :: ({ "FailedEvaluations" :: Maybe (Evaluations) } -> { "FailedEvaluations" :: Maybe (Evaluations) }) -> PutEvaluationsResponse
 ```
 
 Constructs PutEvaluationsResponse's fields from required parameters
@@ -3280,7 +3280,7 @@ Encode RecorderStatus
 
 ``` purescript
 newtype RecordingGroup
-  = RecordingGroup { allSupported :: NullOrUndefined (AllSupported), includeGlobalResourceTypes :: NullOrUndefined (IncludeGlobalResourceTypes), resourceTypes :: NullOrUndefined (ResourceTypeList) }
+  = RecordingGroup { allSupported :: Maybe (AllSupported), includeGlobalResourceTypes :: Maybe (IncludeGlobalResourceTypes), resourceTypes :: Maybe (ResourceTypeList) }
 ```
 
 <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p> <p>In the recording group, you specify whether all supported types or specific types of resources are recorded.</p> <p>By default, AWS Config records configuration changes for all supported types of regional resources that AWS Config discovers in the region in which it is running. Regional resources are tied to a region and can be used only in that region. Examples of regional resources are EC2 instances and EBS volumes.</p> <p>You can also have AWS Config record configuration changes for supported types of global resources (for example, IAM resources). Global resources are not tied to an individual region and can be used in all regions.</p> <important> <p>The configuration details for any global resource are the same in all regions. If you customize AWS Config in multiple regions to record global resources, it will create multiple configuration items each time a global resource changes: one configuration item for each region. These configuration items will contain identical data. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources, unless you want the configuration items to be available in multiple regions.</p> </important> <p>If you don't want AWS Config to record all resources, you can specify which types of resources it will record with the <code>resourceTypes</code> parameter.</p> <p>For a list of supported resource types, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported resource types</a>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html">Selecting Which Resources AWS Config Records</a>.</p>
@@ -3305,7 +3305,7 @@ Constructs RecordingGroup from required parameters
 #### `newRecordingGroup'`
 
 ``` purescript
-newRecordingGroup' :: ({ allSupported :: NullOrUndefined (AllSupported), includeGlobalResourceTypes :: NullOrUndefined (IncludeGlobalResourceTypes), resourceTypes :: NullOrUndefined (ResourceTypeList) } -> { allSupported :: NullOrUndefined (AllSupported), includeGlobalResourceTypes :: NullOrUndefined (IncludeGlobalResourceTypes), resourceTypes :: NullOrUndefined (ResourceTypeList) }) -> RecordingGroup
+newRecordingGroup' :: ({ allSupported :: Maybe (AllSupported), includeGlobalResourceTypes :: Maybe (IncludeGlobalResourceTypes), resourceTypes :: Maybe (ResourceTypeList) } -> { allSupported :: Maybe (AllSupported), includeGlobalResourceTypes :: Maybe (IncludeGlobalResourceTypes), resourceTypes :: Maybe (ResourceTypeList) }) -> RecordingGroup
 ```
 
 Constructs RecordingGroup's fields from required parameters
@@ -3362,7 +3362,7 @@ Encode RelatedEventList
 
 ``` purescript
 newtype Relationship
-  = Relationship { resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), relationshipName :: NullOrUndefined (RelationshipName) }
+  = Relationship { resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), relationshipName :: Maybe (RelationshipName) }
 ```
 
 <p>The relationship of the related resource to the main resource.</p>
@@ -3387,7 +3387,7 @@ Constructs Relationship from required parameters
 #### `newRelationship'`
 
 ``` purescript
-newRelationship' :: ({ resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), relationshipName :: NullOrUndefined (RelationshipName) } -> { resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), relationshipName :: NullOrUndefined (RelationshipName) }) -> Relationship
+newRelationship' :: ({ resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), relationshipName :: Maybe (RelationshipName) } -> { resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), relationshipName :: Maybe (RelationshipName) }) -> Relationship
 ```
 
 Constructs Relationship's fields from required parameters
@@ -3428,7 +3428,7 @@ Encode RelationshipName
 
 ``` purescript
 newtype ResourceCount
-  = ResourceCount { resourceType :: NullOrUndefined (ResourceType), count :: NullOrUndefined (Number) }
+  = ResourceCount { resourceType :: Maybe (ResourceType), count :: Maybe (Number) }
 ```
 
 <p>An object that contains the resource type and the number of resources.</p>
@@ -3453,7 +3453,7 @@ Constructs ResourceCount from required parameters
 #### `newResourceCount'`
 
 ``` purescript
-newResourceCount' :: ({ resourceType :: NullOrUndefined (ResourceType), count :: NullOrUndefined (Number) } -> { resourceType :: NullOrUndefined (ResourceType), count :: NullOrUndefined (Number) }) -> ResourceCount
+newResourceCount' :: ({ resourceType :: Maybe (ResourceType), count :: Maybe (Number) } -> { resourceType :: Maybe (ResourceType), count :: Maybe (Number) }) -> ResourceCount
 ```
 
 Constructs ResourceCount's fields from required parameters
@@ -3542,7 +3542,7 @@ Encode ResourceIdList
 
 ``` purescript
 newtype ResourceIdentifier
-  = ResourceIdentifier { resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), resourceDeletionTime :: NullOrUndefined (ResourceDeletionTime) }
+  = ResourceIdentifier { resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), resourceDeletionTime :: Maybe (ResourceDeletionTime) }
 ```
 
 <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
@@ -3567,7 +3567,7 @@ Constructs ResourceIdentifier from required parameters
 #### `newResourceIdentifier'`
 
 ``` purescript
-newResourceIdentifier' :: ({ resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), resourceDeletionTime :: NullOrUndefined (ResourceDeletionTime) } -> { resourceType :: NullOrUndefined (ResourceType), resourceId :: NullOrUndefined (ResourceId), resourceName :: NullOrUndefined (ResourceName), resourceDeletionTime :: NullOrUndefined (ResourceDeletionTime) }) -> ResourceIdentifier
+newResourceIdentifier' :: ({ resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), resourceDeletionTime :: Maybe (ResourceDeletionTime) } -> { resourceType :: Maybe (ResourceType), resourceId :: Maybe (ResourceId), resourceName :: Maybe (ResourceName), resourceDeletionTime :: Maybe (ResourceDeletionTime) }) -> ResourceIdentifier
 ```
 
 Constructs ResourceIdentifier's fields from required parameters
@@ -3708,7 +3708,7 @@ Encode RuleLimit
 
 ``` purescript
 newtype Scope
-  = Scope { "ComplianceResourceTypes" :: NullOrUndefined (ComplianceResourceTypes), "TagKey" :: NullOrUndefined (StringWithCharLimit128), "TagValue" :: NullOrUndefined (StringWithCharLimit256), "ComplianceResourceId" :: NullOrUndefined (BaseResourceId) }
+  = Scope { "ComplianceResourceTypes" :: Maybe (ComplianceResourceTypes), "TagKey" :: Maybe (StringWithCharLimit128), "TagValue" :: Maybe (StringWithCharLimit256), "ComplianceResourceId" :: Maybe (BaseResourceId) }
 ```
 
 <p>Defines which resources trigger an evaluation for an AWS Config rule. The scope can include one or more resource types, a combination of a tag key and value, or a combination of one resource type and one resource ID. Specify a scope to constrain which resources trigger an evaluation for a rule. Otherwise, evaluations for the rule are triggered when any resource in your recording group changes in configuration.</p>
@@ -3733,7 +3733,7 @@ Constructs Scope from required parameters
 #### `newScope'`
 
 ``` purescript
-newScope' :: ({ "ComplianceResourceTypes" :: NullOrUndefined (ComplianceResourceTypes), "TagKey" :: NullOrUndefined (StringWithCharLimit128), "TagValue" :: NullOrUndefined (StringWithCharLimit256), "ComplianceResourceId" :: NullOrUndefined (BaseResourceId) } -> { "ComplianceResourceTypes" :: NullOrUndefined (ComplianceResourceTypes), "TagKey" :: NullOrUndefined (StringWithCharLimit128), "TagValue" :: NullOrUndefined (StringWithCharLimit256), "ComplianceResourceId" :: NullOrUndefined (BaseResourceId) }) -> Scope
+newScope' :: ({ "ComplianceResourceTypes" :: Maybe (ComplianceResourceTypes), "TagKey" :: Maybe (StringWithCharLimit128), "TagValue" :: Maybe (StringWithCharLimit256), "ComplianceResourceId" :: Maybe (BaseResourceId) } -> { "ComplianceResourceTypes" :: Maybe (ComplianceResourceTypes), "TagKey" :: Maybe (StringWithCharLimit128), "TagValue" :: Maybe (StringWithCharLimit256), "ComplianceResourceId" :: Maybe (BaseResourceId) }) -> Scope
 ```
 
 Constructs Scope's fields from required parameters
@@ -3742,7 +3742,7 @@ Constructs Scope's fields from required parameters
 
 ``` purescript
 newtype Source
-  = Source { "Owner" :: Owner, "SourceIdentifier" :: StringWithCharLimit256, "SourceDetails" :: NullOrUndefined (SourceDetails) }
+  = Source { "Owner" :: Owner, "SourceIdentifier" :: StringWithCharLimit256, "SourceDetails" :: Maybe (SourceDetails) }
 ```
 
 <p>Provides the AWS Config rule owner (AWS or customer), the rule identifier, and the events that trigger the evaluation of your AWS resources.</p>
@@ -3767,7 +3767,7 @@ Constructs Source from required parameters
 #### `newSource'`
 
 ``` purescript
-newSource' :: Owner -> StringWithCharLimit256 -> ({ "Owner" :: Owner, "SourceIdentifier" :: StringWithCharLimit256, "SourceDetails" :: NullOrUndefined (SourceDetails) } -> { "Owner" :: Owner, "SourceIdentifier" :: StringWithCharLimit256, "SourceDetails" :: NullOrUndefined (SourceDetails) }) -> Source
+newSource' :: Owner -> StringWithCharLimit256 -> ({ "Owner" :: Owner, "SourceIdentifier" :: StringWithCharLimit256, "SourceDetails" :: Maybe (SourceDetails) } -> { "Owner" :: Owner, "SourceIdentifier" :: StringWithCharLimit256, "SourceDetails" :: Maybe (SourceDetails) }) -> Source
 ```
 
 Constructs Source's fields from required parameters
@@ -3776,7 +3776,7 @@ Constructs Source's fields from required parameters
 
 ``` purescript
 newtype SourceDetail
-  = SourceDetail { "EventSource" :: NullOrUndefined (EventSource), "MessageType" :: NullOrUndefined (MessageType), "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) }
+  = SourceDetail { "EventSource" :: Maybe (EventSource), "MessageType" :: Maybe (MessageType), "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) }
 ```
 
 <p>Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for <code>SourceDetail</code> only for custom rules. </p>
@@ -3801,7 +3801,7 @@ Constructs SourceDetail from required parameters
 #### `newSourceDetail'`
 
 ``` purescript
-newSourceDetail' :: ({ "EventSource" :: NullOrUndefined (EventSource), "MessageType" :: NullOrUndefined (MessageType), "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) } -> { "EventSource" :: NullOrUndefined (EventSource), "MessageType" :: NullOrUndefined (MessageType), "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) }) -> SourceDetail
+newSourceDetail' :: ({ "EventSource" :: Maybe (EventSource), "MessageType" :: Maybe (MessageType), "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) } -> { "EventSource" :: Maybe (EventSource), "MessageType" :: Maybe (MessageType), "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) }) -> SourceDetail
 ```
 
 Constructs SourceDetail's fields from required parameters
@@ -3826,7 +3826,7 @@ Encode SourceDetails
 
 ``` purescript
 newtype StartConfigRulesEvaluationRequest
-  = StartConfigRulesEvaluationRequest { "ConfigRuleNames" :: NullOrUndefined (ReevaluateConfigRuleNames) }
+  = StartConfigRulesEvaluationRequest { "ConfigRuleNames" :: Maybe (ReevaluateConfigRuleNames) }
 ```
 
 <p/>
@@ -3851,7 +3851,7 @@ Constructs StartConfigRulesEvaluationRequest from required parameters
 #### `newStartConfigRulesEvaluationRequest'`
 
 ``` purescript
-newStartConfigRulesEvaluationRequest' :: ({ "ConfigRuleNames" :: NullOrUndefined (ReevaluateConfigRuleNames) } -> { "ConfigRuleNames" :: NullOrUndefined (ReevaluateConfigRuleNames) }) -> StartConfigRulesEvaluationRequest
+newStartConfigRulesEvaluationRequest' :: ({ "ConfigRuleNames" :: Maybe (ReevaluateConfigRuleNames) } -> { "ConfigRuleNames" :: Maybe (ReevaluateConfigRuleNames) }) -> StartConfigRulesEvaluationRequest
 ```
 
 Constructs StartConfigRulesEvaluationRequest's fields from required parameters

@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -92,8 +91,8 @@ instance encodeChronologicalOrder :: Encode ChronologicalOrder where encode = ge
 
 -- | <p>Indicates whether an AWS resource or AWS Config rule is compliant and provides the number of contributors that affect the compliance.</p>
 newtype Compliance = Compliance 
-  { "ComplianceType" :: NullOrUndefined (ComplianceType)
-  , "ComplianceContributorCount" :: NullOrUndefined (ComplianceContributorCount)
+  { "ComplianceType" :: Maybe (ComplianceType)
+  , "ComplianceContributorCount" :: Maybe (ComplianceContributorCount)
   }
 derive instance newtypeCompliance :: Newtype Compliance _
 derive instance repGenericCompliance :: Generic Compliance _
@@ -103,19 +102,19 @@ instance encodeCompliance :: Encode Compliance where encode = genericEncode opti
 
 -- | Constructs Compliance from required parameters
 newCompliance :: Compliance
-newCompliance  = Compliance { "ComplianceContributorCount": (NullOrUndefined Nothing), "ComplianceType": (NullOrUndefined Nothing) }
+newCompliance  = Compliance { "ComplianceContributorCount": Nothing, "ComplianceType": Nothing }
 
 -- | Constructs Compliance's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCompliance' :: ( { "ComplianceType" :: NullOrUndefined (ComplianceType) , "ComplianceContributorCount" :: NullOrUndefined (ComplianceContributorCount) } -> {"ComplianceType" :: NullOrUndefined (ComplianceType) , "ComplianceContributorCount" :: NullOrUndefined (ComplianceContributorCount) } ) -> Compliance
-newCompliance'  customize = (Compliance <<< customize) { "ComplianceContributorCount": (NullOrUndefined Nothing), "ComplianceType": (NullOrUndefined Nothing) }
+newCompliance' :: ( { "ComplianceType" :: Maybe (ComplianceType) , "ComplianceContributorCount" :: Maybe (ComplianceContributorCount) } -> {"ComplianceType" :: Maybe (ComplianceType) , "ComplianceContributorCount" :: Maybe (ComplianceContributorCount) } ) -> Compliance
+newCompliance'  customize = (Compliance <<< customize) { "ComplianceContributorCount": Nothing, "ComplianceType": Nothing }
 
 
 
 -- | <p>Indicates whether an AWS Config rule is compliant. A rule is compliant if all of the resources that the rule evaluated comply with it, and it is noncompliant if any of these resources do not comply.</p>
 newtype ComplianceByConfigRule = ComplianceByConfigRule 
-  { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64)
-  , "Compliance" :: NullOrUndefined (Compliance)
+  { "ConfigRuleName" :: Maybe (StringWithCharLimit64)
+  , "Compliance" :: Maybe (Compliance)
   }
 derive instance newtypeComplianceByConfigRule :: Newtype ComplianceByConfigRule _
 derive instance repGenericComplianceByConfigRule :: Generic ComplianceByConfigRule _
@@ -125,12 +124,12 @@ instance encodeComplianceByConfigRule :: Encode ComplianceByConfigRule where enc
 
 -- | Constructs ComplianceByConfigRule from required parameters
 newComplianceByConfigRule :: ComplianceByConfigRule
-newComplianceByConfigRule  = ComplianceByConfigRule { "Compliance": (NullOrUndefined Nothing), "ConfigRuleName": (NullOrUndefined Nothing) }
+newComplianceByConfigRule  = ComplianceByConfigRule { "Compliance": Nothing, "ConfigRuleName": Nothing }
 
 -- | Constructs ComplianceByConfigRule's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComplianceByConfigRule' :: ( { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "Compliance" :: NullOrUndefined (Compliance) } -> {"ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "Compliance" :: NullOrUndefined (Compliance) } ) -> ComplianceByConfigRule
-newComplianceByConfigRule'  customize = (ComplianceByConfigRule <<< customize) { "Compliance": (NullOrUndefined Nothing), "ConfigRuleName": (NullOrUndefined Nothing) }
+newComplianceByConfigRule' :: ( { "ConfigRuleName" :: Maybe (StringWithCharLimit64) , "Compliance" :: Maybe (Compliance) } -> {"ConfigRuleName" :: Maybe (StringWithCharLimit64) , "Compliance" :: Maybe (Compliance) } ) -> ComplianceByConfigRule
+newComplianceByConfigRule'  customize = (ComplianceByConfigRule <<< customize) { "Compliance": Nothing, "ConfigRuleName": Nothing }
 
 
 
@@ -145,9 +144,9 @@ instance encodeComplianceByConfigRules :: Encode ComplianceByConfigRules where e
 
 -- | <p>Indicates whether an AWS resource that is evaluated according to one or more AWS Config rules is compliant. A resource is compliant if it complies with all of the rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p>
 newtype ComplianceByResource = ComplianceByResource 
-  { "ResourceType" :: NullOrUndefined (StringWithCharLimit256)
-  , "ResourceId" :: NullOrUndefined (BaseResourceId)
-  , "Compliance" :: NullOrUndefined (Compliance)
+  { "ResourceType" :: Maybe (StringWithCharLimit256)
+  , "ResourceId" :: Maybe (BaseResourceId)
+  , "Compliance" :: Maybe (Compliance)
   }
 derive instance newtypeComplianceByResource :: Newtype ComplianceByResource _
 derive instance repGenericComplianceByResource :: Generic ComplianceByResource _
@@ -157,12 +156,12 @@ instance encodeComplianceByResource :: Encode ComplianceByResource where encode 
 
 -- | Constructs ComplianceByResource from required parameters
 newComplianceByResource :: ComplianceByResource
-newComplianceByResource  = ComplianceByResource { "Compliance": (NullOrUndefined Nothing), "ResourceId": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newComplianceByResource  = ComplianceByResource { "Compliance": Nothing, "ResourceId": Nothing, "ResourceType": Nothing }
 
 -- | Constructs ComplianceByResource's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComplianceByResource' :: ( { "ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ResourceId" :: NullOrUndefined (BaseResourceId) , "Compliance" :: NullOrUndefined (Compliance) } -> {"ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ResourceId" :: NullOrUndefined (BaseResourceId) , "Compliance" :: NullOrUndefined (Compliance) } ) -> ComplianceByResource
-newComplianceByResource'  customize = (ComplianceByResource <<< customize) { "Compliance": (NullOrUndefined Nothing), "ResourceId": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newComplianceByResource' :: ( { "ResourceType" :: Maybe (StringWithCharLimit256) , "ResourceId" :: Maybe (BaseResourceId) , "Compliance" :: Maybe (Compliance) } -> {"ResourceType" :: Maybe (StringWithCharLimit256) , "ResourceId" :: Maybe (BaseResourceId) , "Compliance" :: Maybe (Compliance) } ) -> ComplianceByResource
+newComplianceByResource'  customize = (ComplianceByResource <<< customize) { "Compliance": Nothing, "ResourceId": Nothing, "ResourceType": Nothing }
 
 
 
@@ -177,8 +176,8 @@ instance encodeComplianceByResources :: Encode ComplianceByResources where encod
 
 -- | <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item, up to a maximum number.</p>
 newtype ComplianceContributorCount = ComplianceContributorCount 
-  { "CappedCount" :: NullOrUndefined (Int)
-  , "CapExceeded" :: NullOrUndefined (Boolean)
+  { "CappedCount" :: Maybe (Int)
+  , "CapExceeded" :: Maybe (Boolean)
   }
 derive instance newtypeComplianceContributorCount :: Newtype ComplianceContributorCount _
 derive instance repGenericComplianceContributorCount :: Generic ComplianceContributorCount _
@@ -188,12 +187,12 @@ instance encodeComplianceContributorCount :: Encode ComplianceContributorCount w
 
 -- | Constructs ComplianceContributorCount from required parameters
 newComplianceContributorCount :: ComplianceContributorCount
-newComplianceContributorCount  = ComplianceContributorCount { "CapExceeded": (NullOrUndefined Nothing), "CappedCount": (NullOrUndefined Nothing) }
+newComplianceContributorCount  = ComplianceContributorCount { "CapExceeded": Nothing, "CappedCount": Nothing }
 
 -- | Constructs ComplianceContributorCount's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComplianceContributorCount' :: ( { "CappedCount" :: NullOrUndefined (Int) , "CapExceeded" :: NullOrUndefined (Boolean) } -> {"CappedCount" :: NullOrUndefined (Int) , "CapExceeded" :: NullOrUndefined (Boolean) } ) -> ComplianceContributorCount
-newComplianceContributorCount'  customize = (ComplianceContributorCount <<< customize) { "CapExceeded": (NullOrUndefined Nothing), "CappedCount": (NullOrUndefined Nothing) }
+newComplianceContributorCount' :: ( { "CappedCount" :: Maybe (Int) , "CapExceeded" :: Maybe (Boolean) } -> {"CappedCount" :: Maybe (Int) , "CapExceeded" :: Maybe (Boolean) } ) -> ComplianceContributorCount
+newComplianceContributorCount'  customize = (ComplianceContributorCount <<< customize) { "CapExceeded": Nothing, "CappedCount": Nothing }
 
 
 
@@ -217,9 +216,9 @@ instance encodeComplianceSummariesByResourceType :: Encode ComplianceSummariesBy
 
 -- | <p>The number of AWS Config rules or AWS resources that are compliant and noncompliant.</p>
 newtype ComplianceSummary = ComplianceSummary 
-  { "CompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount)
-  , "NonCompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount)
-  , "ComplianceSummaryTimestamp" :: NullOrUndefined (Date)
+  { "CompliantResourceCount" :: Maybe (ComplianceContributorCount)
+  , "NonCompliantResourceCount" :: Maybe (ComplianceContributorCount)
+  , "ComplianceSummaryTimestamp" :: Maybe (Date)
   }
 derive instance newtypeComplianceSummary :: Newtype ComplianceSummary _
 derive instance repGenericComplianceSummary :: Generic ComplianceSummary _
@@ -229,19 +228,19 @@ instance encodeComplianceSummary :: Encode ComplianceSummary where encode = gene
 
 -- | Constructs ComplianceSummary from required parameters
 newComplianceSummary :: ComplianceSummary
-newComplianceSummary  = ComplianceSummary { "ComplianceSummaryTimestamp": (NullOrUndefined Nothing), "CompliantResourceCount": (NullOrUndefined Nothing), "NonCompliantResourceCount": (NullOrUndefined Nothing) }
+newComplianceSummary  = ComplianceSummary { "ComplianceSummaryTimestamp": Nothing, "CompliantResourceCount": Nothing, "NonCompliantResourceCount": Nothing }
 
 -- | Constructs ComplianceSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComplianceSummary' :: ( { "CompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount) , "NonCompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount) , "ComplianceSummaryTimestamp" :: NullOrUndefined (Date) } -> {"CompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount) , "NonCompliantResourceCount" :: NullOrUndefined (ComplianceContributorCount) , "ComplianceSummaryTimestamp" :: NullOrUndefined (Date) } ) -> ComplianceSummary
-newComplianceSummary'  customize = (ComplianceSummary <<< customize) { "ComplianceSummaryTimestamp": (NullOrUndefined Nothing), "CompliantResourceCount": (NullOrUndefined Nothing), "NonCompliantResourceCount": (NullOrUndefined Nothing) }
+newComplianceSummary' :: ( { "CompliantResourceCount" :: Maybe (ComplianceContributorCount) , "NonCompliantResourceCount" :: Maybe (ComplianceContributorCount) , "ComplianceSummaryTimestamp" :: Maybe (Date) } -> {"CompliantResourceCount" :: Maybe (ComplianceContributorCount) , "NonCompliantResourceCount" :: Maybe (ComplianceContributorCount) , "ComplianceSummaryTimestamp" :: Maybe (Date) } ) -> ComplianceSummary
+newComplianceSummary'  customize = (ComplianceSummary <<< customize) { "ComplianceSummaryTimestamp": Nothing, "CompliantResourceCount": Nothing, "NonCompliantResourceCount": Nothing }
 
 
 
 -- | <p>The number of AWS resources of a specific type that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
 newtype ComplianceSummaryByResourceType = ComplianceSummaryByResourceType 
-  { "ResourceType" :: NullOrUndefined (StringWithCharLimit256)
-  , "ComplianceSummary" :: NullOrUndefined (ComplianceSummary)
+  { "ResourceType" :: Maybe (StringWithCharLimit256)
+  , "ComplianceSummary" :: Maybe (ComplianceSummary)
   }
 derive instance newtypeComplianceSummaryByResourceType :: Newtype ComplianceSummaryByResourceType _
 derive instance repGenericComplianceSummaryByResourceType :: Generic ComplianceSummaryByResourceType _
@@ -251,12 +250,12 @@ instance encodeComplianceSummaryByResourceType :: Encode ComplianceSummaryByReso
 
 -- | Constructs ComplianceSummaryByResourceType from required parameters
 newComplianceSummaryByResourceType :: ComplianceSummaryByResourceType
-newComplianceSummaryByResourceType  = ComplianceSummaryByResourceType { "ComplianceSummary": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newComplianceSummaryByResourceType  = ComplianceSummaryByResourceType { "ComplianceSummary": Nothing, "ResourceType": Nothing }
 
 -- | Constructs ComplianceSummaryByResourceType's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComplianceSummaryByResourceType' :: ( { "ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) } -> {"ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) } ) -> ComplianceSummaryByResourceType
-newComplianceSummaryByResourceType'  customize = (ComplianceSummaryByResourceType <<< customize) { "ComplianceSummary": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newComplianceSummaryByResourceType' :: ( { "ResourceType" :: Maybe (StringWithCharLimit256) , "ComplianceSummary" :: Maybe (ComplianceSummary) } -> {"ResourceType" :: Maybe (StringWithCharLimit256) , "ComplianceSummary" :: Maybe (ComplianceSummary) } ) -> ComplianceSummaryByResourceType
+newComplianceSummaryByResourceType'  customize = (ComplianceSummaryByResourceType <<< customize) { "ComplianceSummary": Nothing, "ResourceType": Nothing }
 
 
 
@@ -280,12 +279,12 @@ instance encodeComplianceTypes :: Encode ComplianceTypes where encode = genericE
 
 -- | <p>Provides status of the delivery of the snapshot or the configuration history to the specified Amazon S3 bucket. Also provides the status of notifications about the Amazon S3 delivery to the specified Amazon SNS topic.</p>
 newtype ConfigExportDeliveryInfo = ConfigExportDeliveryInfo 
-  { "lastStatus" :: NullOrUndefined (DeliveryStatus)
-  , "lastErrorCode" :: NullOrUndefined (String)
-  , "lastErrorMessage" :: NullOrUndefined (String)
-  , "lastAttemptTime" :: NullOrUndefined (Date)
-  , "lastSuccessfulTime" :: NullOrUndefined (Date)
-  , "nextDeliveryTime" :: NullOrUndefined (Date)
+  { "lastStatus" :: Maybe (DeliveryStatus)
+  , "lastErrorCode" :: Maybe (String)
+  , "lastErrorMessage" :: Maybe (String)
+  , "lastAttemptTime" :: Maybe (Date)
+  , "lastSuccessfulTime" :: Maybe (Date)
+  , "nextDeliveryTime" :: Maybe (Date)
   }
 derive instance newtypeConfigExportDeliveryInfo :: Newtype ConfigExportDeliveryInfo _
 derive instance repGenericConfigExportDeliveryInfo :: Generic ConfigExportDeliveryInfo _
@@ -295,26 +294,26 @@ instance encodeConfigExportDeliveryInfo :: Encode ConfigExportDeliveryInfo where
 
 -- | Constructs ConfigExportDeliveryInfo from required parameters
 newConfigExportDeliveryInfo :: ConfigExportDeliveryInfo
-newConfigExportDeliveryInfo  = ConfigExportDeliveryInfo { "lastAttemptTime": (NullOrUndefined Nothing), "lastErrorCode": (NullOrUndefined Nothing), "lastErrorMessage": (NullOrUndefined Nothing), "lastStatus": (NullOrUndefined Nothing), "lastSuccessfulTime": (NullOrUndefined Nothing), "nextDeliveryTime": (NullOrUndefined Nothing) }
+newConfigExportDeliveryInfo  = ConfigExportDeliveryInfo { "lastAttemptTime": Nothing, "lastErrorCode": Nothing, "lastErrorMessage": Nothing, "lastStatus": Nothing, "lastSuccessfulTime": Nothing, "nextDeliveryTime": Nothing }
 
 -- | Constructs ConfigExportDeliveryInfo's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigExportDeliveryInfo' :: ( { "lastStatus" :: NullOrUndefined (DeliveryStatus) , "lastErrorCode" :: NullOrUndefined (String) , "lastErrorMessage" :: NullOrUndefined (String) , "lastAttemptTime" :: NullOrUndefined (Date) , "lastSuccessfulTime" :: NullOrUndefined (Date) , "nextDeliveryTime" :: NullOrUndefined (Date) } -> {"lastStatus" :: NullOrUndefined (DeliveryStatus) , "lastErrorCode" :: NullOrUndefined (String) , "lastErrorMessage" :: NullOrUndefined (String) , "lastAttemptTime" :: NullOrUndefined (Date) , "lastSuccessfulTime" :: NullOrUndefined (Date) , "nextDeliveryTime" :: NullOrUndefined (Date) } ) -> ConfigExportDeliveryInfo
-newConfigExportDeliveryInfo'  customize = (ConfigExportDeliveryInfo <<< customize) { "lastAttemptTime": (NullOrUndefined Nothing), "lastErrorCode": (NullOrUndefined Nothing), "lastErrorMessage": (NullOrUndefined Nothing), "lastStatus": (NullOrUndefined Nothing), "lastSuccessfulTime": (NullOrUndefined Nothing), "nextDeliveryTime": (NullOrUndefined Nothing) }
+newConfigExportDeliveryInfo' :: ( { "lastStatus" :: Maybe (DeliveryStatus) , "lastErrorCode" :: Maybe (String) , "lastErrorMessage" :: Maybe (String) , "lastAttemptTime" :: Maybe (Date) , "lastSuccessfulTime" :: Maybe (Date) , "nextDeliveryTime" :: Maybe (Date) } -> {"lastStatus" :: Maybe (DeliveryStatus) , "lastErrorCode" :: Maybe (String) , "lastErrorMessage" :: Maybe (String) , "lastAttemptTime" :: Maybe (Date) , "lastSuccessfulTime" :: Maybe (Date) , "nextDeliveryTime" :: Maybe (Date) } ) -> ConfigExportDeliveryInfo
+newConfigExportDeliveryInfo'  customize = (ConfigExportDeliveryInfo <<< customize) { "lastAttemptTime": Nothing, "lastErrorCode": Nothing, "lastErrorMessage": Nothing, "lastStatus": Nothing, "lastSuccessfulTime": Nothing, "nextDeliveryTime": Nothing }
 
 
 
 -- | <p>An AWS Config rule represents an AWS Lambda function that you create for a custom rule or a predefined function for an AWS managed rule. The function evaluates configuration items to assess whether your AWS resources comply with your desired configurations. This function can run when AWS Config detects a configuration change to an AWS resource and at a periodic frequency that you choose (for example, every 24 hours).</p> <note> <p>You can use the AWS CLI and AWS SDKs if you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </note> <p>For more information about developing and using AWS Config rules, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource Configurations with AWS Config</a> in the <i>AWS Config Developer Guide</i>.</p>
 newtype ConfigRule = ConfigRule 
-  { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64)
-  , "ConfigRuleArn" :: NullOrUndefined (String)
-  , "ConfigRuleId" :: NullOrUndefined (String)
-  , "Description" :: NullOrUndefined (EmptiableStringWithCharLimit256)
-  , "Scope" :: NullOrUndefined (Scope)
+  { "ConfigRuleName" :: Maybe (StringWithCharLimit64)
+  , "ConfigRuleArn" :: Maybe (String)
+  , "ConfigRuleId" :: Maybe (String)
+  , "Description" :: Maybe (EmptiableStringWithCharLimit256)
+  , "Scope" :: Maybe (Scope)
   , "Source" :: (Source)
-  , "InputParameters" :: NullOrUndefined (StringWithCharLimit1024)
-  , "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency)
-  , "ConfigRuleState" :: NullOrUndefined (ConfigRuleState)
+  , "InputParameters" :: Maybe (StringWithCharLimit1024)
+  , "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency)
+  , "ConfigRuleState" :: Maybe (ConfigRuleState)
   }
 derive instance newtypeConfigRule :: Newtype ConfigRule _
 derive instance repGenericConfigRule :: Generic ConfigRule _
@@ -324,28 +323,28 @@ instance encodeConfigRule :: Encode ConfigRule where encode = genericEncode opti
 
 -- | Constructs ConfigRule from required parameters
 newConfigRule :: Source -> ConfigRule
-newConfigRule _Source = ConfigRule { "Source": _Source, "ConfigRuleArn": (NullOrUndefined Nothing), "ConfigRuleId": (NullOrUndefined Nothing), "ConfigRuleName": (NullOrUndefined Nothing), "ConfigRuleState": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "InputParameters": (NullOrUndefined Nothing), "MaximumExecutionFrequency": (NullOrUndefined Nothing), "Scope": (NullOrUndefined Nothing) }
+newConfigRule _Source = ConfigRule { "Source": _Source, "ConfigRuleArn": Nothing, "ConfigRuleId": Nothing, "ConfigRuleName": Nothing, "ConfigRuleState": Nothing, "Description": Nothing, "InputParameters": Nothing, "MaximumExecutionFrequency": Nothing, "Scope": Nothing }
 
 -- | Constructs ConfigRule's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigRule' :: Source -> ( { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "ConfigRuleArn" :: NullOrUndefined (String) , "ConfigRuleId" :: NullOrUndefined (String) , "Description" :: NullOrUndefined (EmptiableStringWithCharLimit256) , "Scope" :: NullOrUndefined (Scope) , "Source" :: (Source) , "InputParameters" :: NullOrUndefined (StringWithCharLimit1024) , "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) , "ConfigRuleState" :: NullOrUndefined (ConfigRuleState) } -> {"ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "ConfigRuleArn" :: NullOrUndefined (String) , "ConfigRuleId" :: NullOrUndefined (String) , "Description" :: NullOrUndefined (EmptiableStringWithCharLimit256) , "Scope" :: NullOrUndefined (Scope) , "Source" :: (Source) , "InputParameters" :: NullOrUndefined (StringWithCharLimit1024) , "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) , "ConfigRuleState" :: NullOrUndefined (ConfigRuleState) } ) -> ConfigRule
-newConfigRule' _Source customize = (ConfigRule <<< customize) { "Source": _Source, "ConfigRuleArn": (NullOrUndefined Nothing), "ConfigRuleId": (NullOrUndefined Nothing), "ConfigRuleName": (NullOrUndefined Nothing), "ConfigRuleState": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "InputParameters": (NullOrUndefined Nothing), "MaximumExecutionFrequency": (NullOrUndefined Nothing), "Scope": (NullOrUndefined Nothing) }
+newConfigRule' :: Source -> ( { "ConfigRuleName" :: Maybe (StringWithCharLimit64) , "ConfigRuleArn" :: Maybe (String) , "ConfigRuleId" :: Maybe (String) , "Description" :: Maybe (EmptiableStringWithCharLimit256) , "Scope" :: Maybe (Scope) , "Source" :: (Source) , "InputParameters" :: Maybe (StringWithCharLimit1024) , "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) , "ConfigRuleState" :: Maybe (ConfigRuleState) } -> {"ConfigRuleName" :: Maybe (StringWithCharLimit64) , "ConfigRuleArn" :: Maybe (String) , "ConfigRuleId" :: Maybe (String) , "Description" :: Maybe (EmptiableStringWithCharLimit256) , "Scope" :: Maybe (Scope) , "Source" :: (Source) , "InputParameters" :: Maybe (StringWithCharLimit1024) , "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) , "ConfigRuleState" :: Maybe (ConfigRuleState) } ) -> ConfigRule
+newConfigRule' _Source customize = (ConfigRule <<< customize) { "Source": _Source, "ConfigRuleArn": Nothing, "ConfigRuleId": Nothing, "ConfigRuleName": Nothing, "ConfigRuleState": Nothing, "Description": Nothing, "InputParameters": Nothing, "MaximumExecutionFrequency": Nothing, "Scope": Nothing }
 
 
 
 -- | <p>Status information for your AWS managed Config rules. The status includes information such as the last time the rule ran, the last time it failed, and the related error for the last failure.</p> <p>This action does not return status information about custom Config rules.</p>
 newtype ConfigRuleEvaluationStatus = ConfigRuleEvaluationStatus 
-  { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64)
-  , "ConfigRuleArn" :: NullOrUndefined (String)
-  , "ConfigRuleId" :: NullOrUndefined (String)
-  , "LastSuccessfulInvocationTime" :: NullOrUndefined (Date)
-  , "LastFailedInvocationTime" :: NullOrUndefined (Date)
-  , "LastSuccessfulEvaluationTime" :: NullOrUndefined (Date)
-  , "LastFailedEvaluationTime" :: NullOrUndefined (Date)
-  , "FirstActivatedTime" :: NullOrUndefined (Date)
-  , "LastErrorCode" :: NullOrUndefined (String)
-  , "LastErrorMessage" :: NullOrUndefined (String)
-  , "FirstEvaluationStarted" :: NullOrUndefined (Boolean)
+  { "ConfigRuleName" :: Maybe (StringWithCharLimit64)
+  , "ConfigRuleArn" :: Maybe (String)
+  , "ConfigRuleId" :: Maybe (String)
+  , "LastSuccessfulInvocationTime" :: Maybe (Date)
+  , "LastFailedInvocationTime" :: Maybe (Date)
+  , "LastSuccessfulEvaluationTime" :: Maybe (Date)
+  , "LastFailedEvaluationTime" :: Maybe (Date)
+  , "FirstActivatedTime" :: Maybe (Date)
+  , "LastErrorCode" :: Maybe (String)
+  , "LastErrorMessage" :: Maybe (String)
+  , "FirstEvaluationStarted" :: Maybe (Boolean)
   }
 derive instance newtypeConfigRuleEvaluationStatus :: Newtype ConfigRuleEvaluationStatus _
 derive instance repGenericConfigRuleEvaluationStatus :: Generic ConfigRuleEvaluationStatus _
@@ -355,12 +354,12 @@ instance encodeConfigRuleEvaluationStatus :: Encode ConfigRuleEvaluationStatus w
 
 -- | Constructs ConfigRuleEvaluationStatus from required parameters
 newConfigRuleEvaluationStatus :: ConfigRuleEvaluationStatus
-newConfigRuleEvaluationStatus  = ConfigRuleEvaluationStatus { "ConfigRuleArn": (NullOrUndefined Nothing), "ConfigRuleId": (NullOrUndefined Nothing), "ConfigRuleName": (NullOrUndefined Nothing), "FirstActivatedTime": (NullOrUndefined Nothing), "FirstEvaluationStarted": (NullOrUndefined Nothing), "LastErrorCode": (NullOrUndefined Nothing), "LastErrorMessage": (NullOrUndefined Nothing), "LastFailedEvaluationTime": (NullOrUndefined Nothing), "LastFailedInvocationTime": (NullOrUndefined Nothing), "LastSuccessfulEvaluationTime": (NullOrUndefined Nothing), "LastSuccessfulInvocationTime": (NullOrUndefined Nothing) }
+newConfigRuleEvaluationStatus  = ConfigRuleEvaluationStatus { "ConfigRuleArn": Nothing, "ConfigRuleId": Nothing, "ConfigRuleName": Nothing, "FirstActivatedTime": Nothing, "FirstEvaluationStarted": Nothing, "LastErrorCode": Nothing, "LastErrorMessage": Nothing, "LastFailedEvaluationTime": Nothing, "LastFailedInvocationTime": Nothing, "LastSuccessfulEvaluationTime": Nothing, "LastSuccessfulInvocationTime": Nothing }
 
 -- | Constructs ConfigRuleEvaluationStatus's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigRuleEvaluationStatus' :: ( { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "ConfigRuleArn" :: NullOrUndefined (String) , "ConfigRuleId" :: NullOrUndefined (String) , "LastSuccessfulInvocationTime" :: NullOrUndefined (Date) , "LastFailedInvocationTime" :: NullOrUndefined (Date) , "LastSuccessfulEvaluationTime" :: NullOrUndefined (Date) , "LastFailedEvaluationTime" :: NullOrUndefined (Date) , "FirstActivatedTime" :: NullOrUndefined (Date) , "LastErrorCode" :: NullOrUndefined (String) , "LastErrorMessage" :: NullOrUndefined (String) , "FirstEvaluationStarted" :: NullOrUndefined (Boolean) } -> {"ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "ConfigRuleArn" :: NullOrUndefined (String) , "ConfigRuleId" :: NullOrUndefined (String) , "LastSuccessfulInvocationTime" :: NullOrUndefined (Date) , "LastFailedInvocationTime" :: NullOrUndefined (Date) , "LastSuccessfulEvaluationTime" :: NullOrUndefined (Date) , "LastFailedEvaluationTime" :: NullOrUndefined (Date) , "FirstActivatedTime" :: NullOrUndefined (Date) , "LastErrorCode" :: NullOrUndefined (String) , "LastErrorMessage" :: NullOrUndefined (String) , "FirstEvaluationStarted" :: NullOrUndefined (Boolean) } ) -> ConfigRuleEvaluationStatus
-newConfigRuleEvaluationStatus'  customize = (ConfigRuleEvaluationStatus <<< customize) { "ConfigRuleArn": (NullOrUndefined Nothing), "ConfigRuleId": (NullOrUndefined Nothing), "ConfigRuleName": (NullOrUndefined Nothing), "FirstActivatedTime": (NullOrUndefined Nothing), "FirstEvaluationStarted": (NullOrUndefined Nothing), "LastErrorCode": (NullOrUndefined Nothing), "LastErrorMessage": (NullOrUndefined Nothing), "LastFailedEvaluationTime": (NullOrUndefined Nothing), "LastFailedInvocationTime": (NullOrUndefined Nothing), "LastSuccessfulEvaluationTime": (NullOrUndefined Nothing), "LastSuccessfulInvocationTime": (NullOrUndefined Nothing) }
+newConfigRuleEvaluationStatus' :: ( { "ConfigRuleName" :: Maybe (StringWithCharLimit64) , "ConfigRuleArn" :: Maybe (String) , "ConfigRuleId" :: Maybe (String) , "LastSuccessfulInvocationTime" :: Maybe (Date) , "LastFailedInvocationTime" :: Maybe (Date) , "LastSuccessfulEvaluationTime" :: Maybe (Date) , "LastFailedEvaluationTime" :: Maybe (Date) , "FirstActivatedTime" :: Maybe (Date) , "LastErrorCode" :: Maybe (String) , "LastErrorMessage" :: Maybe (String) , "FirstEvaluationStarted" :: Maybe (Boolean) } -> {"ConfigRuleName" :: Maybe (StringWithCharLimit64) , "ConfigRuleArn" :: Maybe (String) , "ConfigRuleId" :: Maybe (String) , "LastSuccessfulInvocationTime" :: Maybe (Date) , "LastFailedInvocationTime" :: Maybe (Date) , "LastSuccessfulEvaluationTime" :: Maybe (Date) , "LastFailedEvaluationTime" :: Maybe (Date) , "FirstActivatedTime" :: Maybe (Date) , "LastErrorCode" :: Maybe (String) , "LastErrorMessage" :: Maybe (String) , "FirstEvaluationStarted" :: Maybe (Boolean) } ) -> ConfigRuleEvaluationStatus
+newConfigRuleEvaluationStatus'  customize = (ConfigRuleEvaluationStatus <<< customize) { "ConfigRuleArn": Nothing, "ConfigRuleId": Nothing, "ConfigRuleName": Nothing, "FirstActivatedTime": Nothing, "FirstEvaluationStarted": Nothing, "LastErrorCode": Nothing, "LastErrorMessage": Nothing, "LastFailedEvaluationTime": Nothing, "LastFailedInvocationTime": Nothing, "LastSuccessfulEvaluationTime": Nothing, "LastSuccessfulInvocationTime": Nothing }
 
 
 
@@ -402,7 +401,7 @@ instance encodeConfigRules :: Encode ConfigRules where encode = genericEncode op
 
 -- | <p>Provides options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket in your delivery channel.</p> <note> <p>If you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot, see the following:</p> </note> <p>The frequency for a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot is set by one of two values, depending on which is less frequent:</p> <ul> <li> <p>The value for the <code>deliveryFrequency</code> parameter within the delivery channel configuration, which sets how often AWS Config delivers configuration snapshots. This value also sets how often AWS Config invokes evaluations for Config rules.</p> </li> <li> <p>The value for the <code>MaximumExecutionFrequency</code> parameter, which sets the maximum frequency with which AWS Config invokes evaluations for the rule. For more information, see <a>ConfigRule</a>.</p> </li> </ul> <p>If the <code>deliveryFrequency</code> value is less frequent than the <code>MaximumExecutionFrequency</code> value for a rule, AWS Config invokes the rule only as often as the <code>deliveryFrequency</code> value.</p> <ol> <li> <p>For example, you want your rule to run evaluations when AWS Config delivers the configuration snapshot.</p> </li> <li> <p>You specify the <code>MaximumExecutionFrequency</code> value for <code>Six_Hours</code>. </p> </li> <li> <p>You then specify the delivery channel <code>deliveryFrequency</code> value for <code>TwentyFour_Hours</code>.</p> </li> <li> <p>Because the value for <code>deliveryFrequency</code> is less frequent than <code>MaximumExecutionFrequency</code>, AWS Config invokes evaluations for the rule every 24 hours. </p> </li> </ol> <p>You should set the <code>MaximumExecutionFrequency</code> value to be at least as frequent as the <code>deliveryFrequency</code> value. You can view the <code>deliveryFrequency</code> value by using the <code>DescribeDeliveryChannnels</code> action.</p> <p>To update the <code>deliveryFrequency</code> with which AWS Config delivers your configuration snapshots, use the <code>PutDeliveryChannel</code> action.</p>
 newtype ConfigSnapshotDeliveryProperties = ConfigSnapshotDeliveryProperties 
-  { "deliveryFrequency" :: NullOrUndefined (MaximumExecutionFrequency)
+  { "deliveryFrequency" :: Maybe (MaximumExecutionFrequency)
   }
 derive instance newtypeConfigSnapshotDeliveryProperties :: Newtype ConfigSnapshotDeliveryProperties _
 derive instance repGenericConfigSnapshotDeliveryProperties :: Generic ConfigSnapshotDeliveryProperties _
@@ -412,21 +411,21 @@ instance encodeConfigSnapshotDeliveryProperties :: Encode ConfigSnapshotDelivery
 
 -- | Constructs ConfigSnapshotDeliveryProperties from required parameters
 newConfigSnapshotDeliveryProperties :: ConfigSnapshotDeliveryProperties
-newConfigSnapshotDeliveryProperties  = ConfigSnapshotDeliveryProperties { "deliveryFrequency": (NullOrUndefined Nothing) }
+newConfigSnapshotDeliveryProperties  = ConfigSnapshotDeliveryProperties { "deliveryFrequency": Nothing }
 
 -- | Constructs ConfigSnapshotDeliveryProperties's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigSnapshotDeliveryProperties' :: ( { "deliveryFrequency" :: NullOrUndefined (MaximumExecutionFrequency) } -> {"deliveryFrequency" :: NullOrUndefined (MaximumExecutionFrequency) } ) -> ConfigSnapshotDeliveryProperties
-newConfigSnapshotDeliveryProperties'  customize = (ConfigSnapshotDeliveryProperties <<< customize) { "deliveryFrequency": (NullOrUndefined Nothing) }
+newConfigSnapshotDeliveryProperties' :: ( { "deliveryFrequency" :: Maybe (MaximumExecutionFrequency) } -> {"deliveryFrequency" :: Maybe (MaximumExecutionFrequency) } ) -> ConfigSnapshotDeliveryProperties
+newConfigSnapshotDeliveryProperties'  customize = (ConfigSnapshotDeliveryProperties <<< customize) { "deliveryFrequency": Nothing }
 
 
 
 -- | <p>A list that contains the status of the delivery of the configuration stream notification to the Amazon SNS topic.</p>
 newtype ConfigStreamDeliveryInfo = ConfigStreamDeliveryInfo 
-  { "lastStatus" :: NullOrUndefined (DeliveryStatus)
-  , "lastErrorCode" :: NullOrUndefined (String)
-  , "lastErrorMessage" :: NullOrUndefined (String)
-  , "lastStatusChangeTime" :: NullOrUndefined (Date)
+  { "lastStatus" :: Maybe (DeliveryStatus)
+  , "lastErrorCode" :: Maybe (String)
+  , "lastErrorMessage" :: Maybe (String)
+  , "lastStatusChangeTime" :: Maybe (Date)
   }
 derive instance newtypeConfigStreamDeliveryInfo :: Newtype ConfigStreamDeliveryInfo _
 derive instance repGenericConfigStreamDeliveryInfo :: Generic ConfigStreamDeliveryInfo _
@@ -436,12 +435,12 @@ instance encodeConfigStreamDeliveryInfo :: Encode ConfigStreamDeliveryInfo where
 
 -- | Constructs ConfigStreamDeliveryInfo from required parameters
 newConfigStreamDeliveryInfo :: ConfigStreamDeliveryInfo
-newConfigStreamDeliveryInfo  = ConfigStreamDeliveryInfo { "lastErrorCode": (NullOrUndefined Nothing), "lastErrorMessage": (NullOrUndefined Nothing), "lastStatus": (NullOrUndefined Nothing), "lastStatusChangeTime": (NullOrUndefined Nothing) }
+newConfigStreamDeliveryInfo  = ConfigStreamDeliveryInfo { "lastErrorCode": Nothing, "lastErrorMessage": Nothing, "lastStatus": Nothing, "lastStatusChangeTime": Nothing }
 
 -- | Constructs ConfigStreamDeliveryInfo's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigStreamDeliveryInfo' :: ( { "lastStatus" :: NullOrUndefined (DeliveryStatus) , "lastErrorCode" :: NullOrUndefined (String) , "lastErrorMessage" :: NullOrUndefined (String) , "lastStatusChangeTime" :: NullOrUndefined (Date) } -> {"lastStatus" :: NullOrUndefined (DeliveryStatus) , "lastErrorCode" :: NullOrUndefined (String) , "lastErrorMessage" :: NullOrUndefined (String) , "lastStatusChangeTime" :: NullOrUndefined (Date) } ) -> ConfigStreamDeliveryInfo
-newConfigStreamDeliveryInfo'  customize = (ConfigStreamDeliveryInfo <<< customize) { "lastErrorCode": (NullOrUndefined Nothing), "lastErrorMessage": (NullOrUndefined Nothing), "lastStatus": (NullOrUndefined Nothing), "lastStatusChangeTime": (NullOrUndefined Nothing) }
+newConfigStreamDeliveryInfo' :: ( { "lastStatus" :: Maybe (DeliveryStatus) , "lastErrorCode" :: Maybe (String) , "lastErrorMessage" :: Maybe (String) , "lastStatusChangeTime" :: Maybe (Date) } -> {"lastStatus" :: Maybe (DeliveryStatus) , "lastErrorCode" :: Maybe (String) , "lastErrorMessage" :: Maybe (String) , "lastStatusChangeTime" :: Maybe (Date) } ) -> ConfigStreamDeliveryInfo
+newConfigStreamDeliveryInfo'  customize = (ConfigStreamDeliveryInfo <<< customize) { "lastErrorCode": Nothing, "lastErrorMessage": Nothing, "lastStatus": Nothing, "lastStatusChangeTime": Nothing }
 
 
 
@@ -456,24 +455,24 @@ instance encodeConfiguration :: Encode Configuration where encode = genericEncod
 
 -- | <p>A list that contains detailed configurations of a specified resource.</p>
 newtype ConfigurationItem = ConfigurationItem 
-  { "version" :: NullOrUndefined (Version)
-  , "accountId" :: NullOrUndefined (AccountId)
-  , "configurationItemCaptureTime" :: NullOrUndefined (ConfigurationItemCaptureTime)
-  , "configurationItemStatus" :: NullOrUndefined (ConfigurationItemStatus)
-  , "configurationStateId" :: NullOrUndefined (ConfigurationStateId)
-  , "configurationItemMD5Hash" :: NullOrUndefined (ConfigurationItemMD5Hash)
-  , "arn" :: NullOrUndefined (ARN)
-  , "resourceType" :: NullOrUndefined (ResourceType)
-  , "resourceId" :: NullOrUndefined (ResourceId)
-  , "resourceName" :: NullOrUndefined (ResourceName)
-  , "awsRegion" :: NullOrUndefined (AwsRegion)
-  , "availabilityZone" :: NullOrUndefined (AvailabilityZone)
-  , "resourceCreationTime" :: NullOrUndefined (ResourceCreationTime)
-  , "tags" :: NullOrUndefined (Tags)
-  , "relatedEvents" :: NullOrUndefined (RelatedEventList)
-  , "relationships" :: NullOrUndefined (RelationshipList)
-  , "configuration" :: NullOrUndefined (Configuration)
-  , "supplementaryConfiguration" :: NullOrUndefined (SupplementaryConfiguration)
+  { "version" :: Maybe (Version)
+  , "accountId" :: Maybe (AccountId)
+  , "configurationItemCaptureTime" :: Maybe (ConfigurationItemCaptureTime)
+  , "configurationItemStatus" :: Maybe (ConfigurationItemStatus)
+  , "configurationStateId" :: Maybe (ConfigurationStateId)
+  , "configurationItemMD5Hash" :: Maybe (ConfigurationItemMD5Hash)
+  , "arn" :: Maybe (ARN)
+  , "resourceType" :: Maybe (ResourceType)
+  , "resourceId" :: Maybe (ResourceId)
+  , "resourceName" :: Maybe (ResourceName)
+  , "awsRegion" :: Maybe (AwsRegion)
+  , "availabilityZone" :: Maybe (AvailabilityZone)
+  , "resourceCreationTime" :: Maybe (ResourceCreationTime)
+  , "tags" :: Maybe (Tags)
+  , "relatedEvents" :: Maybe (RelatedEventList)
+  , "relationships" :: Maybe (RelationshipList)
+  , "configuration" :: Maybe (Configuration)
+  , "supplementaryConfiguration" :: Maybe (SupplementaryConfiguration)
   }
 derive instance newtypeConfigurationItem :: Newtype ConfigurationItem _
 derive instance repGenericConfigurationItem :: Generic ConfigurationItem _
@@ -483,12 +482,12 @@ instance encodeConfigurationItem :: Encode ConfigurationItem where encode = gene
 
 -- | Constructs ConfigurationItem from required parameters
 newConfigurationItem :: ConfigurationItem
-newConfigurationItem  = ConfigurationItem { "accountId": (NullOrUndefined Nothing), "arn": (NullOrUndefined Nothing), "availabilityZone": (NullOrUndefined Nothing), "awsRegion": (NullOrUndefined Nothing), "configuration": (NullOrUndefined Nothing), "configurationItemCaptureTime": (NullOrUndefined Nothing), "configurationItemMD5Hash": (NullOrUndefined Nothing), "configurationItemStatus": (NullOrUndefined Nothing), "configurationStateId": (NullOrUndefined Nothing), "relatedEvents": (NullOrUndefined Nothing), "relationships": (NullOrUndefined Nothing), "resourceCreationTime": (NullOrUndefined Nothing), "resourceId": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing), "supplementaryConfiguration": (NullOrUndefined Nothing), "tags": (NullOrUndefined Nothing), "version": (NullOrUndefined Nothing) }
+newConfigurationItem  = ConfigurationItem { "accountId": Nothing, "arn": Nothing, "availabilityZone": Nothing, "awsRegion": Nothing, "configuration": Nothing, "configurationItemCaptureTime": Nothing, "configurationItemMD5Hash": Nothing, "configurationItemStatus": Nothing, "configurationStateId": Nothing, "relatedEvents": Nothing, "relationships": Nothing, "resourceCreationTime": Nothing, "resourceId": Nothing, "resourceName": Nothing, "resourceType": Nothing, "supplementaryConfiguration": Nothing, "tags": Nothing, "version": Nothing }
 
 -- | Constructs ConfigurationItem's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigurationItem' :: ( { "version" :: NullOrUndefined (Version) , "accountId" :: NullOrUndefined (AccountId) , "configurationItemCaptureTime" :: NullOrUndefined (ConfigurationItemCaptureTime) , "configurationItemStatus" :: NullOrUndefined (ConfigurationItemStatus) , "configurationStateId" :: NullOrUndefined (ConfigurationStateId) , "configurationItemMD5Hash" :: NullOrUndefined (ConfigurationItemMD5Hash) , "arn" :: NullOrUndefined (ARN) , "resourceType" :: NullOrUndefined (ResourceType) , "resourceId" :: NullOrUndefined (ResourceId) , "resourceName" :: NullOrUndefined (ResourceName) , "awsRegion" :: NullOrUndefined (AwsRegion) , "availabilityZone" :: NullOrUndefined (AvailabilityZone) , "resourceCreationTime" :: NullOrUndefined (ResourceCreationTime) , "tags" :: NullOrUndefined (Tags) , "relatedEvents" :: NullOrUndefined (RelatedEventList) , "relationships" :: NullOrUndefined (RelationshipList) , "configuration" :: NullOrUndefined (Configuration) , "supplementaryConfiguration" :: NullOrUndefined (SupplementaryConfiguration) } -> {"version" :: NullOrUndefined (Version) , "accountId" :: NullOrUndefined (AccountId) , "configurationItemCaptureTime" :: NullOrUndefined (ConfigurationItemCaptureTime) , "configurationItemStatus" :: NullOrUndefined (ConfigurationItemStatus) , "configurationStateId" :: NullOrUndefined (ConfigurationStateId) , "configurationItemMD5Hash" :: NullOrUndefined (ConfigurationItemMD5Hash) , "arn" :: NullOrUndefined (ARN) , "resourceType" :: NullOrUndefined (ResourceType) , "resourceId" :: NullOrUndefined (ResourceId) , "resourceName" :: NullOrUndefined (ResourceName) , "awsRegion" :: NullOrUndefined (AwsRegion) , "availabilityZone" :: NullOrUndefined (AvailabilityZone) , "resourceCreationTime" :: NullOrUndefined (ResourceCreationTime) , "tags" :: NullOrUndefined (Tags) , "relatedEvents" :: NullOrUndefined (RelatedEventList) , "relationships" :: NullOrUndefined (RelationshipList) , "configuration" :: NullOrUndefined (Configuration) , "supplementaryConfiguration" :: NullOrUndefined (SupplementaryConfiguration) } ) -> ConfigurationItem
-newConfigurationItem'  customize = (ConfigurationItem <<< customize) { "accountId": (NullOrUndefined Nothing), "arn": (NullOrUndefined Nothing), "availabilityZone": (NullOrUndefined Nothing), "awsRegion": (NullOrUndefined Nothing), "configuration": (NullOrUndefined Nothing), "configurationItemCaptureTime": (NullOrUndefined Nothing), "configurationItemMD5Hash": (NullOrUndefined Nothing), "configurationItemStatus": (NullOrUndefined Nothing), "configurationStateId": (NullOrUndefined Nothing), "relatedEvents": (NullOrUndefined Nothing), "relationships": (NullOrUndefined Nothing), "resourceCreationTime": (NullOrUndefined Nothing), "resourceId": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing), "supplementaryConfiguration": (NullOrUndefined Nothing), "tags": (NullOrUndefined Nothing), "version": (NullOrUndefined Nothing) }
+newConfigurationItem' :: ( { "version" :: Maybe (Version) , "accountId" :: Maybe (AccountId) , "configurationItemCaptureTime" :: Maybe (ConfigurationItemCaptureTime) , "configurationItemStatus" :: Maybe (ConfigurationItemStatus) , "configurationStateId" :: Maybe (ConfigurationStateId) , "configurationItemMD5Hash" :: Maybe (ConfigurationItemMD5Hash) , "arn" :: Maybe (ARN) , "resourceType" :: Maybe (ResourceType) , "resourceId" :: Maybe (ResourceId) , "resourceName" :: Maybe (ResourceName) , "awsRegion" :: Maybe (AwsRegion) , "availabilityZone" :: Maybe (AvailabilityZone) , "resourceCreationTime" :: Maybe (ResourceCreationTime) , "tags" :: Maybe (Tags) , "relatedEvents" :: Maybe (RelatedEventList) , "relationships" :: Maybe (RelationshipList) , "configuration" :: Maybe (Configuration) , "supplementaryConfiguration" :: Maybe (SupplementaryConfiguration) } -> {"version" :: Maybe (Version) , "accountId" :: Maybe (AccountId) , "configurationItemCaptureTime" :: Maybe (ConfigurationItemCaptureTime) , "configurationItemStatus" :: Maybe (ConfigurationItemStatus) , "configurationStateId" :: Maybe (ConfigurationStateId) , "configurationItemMD5Hash" :: Maybe (ConfigurationItemMD5Hash) , "arn" :: Maybe (ARN) , "resourceType" :: Maybe (ResourceType) , "resourceId" :: Maybe (ResourceId) , "resourceName" :: Maybe (ResourceName) , "awsRegion" :: Maybe (AwsRegion) , "availabilityZone" :: Maybe (AvailabilityZone) , "resourceCreationTime" :: Maybe (ResourceCreationTime) , "tags" :: Maybe (Tags) , "relatedEvents" :: Maybe (RelatedEventList) , "relationships" :: Maybe (RelationshipList) , "configuration" :: Maybe (Configuration) , "supplementaryConfiguration" :: Maybe (SupplementaryConfiguration) } ) -> ConfigurationItem
+newConfigurationItem'  customize = (ConfigurationItem <<< customize) { "accountId": Nothing, "arn": Nothing, "availabilityZone": Nothing, "awsRegion": Nothing, "configuration": Nothing, "configurationItemCaptureTime": Nothing, "configurationItemMD5Hash": Nothing, "configurationItemStatus": Nothing, "configurationStateId": Nothing, "relatedEvents": Nothing, "relationships": Nothing, "resourceCreationTime": Nothing, "resourceId": Nothing, "resourceName": Nothing, "resourceType": Nothing, "supplementaryConfiguration": Nothing, "tags": Nothing, "version": Nothing }
 
 
 
@@ -530,9 +529,9 @@ instance encodeConfigurationItemStatus :: Encode ConfigurationItemStatus where e
 
 -- | <p>An object that represents the recording of configuration changes of an AWS resource.</p>
 newtype ConfigurationRecorder = ConfigurationRecorder 
-  { "name" :: NullOrUndefined (RecorderName)
-  , "roleARN" :: NullOrUndefined (String)
-  , "recordingGroup" :: NullOrUndefined (RecordingGroup)
+  { "name" :: Maybe (RecorderName)
+  , "roleARN" :: Maybe (String)
+  , "recordingGroup" :: Maybe (RecordingGroup)
   }
 derive instance newtypeConfigurationRecorder :: Newtype ConfigurationRecorder _
 derive instance repGenericConfigurationRecorder :: Generic ConfigurationRecorder _
@@ -542,12 +541,12 @@ instance encodeConfigurationRecorder :: Encode ConfigurationRecorder where encod
 
 -- | Constructs ConfigurationRecorder from required parameters
 newConfigurationRecorder :: ConfigurationRecorder
-newConfigurationRecorder  = ConfigurationRecorder { "name": (NullOrUndefined Nothing), "recordingGroup": (NullOrUndefined Nothing), "roleARN": (NullOrUndefined Nothing) }
+newConfigurationRecorder  = ConfigurationRecorder { "name": Nothing, "recordingGroup": Nothing, "roleARN": Nothing }
 
 -- | Constructs ConfigurationRecorder's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigurationRecorder' :: ( { "name" :: NullOrUndefined (RecorderName) , "roleARN" :: NullOrUndefined (String) , "recordingGroup" :: NullOrUndefined (RecordingGroup) } -> {"name" :: NullOrUndefined (RecorderName) , "roleARN" :: NullOrUndefined (String) , "recordingGroup" :: NullOrUndefined (RecordingGroup) } ) -> ConfigurationRecorder
-newConfigurationRecorder'  customize = (ConfigurationRecorder <<< customize) { "name": (NullOrUndefined Nothing), "recordingGroup": (NullOrUndefined Nothing), "roleARN": (NullOrUndefined Nothing) }
+newConfigurationRecorder' :: ( { "name" :: Maybe (RecorderName) , "roleARN" :: Maybe (String) , "recordingGroup" :: Maybe (RecordingGroup) } -> {"name" :: Maybe (RecorderName) , "roleARN" :: Maybe (String) , "recordingGroup" :: Maybe (RecordingGroup) } ) -> ConfigurationRecorder
+newConfigurationRecorder'  customize = (ConfigurationRecorder <<< customize) { "name": Nothing, "recordingGroup": Nothing, "roleARN": Nothing }
 
 
 
@@ -571,14 +570,14 @@ instance encodeConfigurationRecorderNameList :: Encode ConfigurationRecorderName
 
 -- | <p>The current status of the configuration recorder.</p>
 newtype ConfigurationRecorderStatus = ConfigurationRecorderStatus 
-  { "name" :: NullOrUndefined (String)
-  , "lastStartTime" :: NullOrUndefined (Date)
-  , "lastStopTime" :: NullOrUndefined (Date)
-  , "recording" :: NullOrUndefined (Boolean)
-  , "lastStatus" :: NullOrUndefined (RecorderStatus)
-  , "lastErrorCode" :: NullOrUndefined (String)
-  , "lastErrorMessage" :: NullOrUndefined (String)
-  , "lastStatusChangeTime" :: NullOrUndefined (Date)
+  { "name" :: Maybe (String)
+  , "lastStartTime" :: Maybe (Date)
+  , "lastStopTime" :: Maybe (Date)
+  , "recording" :: Maybe (Boolean)
+  , "lastStatus" :: Maybe (RecorderStatus)
+  , "lastErrorCode" :: Maybe (String)
+  , "lastErrorMessage" :: Maybe (String)
+  , "lastStatusChangeTime" :: Maybe (Date)
   }
 derive instance newtypeConfigurationRecorderStatus :: Newtype ConfigurationRecorderStatus _
 derive instance repGenericConfigurationRecorderStatus :: Generic ConfigurationRecorderStatus _
@@ -588,12 +587,12 @@ instance encodeConfigurationRecorderStatus :: Encode ConfigurationRecorderStatus
 
 -- | Constructs ConfigurationRecorderStatus from required parameters
 newConfigurationRecorderStatus :: ConfigurationRecorderStatus
-newConfigurationRecorderStatus  = ConfigurationRecorderStatus { "lastErrorCode": (NullOrUndefined Nothing), "lastErrorMessage": (NullOrUndefined Nothing), "lastStartTime": (NullOrUndefined Nothing), "lastStatus": (NullOrUndefined Nothing), "lastStatusChangeTime": (NullOrUndefined Nothing), "lastStopTime": (NullOrUndefined Nothing), "name": (NullOrUndefined Nothing), "recording": (NullOrUndefined Nothing) }
+newConfigurationRecorderStatus  = ConfigurationRecorderStatus { "lastErrorCode": Nothing, "lastErrorMessage": Nothing, "lastStartTime": Nothing, "lastStatus": Nothing, "lastStatusChangeTime": Nothing, "lastStopTime": Nothing, "name": Nothing, "recording": Nothing }
 
 -- | Constructs ConfigurationRecorderStatus's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigurationRecorderStatus' :: ( { "name" :: NullOrUndefined (String) , "lastStartTime" :: NullOrUndefined (Date) , "lastStopTime" :: NullOrUndefined (Date) , "recording" :: NullOrUndefined (Boolean) , "lastStatus" :: NullOrUndefined (RecorderStatus) , "lastErrorCode" :: NullOrUndefined (String) , "lastErrorMessage" :: NullOrUndefined (String) , "lastStatusChangeTime" :: NullOrUndefined (Date) } -> {"name" :: NullOrUndefined (String) , "lastStartTime" :: NullOrUndefined (Date) , "lastStopTime" :: NullOrUndefined (Date) , "recording" :: NullOrUndefined (Boolean) , "lastStatus" :: NullOrUndefined (RecorderStatus) , "lastErrorCode" :: NullOrUndefined (String) , "lastErrorMessage" :: NullOrUndefined (String) , "lastStatusChangeTime" :: NullOrUndefined (Date) } ) -> ConfigurationRecorderStatus
-newConfigurationRecorderStatus'  customize = (ConfigurationRecorderStatus <<< customize) { "lastErrorCode": (NullOrUndefined Nothing), "lastErrorMessage": (NullOrUndefined Nothing), "lastStartTime": (NullOrUndefined Nothing), "lastStatus": (NullOrUndefined Nothing), "lastStatusChangeTime": (NullOrUndefined Nothing), "lastStopTime": (NullOrUndefined Nothing), "name": (NullOrUndefined Nothing), "recording": (NullOrUndefined Nothing) }
+newConfigurationRecorderStatus' :: ( { "name" :: Maybe (String) , "lastStartTime" :: Maybe (Date) , "lastStopTime" :: Maybe (Date) , "recording" :: Maybe (Boolean) , "lastStatus" :: Maybe (RecorderStatus) , "lastErrorCode" :: Maybe (String) , "lastErrorMessage" :: Maybe (String) , "lastStatusChangeTime" :: Maybe (Date) } -> {"name" :: Maybe (String) , "lastStartTime" :: Maybe (Date) , "lastStopTime" :: Maybe (Date) , "recording" :: Maybe (Boolean) , "lastStatus" :: Maybe (RecorderStatus) , "lastErrorCode" :: Maybe (String) , "lastErrorMessage" :: Maybe (String) , "lastStatusChangeTime" :: Maybe (Date) } ) -> ConfigurationRecorderStatus
+newConfigurationRecorderStatus'  customize = (ConfigurationRecorderStatus <<< customize) { "lastErrorCode": Nothing, "lastErrorMessage": Nothing, "lastStartTime": Nothing, "lastStatus": Nothing, "lastStatusChangeTime": Nothing, "lastStopTime": Nothing, "name": Nothing, "recording": Nothing }
 
 
 
@@ -741,7 +740,7 @@ newDeliverConfigSnapshotRequest' _deliveryChannelName customize = (DeliverConfig
 
 -- | <p>The output for the <a>DeliverConfigSnapshot</a> action in JSON format.</p>
 newtype DeliverConfigSnapshotResponse = DeliverConfigSnapshotResponse 
-  { "configSnapshotId" :: NullOrUndefined (String)
+  { "configSnapshotId" :: Maybe (String)
   }
 derive instance newtypeDeliverConfigSnapshotResponse :: Newtype DeliverConfigSnapshotResponse _
 derive instance repGenericDeliverConfigSnapshotResponse :: Generic DeliverConfigSnapshotResponse _
@@ -751,22 +750,22 @@ instance encodeDeliverConfigSnapshotResponse :: Encode DeliverConfigSnapshotResp
 
 -- | Constructs DeliverConfigSnapshotResponse from required parameters
 newDeliverConfigSnapshotResponse :: DeliverConfigSnapshotResponse
-newDeliverConfigSnapshotResponse  = DeliverConfigSnapshotResponse { "configSnapshotId": (NullOrUndefined Nothing) }
+newDeliverConfigSnapshotResponse  = DeliverConfigSnapshotResponse { "configSnapshotId": Nothing }
 
 -- | Constructs DeliverConfigSnapshotResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeliverConfigSnapshotResponse' :: ( { "configSnapshotId" :: NullOrUndefined (String) } -> {"configSnapshotId" :: NullOrUndefined (String) } ) -> DeliverConfigSnapshotResponse
-newDeliverConfigSnapshotResponse'  customize = (DeliverConfigSnapshotResponse <<< customize) { "configSnapshotId": (NullOrUndefined Nothing) }
+newDeliverConfigSnapshotResponse' :: ( { "configSnapshotId" :: Maybe (String) } -> {"configSnapshotId" :: Maybe (String) } ) -> DeliverConfigSnapshotResponse
+newDeliverConfigSnapshotResponse'  customize = (DeliverConfigSnapshotResponse <<< customize) { "configSnapshotId": Nothing }
 
 
 
 -- | <p>The channel through which AWS Config delivers notifications and updated configuration states.</p>
 newtype DeliveryChannel = DeliveryChannel 
-  { "name" :: NullOrUndefined (ChannelName)
-  , "s3BucketName" :: NullOrUndefined (String)
-  , "s3KeyPrefix" :: NullOrUndefined (String)
-  , "snsTopicARN" :: NullOrUndefined (String)
-  , "configSnapshotDeliveryProperties" :: NullOrUndefined (ConfigSnapshotDeliveryProperties)
+  { "name" :: Maybe (ChannelName)
+  , "s3BucketName" :: Maybe (String)
+  , "s3KeyPrefix" :: Maybe (String)
+  , "snsTopicARN" :: Maybe (String)
+  , "configSnapshotDeliveryProperties" :: Maybe (ConfigSnapshotDeliveryProperties)
   }
 derive instance newtypeDeliveryChannel :: Newtype DeliveryChannel _
 derive instance repGenericDeliveryChannel :: Generic DeliveryChannel _
@@ -776,12 +775,12 @@ instance encodeDeliveryChannel :: Encode DeliveryChannel where encode = genericE
 
 -- | Constructs DeliveryChannel from required parameters
 newDeliveryChannel :: DeliveryChannel
-newDeliveryChannel  = DeliveryChannel { "configSnapshotDeliveryProperties": (NullOrUndefined Nothing), "name": (NullOrUndefined Nothing), "s3BucketName": (NullOrUndefined Nothing), "s3KeyPrefix": (NullOrUndefined Nothing), "snsTopicARN": (NullOrUndefined Nothing) }
+newDeliveryChannel  = DeliveryChannel { "configSnapshotDeliveryProperties": Nothing, "name": Nothing, "s3BucketName": Nothing, "s3KeyPrefix": Nothing, "snsTopicARN": Nothing }
 
 -- | Constructs DeliveryChannel's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeliveryChannel' :: ( { "name" :: NullOrUndefined (ChannelName) , "s3BucketName" :: NullOrUndefined (String) , "s3KeyPrefix" :: NullOrUndefined (String) , "snsTopicARN" :: NullOrUndefined (String) , "configSnapshotDeliveryProperties" :: NullOrUndefined (ConfigSnapshotDeliveryProperties) } -> {"name" :: NullOrUndefined (ChannelName) , "s3BucketName" :: NullOrUndefined (String) , "s3KeyPrefix" :: NullOrUndefined (String) , "snsTopicARN" :: NullOrUndefined (String) , "configSnapshotDeliveryProperties" :: NullOrUndefined (ConfigSnapshotDeliveryProperties) } ) -> DeliveryChannel
-newDeliveryChannel'  customize = (DeliveryChannel <<< customize) { "configSnapshotDeliveryProperties": (NullOrUndefined Nothing), "name": (NullOrUndefined Nothing), "s3BucketName": (NullOrUndefined Nothing), "s3KeyPrefix": (NullOrUndefined Nothing), "snsTopicARN": (NullOrUndefined Nothing) }
+newDeliveryChannel' :: ( { "name" :: Maybe (ChannelName) , "s3BucketName" :: Maybe (String) , "s3KeyPrefix" :: Maybe (String) , "snsTopicARN" :: Maybe (String) , "configSnapshotDeliveryProperties" :: Maybe (ConfigSnapshotDeliveryProperties) } -> {"name" :: Maybe (ChannelName) , "s3BucketName" :: Maybe (String) , "s3KeyPrefix" :: Maybe (String) , "snsTopicARN" :: Maybe (String) , "configSnapshotDeliveryProperties" :: Maybe (ConfigSnapshotDeliveryProperties) } ) -> DeliveryChannel
+newDeliveryChannel'  customize = (DeliveryChannel <<< customize) { "configSnapshotDeliveryProperties": Nothing, "name": Nothing, "s3BucketName": Nothing, "s3KeyPrefix": Nothing, "snsTopicARN": Nothing }
 
 
 
@@ -805,10 +804,10 @@ instance encodeDeliveryChannelNameList :: Encode DeliveryChannelNameList where e
 
 -- | <p>The status of a specified delivery channel.</p> <p>Valid values: <code>Success</code> | <code>Failure</code> </p>
 newtype DeliveryChannelStatus = DeliveryChannelStatus 
-  { "name" :: NullOrUndefined (String)
-  , "configSnapshotDeliveryInfo" :: NullOrUndefined (ConfigExportDeliveryInfo)
-  , "configHistoryDeliveryInfo" :: NullOrUndefined (ConfigExportDeliveryInfo)
-  , "configStreamDeliveryInfo" :: NullOrUndefined (ConfigStreamDeliveryInfo)
+  { "name" :: Maybe (String)
+  , "configSnapshotDeliveryInfo" :: Maybe (ConfigExportDeliveryInfo)
+  , "configHistoryDeliveryInfo" :: Maybe (ConfigExportDeliveryInfo)
+  , "configStreamDeliveryInfo" :: Maybe (ConfigStreamDeliveryInfo)
   }
 derive instance newtypeDeliveryChannelStatus :: Newtype DeliveryChannelStatus _
 derive instance repGenericDeliveryChannelStatus :: Generic DeliveryChannelStatus _
@@ -818,12 +817,12 @@ instance encodeDeliveryChannelStatus :: Encode DeliveryChannelStatus where encod
 
 -- | Constructs DeliveryChannelStatus from required parameters
 newDeliveryChannelStatus :: DeliveryChannelStatus
-newDeliveryChannelStatus  = DeliveryChannelStatus { "configHistoryDeliveryInfo": (NullOrUndefined Nothing), "configSnapshotDeliveryInfo": (NullOrUndefined Nothing), "configStreamDeliveryInfo": (NullOrUndefined Nothing), "name": (NullOrUndefined Nothing) }
+newDeliveryChannelStatus  = DeliveryChannelStatus { "configHistoryDeliveryInfo": Nothing, "configSnapshotDeliveryInfo": Nothing, "configStreamDeliveryInfo": Nothing, "name": Nothing }
 
 -- | Constructs DeliveryChannelStatus's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeliveryChannelStatus' :: ( { "name" :: NullOrUndefined (String) , "configSnapshotDeliveryInfo" :: NullOrUndefined (ConfigExportDeliveryInfo) , "configHistoryDeliveryInfo" :: NullOrUndefined (ConfigExportDeliveryInfo) , "configStreamDeliveryInfo" :: NullOrUndefined (ConfigStreamDeliveryInfo) } -> {"name" :: NullOrUndefined (String) , "configSnapshotDeliveryInfo" :: NullOrUndefined (ConfigExportDeliveryInfo) , "configHistoryDeliveryInfo" :: NullOrUndefined (ConfigExportDeliveryInfo) , "configStreamDeliveryInfo" :: NullOrUndefined (ConfigStreamDeliveryInfo) } ) -> DeliveryChannelStatus
-newDeliveryChannelStatus'  customize = (DeliveryChannelStatus <<< customize) { "configHistoryDeliveryInfo": (NullOrUndefined Nothing), "configSnapshotDeliveryInfo": (NullOrUndefined Nothing), "configStreamDeliveryInfo": (NullOrUndefined Nothing), "name": (NullOrUndefined Nothing) }
+newDeliveryChannelStatus' :: ( { "name" :: Maybe (String) , "configSnapshotDeliveryInfo" :: Maybe (ConfigExportDeliveryInfo) , "configHistoryDeliveryInfo" :: Maybe (ConfigExportDeliveryInfo) , "configStreamDeliveryInfo" :: Maybe (ConfigStreamDeliveryInfo) } -> {"name" :: Maybe (String) , "configSnapshotDeliveryInfo" :: Maybe (ConfigExportDeliveryInfo) , "configHistoryDeliveryInfo" :: Maybe (ConfigExportDeliveryInfo) , "configStreamDeliveryInfo" :: Maybe (ConfigStreamDeliveryInfo) } ) -> DeliveryChannelStatus
+newDeliveryChannelStatus'  customize = (DeliveryChannelStatus <<< customize) { "configHistoryDeliveryInfo": Nothing, "configSnapshotDeliveryInfo": Nothing, "configStreamDeliveryInfo": Nothing, "name": Nothing }
 
 
 
@@ -847,9 +846,9 @@ instance encodeDeliveryStatus :: Encode DeliveryStatus where encode = genericEnc
 
 -- | <p/>
 newtype DescribeComplianceByConfigRuleRequest = DescribeComplianceByConfigRuleRequest 
-  { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames)
-  , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes)
-  , "NextToken" :: NullOrUndefined (String)
+  { "ConfigRuleNames" :: Maybe (ConfigRuleNames)
+  , "ComplianceTypes" :: Maybe (ComplianceTypes)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeDescribeComplianceByConfigRuleRequest :: Newtype DescribeComplianceByConfigRuleRequest _
 derive instance repGenericDescribeComplianceByConfigRuleRequest :: Generic DescribeComplianceByConfigRuleRequest _
@@ -859,19 +858,19 @@ instance encodeDescribeComplianceByConfigRuleRequest :: Encode DescribeComplianc
 
 -- | Constructs DescribeComplianceByConfigRuleRequest from required parameters
 newDescribeComplianceByConfigRuleRequest :: DescribeComplianceByConfigRuleRequest
-newDescribeComplianceByConfigRuleRequest  = DescribeComplianceByConfigRuleRequest { "ComplianceTypes": (NullOrUndefined Nothing), "ConfigRuleNames": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeComplianceByConfigRuleRequest  = DescribeComplianceByConfigRuleRequest { "ComplianceTypes": Nothing, "ConfigRuleNames": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeComplianceByConfigRuleRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeComplianceByConfigRuleRequest' :: ( { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "NextToken" :: NullOrUndefined (String) } -> {"ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "NextToken" :: NullOrUndefined (String) } ) -> DescribeComplianceByConfigRuleRequest
-newDescribeComplianceByConfigRuleRequest'  customize = (DescribeComplianceByConfigRuleRequest <<< customize) { "ComplianceTypes": (NullOrUndefined Nothing), "ConfigRuleNames": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeComplianceByConfigRuleRequest' :: ( { "ConfigRuleNames" :: Maybe (ConfigRuleNames) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "NextToken" :: Maybe (String) } -> {"ConfigRuleNames" :: Maybe (ConfigRuleNames) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "NextToken" :: Maybe (String) } ) -> DescribeComplianceByConfigRuleRequest
+newDescribeComplianceByConfigRuleRequest'  customize = (DescribeComplianceByConfigRuleRequest <<< customize) { "ComplianceTypes": Nothing, "ConfigRuleNames": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeComplianceByConfigRuleResponse = DescribeComplianceByConfigRuleResponse 
-  { "ComplianceByConfigRules" :: NullOrUndefined (ComplianceByConfigRules)
-  , "NextToken" :: NullOrUndefined (String)
+  { "ComplianceByConfigRules" :: Maybe (ComplianceByConfigRules)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeDescribeComplianceByConfigRuleResponse :: Newtype DescribeComplianceByConfigRuleResponse _
 derive instance repGenericDescribeComplianceByConfigRuleResponse :: Generic DescribeComplianceByConfigRuleResponse _
@@ -881,22 +880,22 @@ instance encodeDescribeComplianceByConfigRuleResponse :: Encode DescribeComplian
 
 -- | Constructs DescribeComplianceByConfigRuleResponse from required parameters
 newDescribeComplianceByConfigRuleResponse :: DescribeComplianceByConfigRuleResponse
-newDescribeComplianceByConfigRuleResponse  = DescribeComplianceByConfigRuleResponse { "ComplianceByConfigRules": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeComplianceByConfigRuleResponse  = DescribeComplianceByConfigRuleResponse { "ComplianceByConfigRules": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeComplianceByConfigRuleResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeComplianceByConfigRuleResponse' :: ( { "ComplianceByConfigRules" :: NullOrUndefined (ComplianceByConfigRules) , "NextToken" :: NullOrUndefined (String) } -> {"ComplianceByConfigRules" :: NullOrUndefined (ComplianceByConfigRules) , "NextToken" :: NullOrUndefined (String) } ) -> DescribeComplianceByConfigRuleResponse
-newDescribeComplianceByConfigRuleResponse'  customize = (DescribeComplianceByConfigRuleResponse <<< customize) { "ComplianceByConfigRules": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeComplianceByConfigRuleResponse' :: ( { "ComplianceByConfigRules" :: Maybe (ComplianceByConfigRules) , "NextToken" :: Maybe (String) } -> {"ComplianceByConfigRules" :: Maybe (ComplianceByConfigRules) , "NextToken" :: Maybe (String) } ) -> DescribeComplianceByConfigRuleResponse
+newDescribeComplianceByConfigRuleResponse'  customize = (DescribeComplianceByConfigRuleResponse <<< customize) { "ComplianceByConfigRules": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeComplianceByResourceRequest = DescribeComplianceByResourceRequest 
-  { "ResourceType" :: NullOrUndefined (StringWithCharLimit256)
-  , "ResourceId" :: NullOrUndefined (BaseResourceId)
-  , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes)
-  , "Limit" :: NullOrUndefined (Limit)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "ResourceType" :: Maybe (StringWithCharLimit256)
+  , "ResourceId" :: Maybe (BaseResourceId)
+  , "ComplianceTypes" :: Maybe (ComplianceTypes)
+  , "Limit" :: Maybe (Limit)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeComplianceByResourceRequest :: Newtype DescribeComplianceByResourceRequest _
 derive instance repGenericDescribeComplianceByResourceRequest :: Generic DescribeComplianceByResourceRequest _
@@ -906,19 +905,19 @@ instance encodeDescribeComplianceByResourceRequest :: Encode DescribeComplianceB
 
 -- | Constructs DescribeComplianceByResourceRequest from required parameters
 newDescribeComplianceByResourceRequest :: DescribeComplianceByResourceRequest
-newDescribeComplianceByResourceRequest  = DescribeComplianceByResourceRequest { "ComplianceTypes": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "ResourceId": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newDescribeComplianceByResourceRequest  = DescribeComplianceByResourceRequest { "ComplianceTypes": Nothing, "Limit": Nothing, "NextToken": Nothing, "ResourceId": Nothing, "ResourceType": Nothing }
 
 -- | Constructs DescribeComplianceByResourceRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeComplianceByResourceRequest' :: ( { "ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ResourceId" :: NullOrUndefined (BaseResourceId) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "Limit" :: NullOrUndefined (Limit) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ResourceId" :: NullOrUndefined (BaseResourceId) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "Limit" :: NullOrUndefined (Limit) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeComplianceByResourceRequest
-newDescribeComplianceByResourceRequest'  customize = (DescribeComplianceByResourceRequest <<< customize) { "ComplianceTypes": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "ResourceId": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newDescribeComplianceByResourceRequest' :: ( { "ResourceType" :: Maybe (StringWithCharLimit256) , "ResourceId" :: Maybe (BaseResourceId) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "Limit" :: Maybe (Limit) , "NextToken" :: Maybe (NextToken) } -> {"ResourceType" :: Maybe (StringWithCharLimit256) , "ResourceId" :: Maybe (BaseResourceId) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "Limit" :: Maybe (Limit) , "NextToken" :: Maybe (NextToken) } ) -> DescribeComplianceByResourceRequest
+newDescribeComplianceByResourceRequest'  customize = (DescribeComplianceByResourceRequest <<< customize) { "ComplianceTypes": Nothing, "Limit": Nothing, "NextToken": Nothing, "ResourceId": Nothing, "ResourceType": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeComplianceByResourceResponse = DescribeComplianceByResourceResponse 
-  { "ComplianceByResources" :: NullOrUndefined (ComplianceByResources)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "ComplianceByResources" :: Maybe (ComplianceByResources)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeComplianceByResourceResponse :: Newtype DescribeComplianceByResourceResponse _
 derive instance repGenericDescribeComplianceByResourceResponse :: Generic DescribeComplianceByResourceResponse _
@@ -928,20 +927,20 @@ instance encodeDescribeComplianceByResourceResponse :: Encode DescribeCompliance
 
 -- | Constructs DescribeComplianceByResourceResponse from required parameters
 newDescribeComplianceByResourceResponse :: DescribeComplianceByResourceResponse
-newDescribeComplianceByResourceResponse  = DescribeComplianceByResourceResponse { "ComplianceByResources": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeComplianceByResourceResponse  = DescribeComplianceByResourceResponse { "ComplianceByResources": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeComplianceByResourceResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeComplianceByResourceResponse' :: ( { "ComplianceByResources" :: NullOrUndefined (ComplianceByResources) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ComplianceByResources" :: NullOrUndefined (ComplianceByResources) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeComplianceByResourceResponse
-newDescribeComplianceByResourceResponse'  customize = (DescribeComplianceByResourceResponse <<< customize) { "ComplianceByResources": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeComplianceByResourceResponse' :: ( { "ComplianceByResources" :: Maybe (ComplianceByResources) , "NextToken" :: Maybe (NextToken) } -> {"ComplianceByResources" :: Maybe (ComplianceByResources) , "NextToken" :: Maybe (NextToken) } ) -> DescribeComplianceByResourceResponse
+newDescribeComplianceByResourceResponse'  customize = (DescribeComplianceByResourceResponse <<< customize) { "ComplianceByResources": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeConfigRuleEvaluationStatusRequest = DescribeConfigRuleEvaluationStatusRequest 
-  { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames)
-  , "NextToken" :: NullOrUndefined (String)
-  , "Limit" :: NullOrUndefined (RuleLimit)
+  { "ConfigRuleNames" :: Maybe (ConfigRuleNames)
+  , "NextToken" :: Maybe (String)
+  , "Limit" :: Maybe (RuleLimit)
   }
 derive instance newtypeDescribeConfigRuleEvaluationStatusRequest :: Newtype DescribeConfigRuleEvaluationStatusRequest _
 derive instance repGenericDescribeConfigRuleEvaluationStatusRequest :: Generic DescribeConfigRuleEvaluationStatusRequest _
@@ -951,19 +950,19 @@ instance encodeDescribeConfigRuleEvaluationStatusRequest :: Encode DescribeConfi
 
 -- | Constructs DescribeConfigRuleEvaluationStatusRequest from required parameters
 newDescribeConfigRuleEvaluationStatusRequest :: DescribeConfigRuleEvaluationStatusRequest
-newDescribeConfigRuleEvaluationStatusRequest  = DescribeConfigRuleEvaluationStatusRequest { "ConfigRuleNames": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRuleEvaluationStatusRequest  = DescribeConfigRuleEvaluationStatusRequest { "ConfigRuleNames": Nothing, "Limit": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeConfigRuleEvaluationStatusRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigRuleEvaluationStatusRequest' :: ( { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames) , "NextToken" :: NullOrUndefined (String) , "Limit" :: NullOrUndefined (RuleLimit) } -> {"ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames) , "NextToken" :: NullOrUndefined (String) , "Limit" :: NullOrUndefined (RuleLimit) } ) -> DescribeConfigRuleEvaluationStatusRequest
-newDescribeConfigRuleEvaluationStatusRequest'  customize = (DescribeConfigRuleEvaluationStatusRequest <<< customize) { "ConfigRuleNames": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRuleEvaluationStatusRequest' :: ( { "ConfigRuleNames" :: Maybe (ConfigRuleNames) , "NextToken" :: Maybe (String) , "Limit" :: Maybe (RuleLimit) } -> {"ConfigRuleNames" :: Maybe (ConfigRuleNames) , "NextToken" :: Maybe (String) , "Limit" :: Maybe (RuleLimit) } ) -> DescribeConfigRuleEvaluationStatusRequest
+newDescribeConfigRuleEvaluationStatusRequest'  customize = (DescribeConfigRuleEvaluationStatusRequest <<< customize) { "ConfigRuleNames": Nothing, "Limit": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeConfigRuleEvaluationStatusResponse = DescribeConfigRuleEvaluationStatusResponse 
-  { "ConfigRulesEvaluationStatus" :: NullOrUndefined (ConfigRuleEvaluationStatusList)
-  , "NextToken" :: NullOrUndefined (String)
+  { "ConfigRulesEvaluationStatus" :: Maybe (ConfigRuleEvaluationStatusList)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeDescribeConfigRuleEvaluationStatusResponse :: Newtype DescribeConfigRuleEvaluationStatusResponse _
 derive instance repGenericDescribeConfigRuleEvaluationStatusResponse :: Generic DescribeConfigRuleEvaluationStatusResponse _
@@ -973,19 +972,19 @@ instance encodeDescribeConfigRuleEvaluationStatusResponse :: Encode DescribeConf
 
 -- | Constructs DescribeConfigRuleEvaluationStatusResponse from required parameters
 newDescribeConfigRuleEvaluationStatusResponse :: DescribeConfigRuleEvaluationStatusResponse
-newDescribeConfigRuleEvaluationStatusResponse  = DescribeConfigRuleEvaluationStatusResponse { "ConfigRulesEvaluationStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRuleEvaluationStatusResponse  = DescribeConfigRuleEvaluationStatusResponse { "ConfigRulesEvaluationStatus": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeConfigRuleEvaluationStatusResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigRuleEvaluationStatusResponse' :: ( { "ConfigRulesEvaluationStatus" :: NullOrUndefined (ConfigRuleEvaluationStatusList) , "NextToken" :: NullOrUndefined (String) } -> {"ConfigRulesEvaluationStatus" :: NullOrUndefined (ConfigRuleEvaluationStatusList) , "NextToken" :: NullOrUndefined (String) } ) -> DescribeConfigRuleEvaluationStatusResponse
-newDescribeConfigRuleEvaluationStatusResponse'  customize = (DescribeConfigRuleEvaluationStatusResponse <<< customize) { "ConfigRulesEvaluationStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRuleEvaluationStatusResponse' :: ( { "ConfigRulesEvaluationStatus" :: Maybe (ConfigRuleEvaluationStatusList) , "NextToken" :: Maybe (String) } -> {"ConfigRulesEvaluationStatus" :: Maybe (ConfigRuleEvaluationStatusList) , "NextToken" :: Maybe (String) } ) -> DescribeConfigRuleEvaluationStatusResponse
+newDescribeConfigRuleEvaluationStatusResponse'  customize = (DescribeConfigRuleEvaluationStatusResponse <<< customize) { "ConfigRulesEvaluationStatus": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeConfigRulesRequest = DescribeConfigRulesRequest 
-  { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames)
-  , "NextToken" :: NullOrUndefined (String)
+  { "ConfigRuleNames" :: Maybe (ConfigRuleNames)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeDescribeConfigRulesRequest :: Newtype DescribeConfigRulesRequest _
 derive instance repGenericDescribeConfigRulesRequest :: Generic DescribeConfigRulesRequest _
@@ -995,19 +994,19 @@ instance encodeDescribeConfigRulesRequest :: Encode DescribeConfigRulesRequest w
 
 -- | Constructs DescribeConfigRulesRequest from required parameters
 newDescribeConfigRulesRequest :: DescribeConfigRulesRequest
-newDescribeConfigRulesRequest  = DescribeConfigRulesRequest { "ConfigRuleNames": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRulesRequest  = DescribeConfigRulesRequest { "ConfigRuleNames": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeConfigRulesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigRulesRequest' :: ( { "ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames) , "NextToken" :: NullOrUndefined (String) } -> {"ConfigRuleNames" :: NullOrUndefined (ConfigRuleNames) , "NextToken" :: NullOrUndefined (String) } ) -> DescribeConfigRulesRequest
-newDescribeConfigRulesRequest'  customize = (DescribeConfigRulesRequest <<< customize) { "ConfigRuleNames": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRulesRequest' :: ( { "ConfigRuleNames" :: Maybe (ConfigRuleNames) , "NextToken" :: Maybe (String) } -> {"ConfigRuleNames" :: Maybe (ConfigRuleNames) , "NextToken" :: Maybe (String) } ) -> DescribeConfigRulesRequest
+newDescribeConfigRulesRequest'  customize = (DescribeConfigRulesRequest <<< customize) { "ConfigRuleNames": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype DescribeConfigRulesResponse = DescribeConfigRulesResponse 
-  { "ConfigRules" :: NullOrUndefined (ConfigRules)
-  , "NextToken" :: NullOrUndefined (String)
+  { "ConfigRules" :: Maybe (ConfigRules)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeDescribeConfigRulesResponse :: Newtype DescribeConfigRulesResponse _
 derive instance repGenericDescribeConfigRulesResponse :: Generic DescribeConfigRulesResponse _
@@ -1017,18 +1016,18 @@ instance encodeDescribeConfigRulesResponse :: Encode DescribeConfigRulesResponse
 
 -- | Constructs DescribeConfigRulesResponse from required parameters
 newDescribeConfigRulesResponse :: DescribeConfigRulesResponse
-newDescribeConfigRulesResponse  = DescribeConfigRulesResponse { "ConfigRules": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRulesResponse  = DescribeConfigRulesResponse { "ConfigRules": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeConfigRulesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigRulesResponse' :: ( { "ConfigRules" :: NullOrUndefined (ConfigRules) , "NextToken" :: NullOrUndefined (String) } -> {"ConfigRules" :: NullOrUndefined (ConfigRules) , "NextToken" :: NullOrUndefined (String) } ) -> DescribeConfigRulesResponse
-newDescribeConfigRulesResponse'  customize = (DescribeConfigRulesResponse <<< customize) { "ConfigRules": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeConfigRulesResponse' :: ( { "ConfigRules" :: Maybe (ConfigRules) , "NextToken" :: Maybe (String) } -> {"ConfigRules" :: Maybe (ConfigRules) , "NextToken" :: Maybe (String) } ) -> DescribeConfigRulesResponse
+newDescribeConfigRulesResponse'  customize = (DescribeConfigRulesResponse <<< customize) { "ConfigRules": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>The input for the <a>DescribeConfigurationRecorderStatus</a> action.</p>
 newtype DescribeConfigurationRecorderStatusRequest = DescribeConfigurationRecorderStatusRequest 
-  { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList)
+  { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList)
   }
 derive instance newtypeDescribeConfigurationRecorderStatusRequest :: Newtype DescribeConfigurationRecorderStatusRequest _
 derive instance repGenericDescribeConfigurationRecorderStatusRequest :: Generic DescribeConfigurationRecorderStatusRequest _
@@ -1038,18 +1037,18 @@ instance encodeDescribeConfigurationRecorderStatusRequest :: Encode DescribeConf
 
 -- | Constructs DescribeConfigurationRecorderStatusRequest from required parameters
 newDescribeConfigurationRecorderStatusRequest :: DescribeConfigurationRecorderStatusRequest
-newDescribeConfigurationRecorderStatusRequest  = DescribeConfigurationRecorderStatusRequest { "ConfigurationRecorderNames": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecorderStatusRequest  = DescribeConfigurationRecorderStatusRequest { "ConfigurationRecorderNames": Nothing }
 
 -- | Constructs DescribeConfigurationRecorderStatusRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigurationRecorderStatusRequest' :: ( { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) } -> {"ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) } ) -> DescribeConfigurationRecorderStatusRequest
-newDescribeConfigurationRecorderStatusRequest'  customize = (DescribeConfigurationRecorderStatusRequest <<< customize) { "ConfigurationRecorderNames": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecorderStatusRequest' :: ( { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) } -> {"ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) } ) -> DescribeConfigurationRecorderStatusRequest
+newDescribeConfigurationRecorderStatusRequest'  customize = (DescribeConfigurationRecorderStatusRequest <<< customize) { "ConfigurationRecorderNames": Nothing }
 
 
 
 -- | <p>The output for the <a>DescribeConfigurationRecorderStatus</a> action in JSON format.</p>
 newtype DescribeConfigurationRecorderStatusResponse = DescribeConfigurationRecorderStatusResponse 
-  { "ConfigurationRecordersStatus" :: NullOrUndefined (ConfigurationRecorderStatusList)
+  { "ConfigurationRecordersStatus" :: Maybe (ConfigurationRecorderStatusList)
   }
 derive instance newtypeDescribeConfigurationRecorderStatusResponse :: Newtype DescribeConfigurationRecorderStatusResponse _
 derive instance repGenericDescribeConfigurationRecorderStatusResponse :: Generic DescribeConfigurationRecorderStatusResponse _
@@ -1059,18 +1058,18 @@ instance encodeDescribeConfigurationRecorderStatusResponse :: Encode DescribeCon
 
 -- | Constructs DescribeConfigurationRecorderStatusResponse from required parameters
 newDescribeConfigurationRecorderStatusResponse :: DescribeConfigurationRecorderStatusResponse
-newDescribeConfigurationRecorderStatusResponse  = DescribeConfigurationRecorderStatusResponse { "ConfigurationRecordersStatus": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecorderStatusResponse  = DescribeConfigurationRecorderStatusResponse { "ConfigurationRecordersStatus": Nothing }
 
 -- | Constructs DescribeConfigurationRecorderStatusResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigurationRecorderStatusResponse' :: ( { "ConfigurationRecordersStatus" :: NullOrUndefined (ConfigurationRecorderStatusList) } -> {"ConfigurationRecordersStatus" :: NullOrUndefined (ConfigurationRecorderStatusList) } ) -> DescribeConfigurationRecorderStatusResponse
-newDescribeConfigurationRecorderStatusResponse'  customize = (DescribeConfigurationRecorderStatusResponse <<< customize) { "ConfigurationRecordersStatus": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecorderStatusResponse' :: ( { "ConfigurationRecordersStatus" :: Maybe (ConfigurationRecorderStatusList) } -> {"ConfigurationRecordersStatus" :: Maybe (ConfigurationRecorderStatusList) } ) -> DescribeConfigurationRecorderStatusResponse
+newDescribeConfigurationRecorderStatusResponse'  customize = (DescribeConfigurationRecorderStatusResponse <<< customize) { "ConfigurationRecordersStatus": Nothing }
 
 
 
 -- | <p>The input for the <a>DescribeConfigurationRecorders</a> action.</p>
 newtype DescribeConfigurationRecordersRequest = DescribeConfigurationRecordersRequest 
-  { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList)
+  { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList)
   }
 derive instance newtypeDescribeConfigurationRecordersRequest :: Newtype DescribeConfigurationRecordersRequest _
 derive instance repGenericDescribeConfigurationRecordersRequest :: Generic DescribeConfigurationRecordersRequest _
@@ -1080,18 +1079,18 @@ instance encodeDescribeConfigurationRecordersRequest :: Encode DescribeConfigura
 
 -- | Constructs DescribeConfigurationRecordersRequest from required parameters
 newDescribeConfigurationRecordersRequest :: DescribeConfigurationRecordersRequest
-newDescribeConfigurationRecordersRequest  = DescribeConfigurationRecordersRequest { "ConfigurationRecorderNames": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecordersRequest  = DescribeConfigurationRecordersRequest { "ConfigurationRecorderNames": Nothing }
 
 -- | Constructs DescribeConfigurationRecordersRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigurationRecordersRequest' :: ( { "ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) } -> {"ConfigurationRecorderNames" :: NullOrUndefined (ConfigurationRecorderNameList) } ) -> DescribeConfigurationRecordersRequest
-newDescribeConfigurationRecordersRequest'  customize = (DescribeConfigurationRecordersRequest <<< customize) { "ConfigurationRecorderNames": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecordersRequest' :: ( { "ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) } -> {"ConfigurationRecorderNames" :: Maybe (ConfigurationRecorderNameList) } ) -> DescribeConfigurationRecordersRequest
+newDescribeConfigurationRecordersRequest'  customize = (DescribeConfigurationRecordersRequest <<< customize) { "ConfigurationRecorderNames": Nothing }
 
 
 
 -- | <p>The output for the <a>DescribeConfigurationRecorders</a> action.</p>
 newtype DescribeConfigurationRecordersResponse = DescribeConfigurationRecordersResponse 
-  { "ConfigurationRecorders" :: NullOrUndefined (ConfigurationRecorderList)
+  { "ConfigurationRecorders" :: Maybe (ConfigurationRecorderList)
   }
 derive instance newtypeDescribeConfigurationRecordersResponse :: Newtype DescribeConfigurationRecordersResponse _
 derive instance repGenericDescribeConfigurationRecordersResponse :: Generic DescribeConfigurationRecordersResponse _
@@ -1101,18 +1100,18 @@ instance encodeDescribeConfigurationRecordersResponse :: Encode DescribeConfigur
 
 -- | Constructs DescribeConfigurationRecordersResponse from required parameters
 newDescribeConfigurationRecordersResponse :: DescribeConfigurationRecordersResponse
-newDescribeConfigurationRecordersResponse  = DescribeConfigurationRecordersResponse { "ConfigurationRecorders": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecordersResponse  = DescribeConfigurationRecordersResponse { "ConfigurationRecorders": Nothing }
 
 -- | Constructs DescribeConfigurationRecordersResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigurationRecordersResponse' :: ( { "ConfigurationRecorders" :: NullOrUndefined (ConfigurationRecorderList) } -> {"ConfigurationRecorders" :: NullOrUndefined (ConfigurationRecorderList) } ) -> DescribeConfigurationRecordersResponse
-newDescribeConfigurationRecordersResponse'  customize = (DescribeConfigurationRecordersResponse <<< customize) { "ConfigurationRecorders": (NullOrUndefined Nothing) }
+newDescribeConfigurationRecordersResponse' :: ( { "ConfigurationRecorders" :: Maybe (ConfigurationRecorderList) } -> {"ConfigurationRecorders" :: Maybe (ConfigurationRecorderList) } ) -> DescribeConfigurationRecordersResponse
+newDescribeConfigurationRecordersResponse'  customize = (DescribeConfigurationRecordersResponse <<< customize) { "ConfigurationRecorders": Nothing }
 
 
 
 -- | <p>The input for the <a>DeliveryChannelStatus</a> action.</p>
 newtype DescribeDeliveryChannelStatusRequest = DescribeDeliveryChannelStatusRequest 
-  { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList)
+  { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList)
   }
 derive instance newtypeDescribeDeliveryChannelStatusRequest :: Newtype DescribeDeliveryChannelStatusRequest _
 derive instance repGenericDescribeDeliveryChannelStatusRequest :: Generic DescribeDeliveryChannelStatusRequest _
@@ -1122,18 +1121,18 @@ instance encodeDescribeDeliveryChannelStatusRequest :: Encode DescribeDeliveryCh
 
 -- | Constructs DescribeDeliveryChannelStatusRequest from required parameters
 newDescribeDeliveryChannelStatusRequest :: DescribeDeliveryChannelStatusRequest
-newDescribeDeliveryChannelStatusRequest  = DescribeDeliveryChannelStatusRequest { "DeliveryChannelNames": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelStatusRequest  = DescribeDeliveryChannelStatusRequest { "DeliveryChannelNames": Nothing }
 
 -- | Constructs DescribeDeliveryChannelStatusRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeDeliveryChannelStatusRequest' :: ( { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) } -> {"DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) } ) -> DescribeDeliveryChannelStatusRequest
-newDescribeDeliveryChannelStatusRequest'  customize = (DescribeDeliveryChannelStatusRequest <<< customize) { "DeliveryChannelNames": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelStatusRequest' :: ( { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) } -> {"DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) } ) -> DescribeDeliveryChannelStatusRequest
+newDescribeDeliveryChannelStatusRequest'  customize = (DescribeDeliveryChannelStatusRequest <<< customize) { "DeliveryChannelNames": Nothing }
 
 
 
 -- | <p>The output for the <a>DescribeDeliveryChannelStatus</a> action.</p>
 newtype DescribeDeliveryChannelStatusResponse = DescribeDeliveryChannelStatusResponse 
-  { "DeliveryChannelsStatus" :: NullOrUndefined (DeliveryChannelStatusList)
+  { "DeliveryChannelsStatus" :: Maybe (DeliveryChannelStatusList)
   }
 derive instance newtypeDescribeDeliveryChannelStatusResponse :: Newtype DescribeDeliveryChannelStatusResponse _
 derive instance repGenericDescribeDeliveryChannelStatusResponse :: Generic DescribeDeliveryChannelStatusResponse _
@@ -1143,18 +1142,18 @@ instance encodeDescribeDeliveryChannelStatusResponse :: Encode DescribeDeliveryC
 
 -- | Constructs DescribeDeliveryChannelStatusResponse from required parameters
 newDescribeDeliveryChannelStatusResponse :: DescribeDeliveryChannelStatusResponse
-newDescribeDeliveryChannelStatusResponse  = DescribeDeliveryChannelStatusResponse { "DeliveryChannelsStatus": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelStatusResponse  = DescribeDeliveryChannelStatusResponse { "DeliveryChannelsStatus": Nothing }
 
 -- | Constructs DescribeDeliveryChannelStatusResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeDeliveryChannelStatusResponse' :: ( { "DeliveryChannelsStatus" :: NullOrUndefined (DeliveryChannelStatusList) } -> {"DeliveryChannelsStatus" :: NullOrUndefined (DeliveryChannelStatusList) } ) -> DescribeDeliveryChannelStatusResponse
-newDescribeDeliveryChannelStatusResponse'  customize = (DescribeDeliveryChannelStatusResponse <<< customize) { "DeliveryChannelsStatus": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelStatusResponse' :: ( { "DeliveryChannelsStatus" :: Maybe (DeliveryChannelStatusList) } -> {"DeliveryChannelsStatus" :: Maybe (DeliveryChannelStatusList) } ) -> DescribeDeliveryChannelStatusResponse
+newDescribeDeliveryChannelStatusResponse'  customize = (DescribeDeliveryChannelStatusResponse <<< customize) { "DeliveryChannelsStatus": Nothing }
 
 
 
 -- | <p>The input for the <a>DescribeDeliveryChannels</a> action.</p>
 newtype DescribeDeliveryChannelsRequest = DescribeDeliveryChannelsRequest 
-  { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList)
+  { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList)
   }
 derive instance newtypeDescribeDeliveryChannelsRequest :: Newtype DescribeDeliveryChannelsRequest _
 derive instance repGenericDescribeDeliveryChannelsRequest :: Generic DescribeDeliveryChannelsRequest _
@@ -1164,18 +1163,18 @@ instance encodeDescribeDeliveryChannelsRequest :: Encode DescribeDeliveryChannel
 
 -- | Constructs DescribeDeliveryChannelsRequest from required parameters
 newDescribeDeliveryChannelsRequest :: DescribeDeliveryChannelsRequest
-newDescribeDeliveryChannelsRequest  = DescribeDeliveryChannelsRequest { "DeliveryChannelNames": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelsRequest  = DescribeDeliveryChannelsRequest { "DeliveryChannelNames": Nothing }
 
 -- | Constructs DescribeDeliveryChannelsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeDeliveryChannelsRequest' :: ( { "DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) } -> {"DeliveryChannelNames" :: NullOrUndefined (DeliveryChannelNameList) } ) -> DescribeDeliveryChannelsRequest
-newDescribeDeliveryChannelsRequest'  customize = (DescribeDeliveryChannelsRequest <<< customize) { "DeliveryChannelNames": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelsRequest' :: ( { "DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) } -> {"DeliveryChannelNames" :: Maybe (DeliveryChannelNameList) } ) -> DescribeDeliveryChannelsRequest
+newDescribeDeliveryChannelsRequest'  customize = (DescribeDeliveryChannelsRequest <<< customize) { "DeliveryChannelNames": Nothing }
 
 
 
 -- | <p>The output for the <a>DescribeDeliveryChannels</a> action.</p>
 newtype DescribeDeliveryChannelsResponse = DescribeDeliveryChannelsResponse 
-  { "DeliveryChannels" :: NullOrUndefined (DeliveryChannelList)
+  { "DeliveryChannels" :: Maybe (DeliveryChannelList)
   }
 derive instance newtypeDescribeDeliveryChannelsResponse :: Newtype DescribeDeliveryChannelsResponse _
 derive instance repGenericDescribeDeliveryChannelsResponse :: Generic DescribeDeliveryChannelsResponse _
@@ -1185,12 +1184,12 @@ instance encodeDescribeDeliveryChannelsResponse :: Encode DescribeDeliveryChanne
 
 -- | Constructs DescribeDeliveryChannelsResponse from required parameters
 newDescribeDeliveryChannelsResponse :: DescribeDeliveryChannelsResponse
-newDescribeDeliveryChannelsResponse  = DescribeDeliveryChannelsResponse { "DeliveryChannels": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelsResponse  = DescribeDeliveryChannelsResponse { "DeliveryChannels": Nothing }
 
 -- | Constructs DescribeDeliveryChannelsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeDeliveryChannelsResponse' :: ( { "DeliveryChannels" :: NullOrUndefined (DeliveryChannelList) } -> {"DeliveryChannels" :: NullOrUndefined (DeliveryChannelList) } ) -> DescribeDeliveryChannelsResponse
-newDescribeDeliveryChannelsResponse'  customize = (DescribeDeliveryChannelsResponse <<< customize) { "DeliveryChannels": (NullOrUndefined Nothing) }
+newDescribeDeliveryChannelsResponse' :: ( { "DeliveryChannels" :: Maybe (DeliveryChannelList) } -> {"DeliveryChannels" :: Maybe (DeliveryChannelList) } ) -> DescribeDeliveryChannelsResponse
+newDescribeDeliveryChannelsResponse'  customize = (DescribeDeliveryChannelsResponse <<< customize) { "DeliveryChannels": Nothing }
 
 
 
@@ -1217,7 +1216,7 @@ newtype Evaluation = Evaluation
   { "ComplianceResourceType" :: (StringWithCharLimit256)
   , "ComplianceResourceId" :: (BaseResourceId)
   , "ComplianceType" :: (ComplianceType)
-  , "Annotation" :: NullOrUndefined (StringWithCharLimit256)
+  , "Annotation" :: Maybe (StringWithCharLimit256)
   , "OrderingTimestamp" :: (OrderingTimestamp)
   }
 derive instance newtypeEvaluation :: Newtype Evaluation _
@@ -1228,23 +1227,23 @@ instance encodeEvaluation :: Encode Evaluation where encode = genericEncode opti
 
 -- | Constructs Evaluation from required parameters
 newEvaluation :: BaseResourceId -> StringWithCharLimit256 -> ComplianceType -> OrderingTimestamp -> Evaluation
-newEvaluation _ComplianceResourceId _ComplianceResourceType _ComplianceType _OrderingTimestamp = Evaluation { "ComplianceResourceId": _ComplianceResourceId, "ComplianceResourceType": _ComplianceResourceType, "ComplianceType": _ComplianceType, "OrderingTimestamp": _OrderingTimestamp, "Annotation": (NullOrUndefined Nothing) }
+newEvaluation _ComplianceResourceId _ComplianceResourceType _ComplianceType _OrderingTimestamp = Evaluation { "ComplianceResourceId": _ComplianceResourceId, "ComplianceResourceType": _ComplianceResourceType, "ComplianceType": _ComplianceType, "OrderingTimestamp": _OrderingTimestamp, "Annotation": Nothing }
 
 -- | Constructs Evaluation's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEvaluation' :: BaseResourceId -> StringWithCharLimit256 -> ComplianceType -> OrderingTimestamp -> ( { "ComplianceResourceType" :: (StringWithCharLimit256) , "ComplianceResourceId" :: (BaseResourceId) , "ComplianceType" :: (ComplianceType) , "Annotation" :: NullOrUndefined (StringWithCharLimit256) , "OrderingTimestamp" :: (OrderingTimestamp) } -> {"ComplianceResourceType" :: (StringWithCharLimit256) , "ComplianceResourceId" :: (BaseResourceId) , "ComplianceType" :: (ComplianceType) , "Annotation" :: NullOrUndefined (StringWithCharLimit256) , "OrderingTimestamp" :: (OrderingTimestamp) } ) -> Evaluation
-newEvaluation' _ComplianceResourceId _ComplianceResourceType _ComplianceType _OrderingTimestamp customize = (Evaluation <<< customize) { "ComplianceResourceId": _ComplianceResourceId, "ComplianceResourceType": _ComplianceResourceType, "ComplianceType": _ComplianceType, "OrderingTimestamp": _OrderingTimestamp, "Annotation": (NullOrUndefined Nothing) }
+newEvaluation' :: BaseResourceId -> StringWithCharLimit256 -> ComplianceType -> OrderingTimestamp -> ( { "ComplianceResourceType" :: (StringWithCharLimit256) , "ComplianceResourceId" :: (BaseResourceId) , "ComplianceType" :: (ComplianceType) , "Annotation" :: Maybe (StringWithCharLimit256) , "OrderingTimestamp" :: (OrderingTimestamp) } -> {"ComplianceResourceType" :: (StringWithCharLimit256) , "ComplianceResourceId" :: (BaseResourceId) , "ComplianceType" :: (ComplianceType) , "Annotation" :: Maybe (StringWithCharLimit256) , "OrderingTimestamp" :: (OrderingTimestamp) } ) -> Evaluation
+newEvaluation' _ComplianceResourceId _ComplianceResourceType _ComplianceType _OrderingTimestamp customize = (Evaluation <<< customize) { "ComplianceResourceId": _ComplianceResourceId, "ComplianceResourceType": _ComplianceResourceType, "ComplianceType": _ComplianceType, "OrderingTimestamp": _OrderingTimestamp, "Annotation": Nothing }
 
 
 
 -- | <p>The details of an AWS Config evaluation. Provides the AWS resource that was evaluated, the compliance of the resource, related timestamps, and supplementary information.</p>
 newtype EvaluationResult = EvaluationResult 
-  { "EvaluationResultIdentifier" :: NullOrUndefined (EvaluationResultIdentifier)
-  , "ComplianceType" :: NullOrUndefined (ComplianceType)
-  , "ResultRecordedTime" :: NullOrUndefined (Date)
-  , "ConfigRuleInvokedTime" :: NullOrUndefined (Date)
-  , "Annotation" :: NullOrUndefined (StringWithCharLimit256)
-  , "ResultToken" :: NullOrUndefined (String)
+  { "EvaluationResultIdentifier" :: Maybe (EvaluationResultIdentifier)
+  , "ComplianceType" :: Maybe (ComplianceType)
+  , "ResultRecordedTime" :: Maybe (Date)
+  , "ConfigRuleInvokedTime" :: Maybe (Date)
+  , "Annotation" :: Maybe (StringWithCharLimit256)
+  , "ResultToken" :: Maybe (String)
   }
 derive instance newtypeEvaluationResult :: Newtype EvaluationResult _
 derive instance repGenericEvaluationResult :: Generic EvaluationResult _
@@ -1254,19 +1253,19 @@ instance encodeEvaluationResult :: Encode EvaluationResult where encode = generi
 
 -- | Constructs EvaluationResult from required parameters
 newEvaluationResult :: EvaluationResult
-newEvaluationResult  = EvaluationResult { "Annotation": (NullOrUndefined Nothing), "ComplianceType": (NullOrUndefined Nothing), "ConfigRuleInvokedTime": (NullOrUndefined Nothing), "EvaluationResultIdentifier": (NullOrUndefined Nothing), "ResultRecordedTime": (NullOrUndefined Nothing), "ResultToken": (NullOrUndefined Nothing) }
+newEvaluationResult  = EvaluationResult { "Annotation": Nothing, "ComplianceType": Nothing, "ConfigRuleInvokedTime": Nothing, "EvaluationResultIdentifier": Nothing, "ResultRecordedTime": Nothing, "ResultToken": Nothing }
 
 -- | Constructs EvaluationResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEvaluationResult' :: ( { "EvaluationResultIdentifier" :: NullOrUndefined (EvaluationResultIdentifier) , "ComplianceType" :: NullOrUndefined (ComplianceType) , "ResultRecordedTime" :: NullOrUndefined (Date) , "ConfigRuleInvokedTime" :: NullOrUndefined (Date) , "Annotation" :: NullOrUndefined (StringWithCharLimit256) , "ResultToken" :: NullOrUndefined (String) } -> {"EvaluationResultIdentifier" :: NullOrUndefined (EvaluationResultIdentifier) , "ComplianceType" :: NullOrUndefined (ComplianceType) , "ResultRecordedTime" :: NullOrUndefined (Date) , "ConfigRuleInvokedTime" :: NullOrUndefined (Date) , "Annotation" :: NullOrUndefined (StringWithCharLimit256) , "ResultToken" :: NullOrUndefined (String) } ) -> EvaluationResult
-newEvaluationResult'  customize = (EvaluationResult <<< customize) { "Annotation": (NullOrUndefined Nothing), "ComplianceType": (NullOrUndefined Nothing), "ConfigRuleInvokedTime": (NullOrUndefined Nothing), "EvaluationResultIdentifier": (NullOrUndefined Nothing), "ResultRecordedTime": (NullOrUndefined Nothing), "ResultToken": (NullOrUndefined Nothing) }
+newEvaluationResult' :: ( { "EvaluationResultIdentifier" :: Maybe (EvaluationResultIdentifier) , "ComplianceType" :: Maybe (ComplianceType) , "ResultRecordedTime" :: Maybe (Date) , "ConfigRuleInvokedTime" :: Maybe (Date) , "Annotation" :: Maybe (StringWithCharLimit256) , "ResultToken" :: Maybe (String) } -> {"EvaluationResultIdentifier" :: Maybe (EvaluationResultIdentifier) , "ComplianceType" :: Maybe (ComplianceType) , "ResultRecordedTime" :: Maybe (Date) , "ConfigRuleInvokedTime" :: Maybe (Date) , "Annotation" :: Maybe (StringWithCharLimit256) , "ResultToken" :: Maybe (String) } ) -> EvaluationResult
+newEvaluationResult'  customize = (EvaluationResult <<< customize) { "Annotation": Nothing, "ComplianceType": Nothing, "ConfigRuleInvokedTime": Nothing, "EvaluationResultIdentifier": Nothing, "ResultRecordedTime": Nothing, "ResultToken": Nothing }
 
 
 
 -- | <p>Uniquely identifies an evaluation result.</p>
 newtype EvaluationResultIdentifier = EvaluationResultIdentifier 
-  { "EvaluationResultQualifier" :: NullOrUndefined (EvaluationResultQualifier)
-  , "OrderingTimestamp" :: NullOrUndefined (Date)
+  { "EvaluationResultQualifier" :: Maybe (EvaluationResultQualifier)
+  , "OrderingTimestamp" :: Maybe (Date)
   }
 derive instance newtypeEvaluationResultIdentifier :: Newtype EvaluationResultIdentifier _
 derive instance repGenericEvaluationResultIdentifier :: Generic EvaluationResultIdentifier _
@@ -1276,20 +1275,20 @@ instance encodeEvaluationResultIdentifier :: Encode EvaluationResultIdentifier w
 
 -- | Constructs EvaluationResultIdentifier from required parameters
 newEvaluationResultIdentifier :: EvaluationResultIdentifier
-newEvaluationResultIdentifier  = EvaluationResultIdentifier { "EvaluationResultQualifier": (NullOrUndefined Nothing), "OrderingTimestamp": (NullOrUndefined Nothing) }
+newEvaluationResultIdentifier  = EvaluationResultIdentifier { "EvaluationResultQualifier": Nothing, "OrderingTimestamp": Nothing }
 
 -- | Constructs EvaluationResultIdentifier's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEvaluationResultIdentifier' :: ( { "EvaluationResultQualifier" :: NullOrUndefined (EvaluationResultQualifier) , "OrderingTimestamp" :: NullOrUndefined (Date) } -> {"EvaluationResultQualifier" :: NullOrUndefined (EvaluationResultQualifier) , "OrderingTimestamp" :: NullOrUndefined (Date) } ) -> EvaluationResultIdentifier
-newEvaluationResultIdentifier'  customize = (EvaluationResultIdentifier <<< customize) { "EvaluationResultQualifier": (NullOrUndefined Nothing), "OrderingTimestamp": (NullOrUndefined Nothing) }
+newEvaluationResultIdentifier' :: ( { "EvaluationResultQualifier" :: Maybe (EvaluationResultQualifier) , "OrderingTimestamp" :: Maybe (Date) } -> {"EvaluationResultQualifier" :: Maybe (EvaluationResultQualifier) , "OrderingTimestamp" :: Maybe (Date) } ) -> EvaluationResultIdentifier
+newEvaluationResultIdentifier'  customize = (EvaluationResultIdentifier <<< customize) { "EvaluationResultQualifier": Nothing, "OrderingTimestamp": Nothing }
 
 
 
 -- | <p>Identifies an AWS Config rule that evaluated an AWS resource, and provides the type and ID of the resource that the rule evaluated.</p>
 newtype EvaluationResultQualifier = EvaluationResultQualifier 
-  { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64)
-  , "ResourceType" :: NullOrUndefined (StringWithCharLimit256)
-  , "ResourceId" :: NullOrUndefined (BaseResourceId)
+  { "ConfigRuleName" :: Maybe (StringWithCharLimit64)
+  , "ResourceType" :: Maybe (StringWithCharLimit256)
+  , "ResourceId" :: Maybe (BaseResourceId)
   }
 derive instance newtypeEvaluationResultQualifier :: Newtype EvaluationResultQualifier _
 derive instance repGenericEvaluationResultQualifier :: Generic EvaluationResultQualifier _
@@ -1299,12 +1298,12 @@ instance encodeEvaluationResultQualifier :: Encode EvaluationResultQualifier whe
 
 -- | Constructs EvaluationResultQualifier from required parameters
 newEvaluationResultQualifier :: EvaluationResultQualifier
-newEvaluationResultQualifier  = EvaluationResultQualifier { "ConfigRuleName": (NullOrUndefined Nothing), "ResourceId": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newEvaluationResultQualifier  = EvaluationResultQualifier { "ConfigRuleName": Nothing, "ResourceId": Nothing, "ResourceType": Nothing }
 
 -- | Constructs EvaluationResultQualifier's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEvaluationResultQualifier' :: ( { "ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ResourceId" :: NullOrUndefined (BaseResourceId) } -> {"ConfigRuleName" :: NullOrUndefined (StringWithCharLimit64) , "ResourceType" :: NullOrUndefined (StringWithCharLimit256) , "ResourceId" :: NullOrUndefined (BaseResourceId) } ) -> EvaluationResultQualifier
-newEvaluationResultQualifier'  customize = (EvaluationResultQualifier <<< customize) { "ConfigRuleName": (NullOrUndefined Nothing), "ResourceId": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newEvaluationResultQualifier' :: ( { "ConfigRuleName" :: Maybe (StringWithCharLimit64) , "ResourceType" :: Maybe (StringWithCharLimit256) , "ResourceId" :: Maybe (BaseResourceId) } -> {"ConfigRuleName" :: Maybe (StringWithCharLimit64) , "ResourceType" :: Maybe (StringWithCharLimit256) , "ResourceId" :: Maybe (BaseResourceId) } ) -> EvaluationResultQualifier
+newEvaluationResultQualifier'  customize = (EvaluationResultQualifier <<< customize) { "ConfigRuleName": Nothing, "ResourceId": Nothing, "ResourceType": Nothing }
 
 
 
@@ -1338,9 +1337,9 @@ instance encodeEventSource :: Encode EventSource where encode = genericEncode op
 -- | <p/>
 newtype GetComplianceDetailsByConfigRuleRequest = GetComplianceDetailsByConfigRuleRequest 
   { "ConfigRuleName" :: (StringWithCharLimit64)
-  , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes)
-  , "Limit" :: NullOrUndefined (Limit)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "ComplianceTypes" :: Maybe (ComplianceTypes)
+  , "Limit" :: Maybe (Limit)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetComplianceDetailsByConfigRuleRequest :: Newtype GetComplianceDetailsByConfigRuleRequest _
 derive instance repGenericGetComplianceDetailsByConfigRuleRequest :: Generic GetComplianceDetailsByConfigRuleRequest _
@@ -1350,19 +1349,19 @@ instance encodeGetComplianceDetailsByConfigRuleRequest :: Encode GetComplianceDe
 
 -- | Constructs GetComplianceDetailsByConfigRuleRequest from required parameters
 newGetComplianceDetailsByConfigRuleRequest :: StringWithCharLimit64 -> GetComplianceDetailsByConfigRuleRequest
-newGetComplianceDetailsByConfigRuleRequest _ConfigRuleName = GetComplianceDetailsByConfigRuleRequest { "ConfigRuleName": _ConfigRuleName, "ComplianceTypes": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByConfigRuleRequest _ConfigRuleName = GetComplianceDetailsByConfigRuleRequest { "ConfigRuleName": _ConfigRuleName, "ComplianceTypes": Nothing, "Limit": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetComplianceDetailsByConfigRuleRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceDetailsByConfigRuleRequest' :: StringWithCharLimit64 -> ( { "ConfigRuleName" :: (StringWithCharLimit64) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "Limit" :: NullOrUndefined (Limit) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ConfigRuleName" :: (StringWithCharLimit64) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "Limit" :: NullOrUndefined (Limit) , "NextToken" :: NullOrUndefined (NextToken) } ) -> GetComplianceDetailsByConfigRuleRequest
-newGetComplianceDetailsByConfigRuleRequest' _ConfigRuleName customize = (GetComplianceDetailsByConfigRuleRequest <<< customize) { "ConfigRuleName": _ConfigRuleName, "ComplianceTypes": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByConfigRuleRequest' :: StringWithCharLimit64 -> ( { "ConfigRuleName" :: (StringWithCharLimit64) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "Limit" :: Maybe (Limit) , "NextToken" :: Maybe (NextToken) } -> {"ConfigRuleName" :: (StringWithCharLimit64) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "Limit" :: Maybe (Limit) , "NextToken" :: Maybe (NextToken) } ) -> GetComplianceDetailsByConfigRuleRequest
+newGetComplianceDetailsByConfigRuleRequest' _ConfigRuleName customize = (GetComplianceDetailsByConfigRuleRequest <<< customize) { "ConfigRuleName": _ConfigRuleName, "ComplianceTypes": Nothing, "Limit": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype GetComplianceDetailsByConfigRuleResponse = GetComplianceDetailsByConfigRuleResponse 
-  { "EvaluationResults" :: NullOrUndefined (EvaluationResults)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "EvaluationResults" :: Maybe (EvaluationResults)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetComplianceDetailsByConfigRuleResponse :: Newtype GetComplianceDetailsByConfigRuleResponse _
 derive instance repGenericGetComplianceDetailsByConfigRuleResponse :: Generic GetComplianceDetailsByConfigRuleResponse _
@@ -1372,12 +1371,12 @@ instance encodeGetComplianceDetailsByConfigRuleResponse :: Encode GetComplianceD
 
 -- | Constructs GetComplianceDetailsByConfigRuleResponse from required parameters
 newGetComplianceDetailsByConfigRuleResponse :: GetComplianceDetailsByConfigRuleResponse
-newGetComplianceDetailsByConfigRuleResponse  = GetComplianceDetailsByConfigRuleResponse { "EvaluationResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByConfigRuleResponse  = GetComplianceDetailsByConfigRuleResponse { "EvaluationResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetComplianceDetailsByConfigRuleResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceDetailsByConfigRuleResponse' :: ( { "EvaluationResults" :: NullOrUndefined (EvaluationResults) , "NextToken" :: NullOrUndefined (NextToken) } -> {"EvaluationResults" :: NullOrUndefined (EvaluationResults) , "NextToken" :: NullOrUndefined (NextToken) } ) -> GetComplianceDetailsByConfigRuleResponse
-newGetComplianceDetailsByConfigRuleResponse'  customize = (GetComplianceDetailsByConfigRuleResponse <<< customize) { "EvaluationResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByConfigRuleResponse' :: ( { "EvaluationResults" :: Maybe (EvaluationResults) , "NextToken" :: Maybe (NextToken) } -> {"EvaluationResults" :: Maybe (EvaluationResults) , "NextToken" :: Maybe (NextToken) } ) -> GetComplianceDetailsByConfigRuleResponse
+newGetComplianceDetailsByConfigRuleResponse'  customize = (GetComplianceDetailsByConfigRuleResponse <<< customize) { "EvaluationResults": Nothing, "NextToken": Nothing }
 
 
 
@@ -1385,8 +1384,8 @@ newGetComplianceDetailsByConfigRuleResponse'  customize = (GetComplianceDetailsB
 newtype GetComplianceDetailsByResourceRequest = GetComplianceDetailsByResourceRequest 
   { "ResourceType" :: (StringWithCharLimit256)
   , "ResourceId" :: (BaseResourceId)
-  , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes)
-  , "NextToken" :: NullOrUndefined (String)
+  , "ComplianceTypes" :: Maybe (ComplianceTypes)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeGetComplianceDetailsByResourceRequest :: Newtype GetComplianceDetailsByResourceRequest _
 derive instance repGenericGetComplianceDetailsByResourceRequest :: Generic GetComplianceDetailsByResourceRequest _
@@ -1396,19 +1395,19 @@ instance encodeGetComplianceDetailsByResourceRequest :: Encode GetComplianceDeta
 
 -- | Constructs GetComplianceDetailsByResourceRequest from required parameters
 newGetComplianceDetailsByResourceRequest :: BaseResourceId -> StringWithCharLimit256 -> GetComplianceDetailsByResourceRequest
-newGetComplianceDetailsByResourceRequest _ResourceId _ResourceType = GetComplianceDetailsByResourceRequest { "ResourceId": _ResourceId, "ResourceType": _ResourceType, "ComplianceTypes": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByResourceRequest _ResourceId _ResourceType = GetComplianceDetailsByResourceRequest { "ResourceId": _ResourceId, "ResourceType": _ResourceType, "ComplianceTypes": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetComplianceDetailsByResourceRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceDetailsByResourceRequest' :: BaseResourceId -> StringWithCharLimit256 -> ( { "ResourceType" :: (StringWithCharLimit256) , "ResourceId" :: (BaseResourceId) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "NextToken" :: NullOrUndefined (String) } -> {"ResourceType" :: (StringWithCharLimit256) , "ResourceId" :: (BaseResourceId) , "ComplianceTypes" :: NullOrUndefined (ComplianceTypes) , "NextToken" :: NullOrUndefined (String) } ) -> GetComplianceDetailsByResourceRequest
-newGetComplianceDetailsByResourceRequest' _ResourceId _ResourceType customize = (GetComplianceDetailsByResourceRequest <<< customize) { "ResourceId": _ResourceId, "ResourceType": _ResourceType, "ComplianceTypes": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByResourceRequest' :: BaseResourceId -> StringWithCharLimit256 -> ( { "ResourceType" :: (StringWithCharLimit256) , "ResourceId" :: (BaseResourceId) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "NextToken" :: Maybe (String) } -> {"ResourceType" :: (StringWithCharLimit256) , "ResourceId" :: (BaseResourceId) , "ComplianceTypes" :: Maybe (ComplianceTypes) , "NextToken" :: Maybe (String) } ) -> GetComplianceDetailsByResourceRequest
+newGetComplianceDetailsByResourceRequest' _ResourceId _ResourceType customize = (GetComplianceDetailsByResourceRequest <<< customize) { "ResourceId": _ResourceId, "ResourceType": _ResourceType, "ComplianceTypes": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype GetComplianceDetailsByResourceResponse = GetComplianceDetailsByResourceResponse 
-  { "EvaluationResults" :: NullOrUndefined (EvaluationResults)
-  , "NextToken" :: NullOrUndefined (String)
+  { "EvaluationResults" :: Maybe (EvaluationResults)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeGetComplianceDetailsByResourceResponse :: Newtype GetComplianceDetailsByResourceResponse _
 derive instance repGenericGetComplianceDetailsByResourceResponse :: Generic GetComplianceDetailsByResourceResponse _
@@ -1418,18 +1417,18 @@ instance encodeGetComplianceDetailsByResourceResponse :: Encode GetComplianceDet
 
 -- | Constructs GetComplianceDetailsByResourceResponse from required parameters
 newGetComplianceDetailsByResourceResponse :: GetComplianceDetailsByResourceResponse
-newGetComplianceDetailsByResourceResponse  = GetComplianceDetailsByResourceResponse { "EvaluationResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByResourceResponse  = GetComplianceDetailsByResourceResponse { "EvaluationResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetComplianceDetailsByResourceResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceDetailsByResourceResponse' :: ( { "EvaluationResults" :: NullOrUndefined (EvaluationResults) , "NextToken" :: NullOrUndefined (String) } -> {"EvaluationResults" :: NullOrUndefined (EvaluationResults) , "NextToken" :: NullOrUndefined (String) } ) -> GetComplianceDetailsByResourceResponse
-newGetComplianceDetailsByResourceResponse'  customize = (GetComplianceDetailsByResourceResponse <<< customize) { "EvaluationResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetComplianceDetailsByResourceResponse' :: ( { "EvaluationResults" :: Maybe (EvaluationResults) , "NextToken" :: Maybe (String) } -> {"EvaluationResults" :: Maybe (EvaluationResults) , "NextToken" :: Maybe (String) } ) -> GetComplianceDetailsByResourceResponse
+newGetComplianceDetailsByResourceResponse'  customize = (GetComplianceDetailsByResourceResponse <<< customize) { "EvaluationResults": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p/>
 newtype GetComplianceSummaryByConfigRuleResponse = GetComplianceSummaryByConfigRuleResponse 
-  { "ComplianceSummary" :: NullOrUndefined (ComplianceSummary)
+  { "ComplianceSummary" :: Maybe (ComplianceSummary)
   }
 derive instance newtypeGetComplianceSummaryByConfigRuleResponse :: Newtype GetComplianceSummaryByConfigRuleResponse _
 derive instance repGenericGetComplianceSummaryByConfigRuleResponse :: Generic GetComplianceSummaryByConfigRuleResponse _
@@ -1439,18 +1438,18 @@ instance encodeGetComplianceSummaryByConfigRuleResponse :: Encode GetComplianceS
 
 -- | Constructs GetComplianceSummaryByConfigRuleResponse from required parameters
 newGetComplianceSummaryByConfigRuleResponse :: GetComplianceSummaryByConfigRuleResponse
-newGetComplianceSummaryByConfigRuleResponse  = GetComplianceSummaryByConfigRuleResponse { "ComplianceSummary": (NullOrUndefined Nothing) }
+newGetComplianceSummaryByConfigRuleResponse  = GetComplianceSummaryByConfigRuleResponse { "ComplianceSummary": Nothing }
 
 -- | Constructs GetComplianceSummaryByConfigRuleResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceSummaryByConfigRuleResponse' :: ( { "ComplianceSummary" :: NullOrUndefined (ComplianceSummary) } -> {"ComplianceSummary" :: NullOrUndefined (ComplianceSummary) } ) -> GetComplianceSummaryByConfigRuleResponse
-newGetComplianceSummaryByConfigRuleResponse'  customize = (GetComplianceSummaryByConfigRuleResponse <<< customize) { "ComplianceSummary": (NullOrUndefined Nothing) }
+newGetComplianceSummaryByConfigRuleResponse' :: ( { "ComplianceSummary" :: Maybe (ComplianceSummary) } -> {"ComplianceSummary" :: Maybe (ComplianceSummary) } ) -> GetComplianceSummaryByConfigRuleResponse
+newGetComplianceSummaryByConfigRuleResponse'  customize = (GetComplianceSummaryByConfigRuleResponse <<< customize) { "ComplianceSummary": Nothing }
 
 
 
 -- | <p/>
 newtype GetComplianceSummaryByResourceTypeRequest = GetComplianceSummaryByResourceTypeRequest 
-  { "ResourceTypes" :: NullOrUndefined (ResourceTypes)
+  { "ResourceTypes" :: Maybe (ResourceTypes)
   }
 derive instance newtypeGetComplianceSummaryByResourceTypeRequest :: Newtype GetComplianceSummaryByResourceTypeRequest _
 derive instance repGenericGetComplianceSummaryByResourceTypeRequest :: Generic GetComplianceSummaryByResourceTypeRequest _
@@ -1460,18 +1459,18 @@ instance encodeGetComplianceSummaryByResourceTypeRequest :: Encode GetCompliance
 
 -- | Constructs GetComplianceSummaryByResourceTypeRequest from required parameters
 newGetComplianceSummaryByResourceTypeRequest :: GetComplianceSummaryByResourceTypeRequest
-newGetComplianceSummaryByResourceTypeRequest  = GetComplianceSummaryByResourceTypeRequest { "ResourceTypes": (NullOrUndefined Nothing) }
+newGetComplianceSummaryByResourceTypeRequest  = GetComplianceSummaryByResourceTypeRequest { "ResourceTypes": Nothing }
 
 -- | Constructs GetComplianceSummaryByResourceTypeRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceSummaryByResourceTypeRequest' :: ( { "ResourceTypes" :: NullOrUndefined (ResourceTypes) } -> {"ResourceTypes" :: NullOrUndefined (ResourceTypes) } ) -> GetComplianceSummaryByResourceTypeRequest
-newGetComplianceSummaryByResourceTypeRequest'  customize = (GetComplianceSummaryByResourceTypeRequest <<< customize) { "ResourceTypes": (NullOrUndefined Nothing) }
+newGetComplianceSummaryByResourceTypeRequest' :: ( { "ResourceTypes" :: Maybe (ResourceTypes) } -> {"ResourceTypes" :: Maybe (ResourceTypes) } ) -> GetComplianceSummaryByResourceTypeRequest
+newGetComplianceSummaryByResourceTypeRequest'  customize = (GetComplianceSummaryByResourceTypeRequest <<< customize) { "ResourceTypes": Nothing }
 
 
 
 -- | <p/>
 newtype GetComplianceSummaryByResourceTypeResponse = GetComplianceSummaryByResourceTypeResponse 
-  { "ComplianceSummariesByResourceType" :: NullOrUndefined (ComplianceSummariesByResourceType)
+  { "ComplianceSummariesByResourceType" :: Maybe (ComplianceSummariesByResourceType)
   }
 derive instance newtypeGetComplianceSummaryByResourceTypeResponse :: Newtype GetComplianceSummaryByResourceTypeResponse _
 derive instance repGenericGetComplianceSummaryByResourceTypeResponse :: Generic GetComplianceSummaryByResourceTypeResponse _
@@ -1481,19 +1480,19 @@ instance encodeGetComplianceSummaryByResourceTypeResponse :: Encode GetComplianc
 
 -- | Constructs GetComplianceSummaryByResourceTypeResponse from required parameters
 newGetComplianceSummaryByResourceTypeResponse :: GetComplianceSummaryByResourceTypeResponse
-newGetComplianceSummaryByResourceTypeResponse  = GetComplianceSummaryByResourceTypeResponse { "ComplianceSummariesByResourceType": (NullOrUndefined Nothing) }
+newGetComplianceSummaryByResourceTypeResponse  = GetComplianceSummaryByResourceTypeResponse { "ComplianceSummariesByResourceType": Nothing }
 
 -- | Constructs GetComplianceSummaryByResourceTypeResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetComplianceSummaryByResourceTypeResponse' :: ( { "ComplianceSummariesByResourceType" :: NullOrUndefined (ComplianceSummariesByResourceType) } -> {"ComplianceSummariesByResourceType" :: NullOrUndefined (ComplianceSummariesByResourceType) } ) -> GetComplianceSummaryByResourceTypeResponse
-newGetComplianceSummaryByResourceTypeResponse'  customize = (GetComplianceSummaryByResourceTypeResponse <<< customize) { "ComplianceSummariesByResourceType": (NullOrUndefined Nothing) }
+newGetComplianceSummaryByResourceTypeResponse' :: ( { "ComplianceSummariesByResourceType" :: Maybe (ComplianceSummariesByResourceType) } -> {"ComplianceSummariesByResourceType" :: Maybe (ComplianceSummariesByResourceType) } ) -> GetComplianceSummaryByResourceTypeResponse
+newGetComplianceSummaryByResourceTypeResponse'  customize = (GetComplianceSummaryByResourceTypeResponse <<< customize) { "ComplianceSummariesByResourceType": Nothing }
 
 
 
 newtype GetDiscoveredResourceCountsRequest = GetDiscoveredResourceCountsRequest 
-  { "resourceTypes" :: NullOrUndefined (ResourceTypes)
-  , "limit" :: NullOrUndefined (Limit)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "resourceTypes" :: Maybe (ResourceTypes)
+  , "limit" :: Maybe (Limit)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetDiscoveredResourceCountsRequest :: Newtype GetDiscoveredResourceCountsRequest _
 derive instance repGenericGetDiscoveredResourceCountsRequest :: Generic GetDiscoveredResourceCountsRequest _
@@ -1503,19 +1502,19 @@ instance encodeGetDiscoveredResourceCountsRequest :: Encode GetDiscoveredResourc
 
 -- | Constructs GetDiscoveredResourceCountsRequest from required parameters
 newGetDiscoveredResourceCountsRequest :: GetDiscoveredResourceCountsRequest
-newGetDiscoveredResourceCountsRequest  = GetDiscoveredResourceCountsRequest { "limit": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "resourceTypes": (NullOrUndefined Nothing) }
+newGetDiscoveredResourceCountsRequest  = GetDiscoveredResourceCountsRequest { "limit": Nothing, "nextToken": Nothing, "resourceTypes": Nothing }
 
 -- | Constructs GetDiscoveredResourceCountsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetDiscoveredResourceCountsRequest' :: ( { "resourceTypes" :: NullOrUndefined (ResourceTypes) , "limit" :: NullOrUndefined (Limit) , "nextToken" :: NullOrUndefined (NextToken) } -> {"resourceTypes" :: NullOrUndefined (ResourceTypes) , "limit" :: NullOrUndefined (Limit) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetDiscoveredResourceCountsRequest
-newGetDiscoveredResourceCountsRequest'  customize = (GetDiscoveredResourceCountsRequest <<< customize) { "limit": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "resourceTypes": (NullOrUndefined Nothing) }
+newGetDiscoveredResourceCountsRequest' :: ( { "resourceTypes" :: Maybe (ResourceTypes) , "limit" :: Maybe (Limit) , "nextToken" :: Maybe (NextToken) } -> {"resourceTypes" :: Maybe (ResourceTypes) , "limit" :: Maybe (Limit) , "nextToken" :: Maybe (NextToken) } ) -> GetDiscoveredResourceCountsRequest
+newGetDiscoveredResourceCountsRequest'  customize = (GetDiscoveredResourceCountsRequest <<< customize) { "limit": Nothing, "nextToken": Nothing, "resourceTypes": Nothing }
 
 
 
 newtype GetDiscoveredResourceCountsResponse = GetDiscoveredResourceCountsResponse 
-  { "totalDiscoveredResources" :: NullOrUndefined (Number)
-  , "resourceCounts" :: NullOrUndefined (ResourceCounts)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "totalDiscoveredResources" :: Maybe (Number)
+  , "resourceCounts" :: Maybe (ResourceCounts)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetDiscoveredResourceCountsResponse :: Newtype GetDiscoveredResourceCountsResponse _
 derive instance repGenericGetDiscoveredResourceCountsResponse :: Generic GetDiscoveredResourceCountsResponse _
@@ -1525,12 +1524,12 @@ instance encodeGetDiscoveredResourceCountsResponse :: Encode GetDiscoveredResour
 
 -- | Constructs GetDiscoveredResourceCountsResponse from required parameters
 newGetDiscoveredResourceCountsResponse :: GetDiscoveredResourceCountsResponse
-newGetDiscoveredResourceCountsResponse  = GetDiscoveredResourceCountsResponse { "nextToken": (NullOrUndefined Nothing), "resourceCounts": (NullOrUndefined Nothing), "totalDiscoveredResources": (NullOrUndefined Nothing) }
+newGetDiscoveredResourceCountsResponse  = GetDiscoveredResourceCountsResponse { "nextToken": Nothing, "resourceCounts": Nothing, "totalDiscoveredResources": Nothing }
 
 -- | Constructs GetDiscoveredResourceCountsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetDiscoveredResourceCountsResponse' :: ( { "totalDiscoveredResources" :: NullOrUndefined (Number) , "resourceCounts" :: NullOrUndefined (ResourceCounts) , "nextToken" :: NullOrUndefined (NextToken) } -> {"totalDiscoveredResources" :: NullOrUndefined (Number) , "resourceCounts" :: NullOrUndefined (ResourceCounts) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetDiscoveredResourceCountsResponse
-newGetDiscoveredResourceCountsResponse'  customize = (GetDiscoveredResourceCountsResponse <<< customize) { "nextToken": (NullOrUndefined Nothing), "resourceCounts": (NullOrUndefined Nothing), "totalDiscoveredResources": (NullOrUndefined Nothing) }
+newGetDiscoveredResourceCountsResponse' :: ( { "totalDiscoveredResources" :: Maybe (Number) , "resourceCounts" :: Maybe (ResourceCounts) , "nextToken" :: Maybe (NextToken) } -> {"totalDiscoveredResources" :: Maybe (Number) , "resourceCounts" :: Maybe (ResourceCounts) , "nextToken" :: Maybe (NextToken) } ) -> GetDiscoveredResourceCountsResponse
+newGetDiscoveredResourceCountsResponse'  customize = (GetDiscoveredResourceCountsResponse <<< customize) { "nextToken": Nothing, "resourceCounts": Nothing, "totalDiscoveredResources": Nothing }
 
 
 
@@ -1538,11 +1537,11 @@ newGetDiscoveredResourceCountsResponse'  customize = (GetDiscoveredResourceCount
 newtype GetResourceConfigHistoryRequest = GetResourceConfigHistoryRequest 
   { "resourceType" :: (ResourceType)
   , "resourceId" :: (ResourceId)
-  , "laterTime" :: NullOrUndefined (LaterTime)
-  , "earlierTime" :: NullOrUndefined (EarlierTime)
-  , "chronologicalOrder" :: NullOrUndefined (ChronologicalOrder)
-  , "limit" :: NullOrUndefined (Limit)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  , "laterTime" :: Maybe (LaterTime)
+  , "earlierTime" :: Maybe (EarlierTime)
+  , "chronologicalOrder" :: Maybe (ChronologicalOrder)
+  , "limit" :: Maybe (Limit)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetResourceConfigHistoryRequest :: Newtype GetResourceConfigHistoryRequest _
 derive instance repGenericGetResourceConfigHistoryRequest :: Generic GetResourceConfigHistoryRequest _
@@ -1552,19 +1551,19 @@ instance encodeGetResourceConfigHistoryRequest :: Encode GetResourceConfigHistor
 
 -- | Constructs GetResourceConfigHistoryRequest from required parameters
 newGetResourceConfigHistoryRequest :: ResourceId -> ResourceType -> GetResourceConfigHistoryRequest
-newGetResourceConfigHistoryRequest _resourceId _resourceType = GetResourceConfigHistoryRequest { "resourceId": _resourceId, "resourceType": _resourceType, "chronologicalOrder": (NullOrUndefined Nothing), "earlierTime": (NullOrUndefined Nothing), "laterTime": (NullOrUndefined Nothing), "limit": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetResourceConfigHistoryRequest _resourceId _resourceType = GetResourceConfigHistoryRequest { "resourceId": _resourceId, "resourceType": _resourceType, "chronologicalOrder": Nothing, "earlierTime": Nothing, "laterTime": Nothing, "limit": Nothing, "nextToken": Nothing }
 
 -- | Constructs GetResourceConfigHistoryRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetResourceConfigHistoryRequest' :: ResourceId -> ResourceType -> ( { "resourceType" :: (ResourceType) , "resourceId" :: (ResourceId) , "laterTime" :: NullOrUndefined (LaterTime) , "earlierTime" :: NullOrUndefined (EarlierTime) , "chronologicalOrder" :: NullOrUndefined (ChronologicalOrder) , "limit" :: NullOrUndefined (Limit) , "nextToken" :: NullOrUndefined (NextToken) } -> {"resourceType" :: (ResourceType) , "resourceId" :: (ResourceId) , "laterTime" :: NullOrUndefined (LaterTime) , "earlierTime" :: NullOrUndefined (EarlierTime) , "chronologicalOrder" :: NullOrUndefined (ChronologicalOrder) , "limit" :: NullOrUndefined (Limit) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetResourceConfigHistoryRequest
-newGetResourceConfigHistoryRequest' _resourceId _resourceType customize = (GetResourceConfigHistoryRequest <<< customize) { "resourceId": _resourceId, "resourceType": _resourceType, "chronologicalOrder": (NullOrUndefined Nothing), "earlierTime": (NullOrUndefined Nothing), "laterTime": (NullOrUndefined Nothing), "limit": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetResourceConfigHistoryRequest' :: ResourceId -> ResourceType -> ( { "resourceType" :: (ResourceType) , "resourceId" :: (ResourceId) , "laterTime" :: Maybe (LaterTime) , "earlierTime" :: Maybe (EarlierTime) , "chronologicalOrder" :: Maybe (ChronologicalOrder) , "limit" :: Maybe (Limit) , "nextToken" :: Maybe (NextToken) } -> {"resourceType" :: (ResourceType) , "resourceId" :: (ResourceId) , "laterTime" :: Maybe (LaterTime) , "earlierTime" :: Maybe (EarlierTime) , "chronologicalOrder" :: Maybe (ChronologicalOrder) , "limit" :: Maybe (Limit) , "nextToken" :: Maybe (NextToken) } ) -> GetResourceConfigHistoryRequest
+newGetResourceConfigHistoryRequest' _resourceId _resourceType customize = (GetResourceConfigHistoryRequest <<< customize) { "resourceId": _resourceId, "resourceType": _resourceType, "chronologicalOrder": Nothing, "earlierTime": Nothing, "laterTime": Nothing, "limit": Nothing, "nextToken": Nothing }
 
 
 
 -- | <p>The output for the <a>GetResourceConfigHistory</a> action.</p>
 newtype GetResourceConfigHistoryResponse = GetResourceConfigHistoryResponse 
-  { "configurationItems" :: NullOrUndefined (ConfigurationItemList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "configurationItems" :: Maybe (ConfigurationItemList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetResourceConfigHistoryResponse :: Newtype GetResourceConfigHistoryResponse _
 derive instance repGenericGetResourceConfigHistoryResponse :: Generic GetResourceConfigHistoryResponse _
@@ -1574,12 +1573,12 @@ instance encodeGetResourceConfigHistoryResponse :: Encode GetResourceConfigHisto
 
 -- | Constructs GetResourceConfigHistoryResponse from required parameters
 newGetResourceConfigHistoryResponse :: GetResourceConfigHistoryResponse
-newGetResourceConfigHistoryResponse  = GetResourceConfigHistoryResponse { "configurationItems": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetResourceConfigHistoryResponse  = GetResourceConfigHistoryResponse { "configurationItems": Nothing, "nextToken": Nothing }
 
 -- | Constructs GetResourceConfigHistoryResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetResourceConfigHistoryResponse' :: ( { "configurationItems" :: NullOrUndefined (ConfigurationItemList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"configurationItems" :: NullOrUndefined (ConfigurationItemList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetResourceConfigHistoryResponse
-newGetResourceConfigHistoryResponse'  customize = (GetResourceConfigHistoryResponse <<< customize) { "configurationItems": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetResourceConfigHistoryResponse' :: ( { "configurationItems" :: Maybe (ConfigurationItemList) , "nextToken" :: Maybe (NextToken) } -> {"configurationItems" :: Maybe (ConfigurationItemList) , "nextToken" :: Maybe (NextToken) } ) -> GetResourceConfigHistoryResponse
+newGetResourceConfigHistoryResponse'  customize = (GetResourceConfigHistoryResponse <<< customize) { "configurationItems": Nothing, "nextToken": Nothing }
 
 
 
@@ -1763,11 +1762,11 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 -- | <p/>
 newtype ListDiscoveredResourcesRequest = ListDiscoveredResourcesRequest 
   { "resourceType" :: (ResourceType)
-  , "resourceIds" :: NullOrUndefined (ResourceIdList)
-  , "resourceName" :: NullOrUndefined (ResourceName)
-  , "limit" :: NullOrUndefined (Limit)
-  , "includeDeletedResources" :: NullOrUndefined (Boolean)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  , "resourceIds" :: Maybe (ResourceIdList)
+  , "resourceName" :: Maybe (ResourceName)
+  , "limit" :: Maybe (Limit)
+  , "includeDeletedResources" :: Maybe (Boolean)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListDiscoveredResourcesRequest :: Newtype ListDiscoveredResourcesRequest _
 derive instance repGenericListDiscoveredResourcesRequest :: Generic ListDiscoveredResourcesRequest _
@@ -1777,19 +1776,19 @@ instance encodeListDiscoveredResourcesRequest :: Encode ListDiscoveredResourcesR
 
 -- | Constructs ListDiscoveredResourcesRequest from required parameters
 newListDiscoveredResourcesRequest :: ResourceType -> ListDiscoveredResourcesRequest
-newListDiscoveredResourcesRequest _resourceType = ListDiscoveredResourcesRequest { "resourceType": _resourceType, "includeDeletedResources": (NullOrUndefined Nothing), "limit": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "resourceIds": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing) }
+newListDiscoveredResourcesRequest _resourceType = ListDiscoveredResourcesRequest { "resourceType": _resourceType, "includeDeletedResources": Nothing, "limit": Nothing, "nextToken": Nothing, "resourceIds": Nothing, "resourceName": Nothing }
 
 -- | Constructs ListDiscoveredResourcesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListDiscoveredResourcesRequest' :: ResourceType -> ( { "resourceType" :: (ResourceType) , "resourceIds" :: NullOrUndefined (ResourceIdList) , "resourceName" :: NullOrUndefined (ResourceName) , "limit" :: NullOrUndefined (Limit) , "includeDeletedResources" :: NullOrUndefined (Boolean) , "nextToken" :: NullOrUndefined (NextToken) } -> {"resourceType" :: (ResourceType) , "resourceIds" :: NullOrUndefined (ResourceIdList) , "resourceName" :: NullOrUndefined (ResourceName) , "limit" :: NullOrUndefined (Limit) , "includeDeletedResources" :: NullOrUndefined (Boolean) , "nextToken" :: NullOrUndefined (NextToken) } ) -> ListDiscoveredResourcesRequest
-newListDiscoveredResourcesRequest' _resourceType customize = (ListDiscoveredResourcesRequest <<< customize) { "resourceType": _resourceType, "includeDeletedResources": (NullOrUndefined Nothing), "limit": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "resourceIds": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing) }
+newListDiscoveredResourcesRequest' :: ResourceType -> ( { "resourceType" :: (ResourceType) , "resourceIds" :: Maybe (ResourceIdList) , "resourceName" :: Maybe (ResourceName) , "limit" :: Maybe (Limit) , "includeDeletedResources" :: Maybe (Boolean) , "nextToken" :: Maybe (NextToken) } -> {"resourceType" :: (ResourceType) , "resourceIds" :: Maybe (ResourceIdList) , "resourceName" :: Maybe (ResourceName) , "limit" :: Maybe (Limit) , "includeDeletedResources" :: Maybe (Boolean) , "nextToken" :: Maybe (NextToken) } ) -> ListDiscoveredResourcesRequest
+newListDiscoveredResourcesRequest' _resourceType customize = (ListDiscoveredResourcesRequest <<< customize) { "resourceType": _resourceType, "includeDeletedResources": Nothing, "limit": Nothing, "nextToken": Nothing, "resourceIds": Nothing, "resourceName": Nothing }
 
 
 
 -- | <p/>
 newtype ListDiscoveredResourcesResponse = ListDiscoveredResourcesResponse 
-  { "resourceIdentifiers" :: NullOrUndefined (ResourceIdentifierList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "resourceIdentifiers" :: Maybe (ResourceIdentifierList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListDiscoveredResourcesResponse :: Newtype ListDiscoveredResourcesResponse _
 derive instance repGenericListDiscoveredResourcesResponse :: Generic ListDiscoveredResourcesResponse _
@@ -1799,12 +1798,12 @@ instance encodeListDiscoveredResourcesResponse :: Encode ListDiscoveredResources
 
 -- | Constructs ListDiscoveredResourcesResponse from required parameters
 newListDiscoveredResourcesResponse :: ListDiscoveredResourcesResponse
-newListDiscoveredResourcesResponse  = ListDiscoveredResourcesResponse { "nextToken": (NullOrUndefined Nothing), "resourceIdentifiers": (NullOrUndefined Nothing) }
+newListDiscoveredResourcesResponse  = ListDiscoveredResourcesResponse { "nextToken": Nothing, "resourceIdentifiers": Nothing }
 
 -- | Constructs ListDiscoveredResourcesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListDiscoveredResourcesResponse' :: ( { "resourceIdentifiers" :: NullOrUndefined (ResourceIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"resourceIdentifiers" :: NullOrUndefined (ResourceIdentifierList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> ListDiscoveredResourcesResponse
-newListDiscoveredResourcesResponse'  customize = (ListDiscoveredResourcesResponse <<< customize) { "nextToken": (NullOrUndefined Nothing), "resourceIdentifiers": (NullOrUndefined Nothing) }
+newListDiscoveredResourcesResponse' :: ( { "resourceIdentifiers" :: Maybe (ResourceIdentifierList) , "nextToken" :: Maybe (NextToken) } -> {"resourceIdentifiers" :: Maybe (ResourceIdentifierList) , "nextToken" :: Maybe (NextToken) } ) -> ListDiscoveredResourcesResponse
+newListDiscoveredResourcesResponse'  customize = (ListDiscoveredResourcesResponse <<< customize) { "nextToken": Nothing, "resourceIdentifiers": Nothing }
 
 
 
@@ -2026,9 +2025,9 @@ newPutDeliveryChannelRequest' _DeliveryChannel customize = (PutDeliveryChannelRe
 
 -- | <p/>
 newtype PutEvaluationsRequest = PutEvaluationsRequest 
-  { "Evaluations" :: NullOrUndefined (Evaluations)
+  { "Evaluations" :: Maybe (Evaluations)
   , "ResultToken" :: (String)
-  , "TestMode" :: NullOrUndefined (Boolean)
+  , "TestMode" :: Maybe (Boolean)
   }
 derive instance newtypePutEvaluationsRequest :: Newtype PutEvaluationsRequest _
 derive instance repGenericPutEvaluationsRequest :: Generic PutEvaluationsRequest _
@@ -2038,18 +2037,18 @@ instance encodePutEvaluationsRequest :: Encode PutEvaluationsRequest where encod
 
 -- | Constructs PutEvaluationsRequest from required parameters
 newPutEvaluationsRequest :: String -> PutEvaluationsRequest
-newPutEvaluationsRequest _ResultToken = PutEvaluationsRequest { "ResultToken": _ResultToken, "Evaluations": (NullOrUndefined Nothing), "TestMode": (NullOrUndefined Nothing) }
+newPutEvaluationsRequest _ResultToken = PutEvaluationsRequest { "ResultToken": _ResultToken, "Evaluations": Nothing, "TestMode": Nothing }
 
 -- | Constructs PutEvaluationsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutEvaluationsRequest' :: String -> ( { "Evaluations" :: NullOrUndefined (Evaluations) , "ResultToken" :: (String) , "TestMode" :: NullOrUndefined (Boolean) } -> {"Evaluations" :: NullOrUndefined (Evaluations) , "ResultToken" :: (String) , "TestMode" :: NullOrUndefined (Boolean) } ) -> PutEvaluationsRequest
-newPutEvaluationsRequest' _ResultToken customize = (PutEvaluationsRequest <<< customize) { "ResultToken": _ResultToken, "Evaluations": (NullOrUndefined Nothing), "TestMode": (NullOrUndefined Nothing) }
+newPutEvaluationsRequest' :: String -> ( { "Evaluations" :: Maybe (Evaluations) , "ResultToken" :: (String) , "TestMode" :: Maybe (Boolean) } -> {"Evaluations" :: Maybe (Evaluations) , "ResultToken" :: (String) , "TestMode" :: Maybe (Boolean) } ) -> PutEvaluationsRequest
+newPutEvaluationsRequest' _ResultToken customize = (PutEvaluationsRequest <<< customize) { "ResultToken": _ResultToken, "Evaluations": Nothing, "TestMode": Nothing }
 
 
 
 -- | <p/>
 newtype PutEvaluationsResponse = PutEvaluationsResponse 
-  { "FailedEvaluations" :: NullOrUndefined (Evaluations)
+  { "FailedEvaluations" :: Maybe (Evaluations)
   }
 derive instance newtypePutEvaluationsResponse :: Newtype PutEvaluationsResponse _
 derive instance repGenericPutEvaluationsResponse :: Generic PutEvaluationsResponse _
@@ -2059,12 +2058,12 @@ instance encodePutEvaluationsResponse :: Encode PutEvaluationsResponse where enc
 
 -- | Constructs PutEvaluationsResponse from required parameters
 newPutEvaluationsResponse :: PutEvaluationsResponse
-newPutEvaluationsResponse  = PutEvaluationsResponse { "FailedEvaluations": (NullOrUndefined Nothing) }
+newPutEvaluationsResponse  = PutEvaluationsResponse { "FailedEvaluations": Nothing }
 
 -- | Constructs PutEvaluationsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutEvaluationsResponse' :: ( { "FailedEvaluations" :: NullOrUndefined (Evaluations) } -> {"FailedEvaluations" :: NullOrUndefined (Evaluations) } ) -> PutEvaluationsResponse
-newPutEvaluationsResponse'  customize = (PutEvaluationsResponse <<< customize) { "FailedEvaluations": (NullOrUndefined Nothing) }
+newPutEvaluationsResponse' :: ( { "FailedEvaluations" :: Maybe (Evaluations) } -> {"FailedEvaluations" :: Maybe (Evaluations) } ) -> PutEvaluationsResponse
+newPutEvaluationsResponse'  customize = (PutEvaluationsResponse <<< customize) { "FailedEvaluations": Nothing }
 
 
 
@@ -2088,9 +2087,9 @@ instance encodeRecorderStatus :: Encode RecorderStatus where encode = genericEnc
 
 -- | <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p> <p>In the recording group, you specify whether all supported types or specific types of resources are recorded.</p> <p>By default, AWS Config records configuration changes for all supported types of regional resources that AWS Config discovers in the region in which it is running. Regional resources are tied to a region and can be used only in that region. Examples of regional resources are EC2 instances and EBS volumes.</p> <p>You can also have AWS Config record configuration changes for supported types of global resources (for example, IAM resources). Global resources are not tied to an individual region and can be used in all regions.</p> <important> <p>The configuration details for any global resource are the same in all regions. If you customize AWS Config in multiple regions to record global resources, it will create multiple configuration items each time a global resource changes: one configuration item for each region. These configuration items will contain identical data. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources, unless you want the configuration items to be available in multiple regions.</p> </important> <p>If you don't want AWS Config to record all resources, you can specify which types of resources it will record with the <code>resourceTypes</code> parameter.</p> <p>For a list of supported resource types, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported resource types</a>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html">Selecting Which Resources AWS Config Records</a>.</p>
 newtype RecordingGroup = RecordingGroup 
-  { "allSupported" :: NullOrUndefined (AllSupported)
-  , "includeGlobalResourceTypes" :: NullOrUndefined (IncludeGlobalResourceTypes)
-  , "resourceTypes" :: NullOrUndefined (ResourceTypeList)
+  { "allSupported" :: Maybe (AllSupported)
+  , "includeGlobalResourceTypes" :: Maybe (IncludeGlobalResourceTypes)
+  , "resourceTypes" :: Maybe (ResourceTypeList)
   }
 derive instance newtypeRecordingGroup :: Newtype RecordingGroup _
 derive instance repGenericRecordingGroup :: Generic RecordingGroup _
@@ -2100,12 +2099,12 @@ instance encodeRecordingGroup :: Encode RecordingGroup where encode = genericEnc
 
 -- | Constructs RecordingGroup from required parameters
 newRecordingGroup :: RecordingGroup
-newRecordingGroup  = RecordingGroup { "allSupported": (NullOrUndefined Nothing), "includeGlobalResourceTypes": (NullOrUndefined Nothing), "resourceTypes": (NullOrUndefined Nothing) }
+newRecordingGroup  = RecordingGroup { "allSupported": Nothing, "includeGlobalResourceTypes": Nothing, "resourceTypes": Nothing }
 
 -- | Constructs RecordingGroup's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRecordingGroup' :: ( { "allSupported" :: NullOrUndefined (AllSupported) , "includeGlobalResourceTypes" :: NullOrUndefined (IncludeGlobalResourceTypes) , "resourceTypes" :: NullOrUndefined (ResourceTypeList) } -> {"allSupported" :: NullOrUndefined (AllSupported) , "includeGlobalResourceTypes" :: NullOrUndefined (IncludeGlobalResourceTypes) , "resourceTypes" :: NullOrUndefined (ResourceTypeList) } ) -> RecordingGroup
-newRecordingGroup'  customize = (RecordingGroup <<< customize) { "allSupported": (NullOrUndefined Nothing), "includeGlobalResourceTypes": (NullOrUndefined Nothing), "resourceTypes": (NullOrUndefined Nothing) }
+newRecordingGroup' :: ( { "allSupported" :: Maybe (AllSupported) , "includeGlobalResourceTypes" :: Maybe (IncludeGlobalResourceTypes) , "resourceTypes" :: Maybe (ResourceTypeList) } -> {"allSupported" :: Maybe (AllSupported) , "includeGlobalResourceTypes" :: Maybe (IncludeGlobalResourceTypes) , "resourceTypes" :: Maybe (ResourceTypeList) } ) -> RecordingGroup
+newRecordingGroup'  customize = (RecordingGroup <<< customize) { "allSupported": Nothing, "includeGlobalResourceTypes": Nothing, "resourceTypes": Nothing }
 
 
 
@@ -2138,10 +2137,10 @@ instance encodeRelatedEventList :: Encode RelatedEventList where encode = generi
 
 -- | <p>The relationship of the related resource to the main resource.</p>
 newtype Relationship = Relationship 
-  { "resourceType" :: NullOrUndefined (ResourceType)
-  , "resourceId" :: NullOrUndefined (ResourceId)
-  , "resourceName" :: NullOrUndefined (ResourceName)
-  , "relationshipName" :: NullOrUndefined (RelationshipName)
+  { "resourceType" :: Maybe (ResourceType)
+  , "resourceId" :: Maybe (ResourceId)
+  , "resourceName" :: Maybe (ResourceName)
+  , "relationshipName" :: Maybe (RelationshipName)
   }
 derive instance newtypeRelationship :: Newtype Relationship _
 derive instance repGenericRelationship :: Generic Relationship _
@@ -2151,12 +2150,12 @@ instance encodeRelationship :: Encode Relationship where encode = genericEncode 
 
 -- | Constructs Relationship from required parameters
 newRelationship :: Relationship
-newRelationship  = Relationship { "relationshipName": (NullOrUndefined Nothing), "resourceId": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing) }
+newRelationship  = Relationship { "relationshipName": Nothing, "resourceId": Nothing, "resourceName": Nothing, "resourceType": Nothing }
 
 -- | Constructs Relationship's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRelationship' :: ( { "resourceType" :: NullOrUndefined (ResourceType) , "resourceId" :: NullOrUndefined (ResourceId) , "resourceName" :: NullOrUndefined (ResourceName) , "relationshipName" :: NullOrUndefined (RelationshipName) } -> {"resourceType" :: NullOrUndefined (ResourceType) , "resourceId" :: NullOrUndefined (ResourceId) , "resourceName" :: NullOrUndefined (ResourceName) , "relationshipName" :: NullOrUndefined (RelationshipName) } ) -> Relationship
-newRelationship'  customize = (Relationship <<< customize) { "relationshipName": (NullOrUndefined Nothing), "resourceId": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing) }
+newRelationship' :: ( { "resourceType" :: Maybe (ResourceType) , "resourceId" :: Maybe (ResourceId) , "resourceName" :: Maybe (ResourceName) , "relationshipName" :: Maybe (RelationshipName) } -> {"resourceType" :: Maybe (ResourceType) , "resourceId" :: Maybe (ResourceId) , "resourceName" :: Maybe (ResourceName) , "relationshipName" :: Maybe (RelationshipName) } ) -> Relationship
+newRelationship'  customize = (Relationship <<< customize) { "relationshipName": Nothing, "resourceId": Nothing, "resourceName": Nothing, "resourceType": Nothing }
 
 
 
@@ -2180,8 +2179,8 @@ instance encodeRelationshipName :: Encode RelationshipName where encode = generi
 
 -- | <p>An object that contains the resource type and the number of resources.</p>
 newtype ResourceCount = ResourceCount 
-  { "resourceType" :: NullOrUndefined (ResourceType)
-  , "count" :: NullOrUndefined (Number)
+  { "resourceType" :: Maybe (ResourceType)
+  , "count" :: Maybe (Number)
   }
 derive instance newtypeResourceCount :: Newtype ResourceCount _
 derive instance repGenericResourceCount :: Generic ResourceCount _
@@ -2191,12 +2190,12 @@ instance encodeResourceCount :: Encode ResourceCount where encode = genericEncod
 
 -- | Constructs ResourceCount from required parameters
 newResourceCount :: ResourceCount
-newResourceCount  = ResourceCount { "count": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing) }
+newResourceCount  = ResourceCount { "count": Nothing, "resourceType": Nothing }
 
 -- | Constructs ResourceCount's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceCount' :: ( { "resourceType" :: NullOrUndefined (ResourceType) , "count" :: NullOrUndefined (Number) } -> {"resourceType" :: NullOrUndefined (ResourceType) , "count" :: NullOrUndefined (Number) } ) -> ResourceCount
-newResourceCount'  customize = (ResourceCount <<< customize) { "count": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing) }
+newResourceCount' :: ( { "resourceType" :: Maybe (ResourceType) , "count" :: Maybe (Number) } -> {"resourceType" :: Maybe (ResourceType) , "count" :: Maybe (Number) } ) -> ResourceCount
+newResourceCount'  customize = (ResourceCount <<< customize) { "count": Nothing, "resourceType": Nothing }
 
 
 
@@ -2247,10 +2246,10 @@ instance encodeResourceIdList :: Encode ResourceIdList where encode = genericEnc
 
 -- | <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
 newtype ResourceIdentifier = ResourceIdentifier 
-  { "resourceType" :: NullOrUndefined (ResourceType)
-  , "resourceId" :: NullOrUndefined (ResourceId)
-  , "resourceName" :: NullOrUndefined (ResourceName)
-  , "resourceDeletionTime" :: NullOrUndefined (ResourceDeletionTime)
+  { "resourceType" :: Maybe (ResourceType)
+  , "resourceId" :: Maybe (ResourceId)
+  , "resourceName" :: Maybe (ResourceName)
+  , "resourceDeletionTime" :: Maybe (ResourceDeletionTime)
   }
 derive instance newtypeResourceIdentifier :: Newtype ResourceIdentifier _
 derive instance repGenericResourceIdentifier :: Generic ResourceIdentifier _
@@ -2260,12 +2259,12 @@ instance encodeResourceIdentifier :: Encode ResourceIdentifier where encode = ge
 
 -- | Constructs ResourceIdentifier from required parameters
 newResourceIdentifier :: ResourceIdentifier
-newResourceIdentifier  = ResourceIdentifier { "resourceDeletionTime": (NullOrUndefined Nothing), "resourceId": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing) }
+newResourceIdentifier  = ResourceIdentifier { "resourceDeletionTime": Nothing, "resourceId": Nothing, "resourceName": Nothing, "resourceType": Nothing }
 
 -- | Constructs ResourceIdentifier's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceIdentifier' :: ( { "resourceType" :: NullOrUndefined (ResourceType) , "resourceId" :: NullOrUndefined (ResourceId) , "resourceName" :: NullOrUndefined (ResourceName) , "resourceDeletionTime" :: NullOrUndefined (ResourceDeletionTime) } -> {"resourceType" :: NullOrUndefined (ResourceType) , "resourceId" :: NullOrUndefined (ResourceId) , "resourceName" :: NullOrUndefined (ResourceName) , "resourceDeletionTime" :: NullOrUndefined (ResourceDeletionTime) } ) -> ResourceIdentifier
-newResourceIdentifier'  customize = (ResourceIdentifier <<< customize) { "resourceDeletionTime": (NullOrUndefined Nothing), "resourceId": (NullOrUndefined Nothing), "resourceName": (NullOrUndefined Nothing), "resourceType": (NullOrUndefined Nothing) }
+newResourceIdentifier' :: ( { "resourceType" :: Maybe (ResourceType) , "resourceId" :: Maybe (ResourceId) , "resourceName" :: Maybe (ResourceName) , "resourceDeletionTime" :: Maybe (ResourceDeletionTime) } -> {"resourceType" :: Maybe (ResourceType) , "resourceId" :: Maybe (ResourceId) , "resourceName" :: Maybe (ResourceName) , "resourceDeletionTime" :: Maybe (ResourceDeletionTime) } ) -> ResourceIdentifier
+newResourceIdentifier'  customize = (ResourceIdentifier <<< customize) { "resourceDeletionTime": Nothing, "resourceId": Nothing, "resourceName": Nothing, "resourceType": Nothing }
 
 
 
@@ -2345,10 +2344,10 @@ instance encodeRuleLimit :: Encode RuleLimit where encode = genericEncode option
 
 -- | <p>Defines which resources trigger an evaluation for an AWS Config rule. The scope can include one or more resource types, a combination of a tag key and value, or a combination of one resource type and one resource ID. Specify a scope to constrain which resources trigger an evaluation for a rule. Otherwise, evaluations for the rule are triggered when any resource in your recording group changes in configuration.</p>
 newtype Scope = Scope 
-  { "ComplianceResourceTypes" :: NullOrUndefined (ComplianceResourceTypes)
-  , "TagKey" :: NullOrUndefined (StringWithCharLimit128)
-  , "TagValue" :: NullOrUndefined (StringWithCharLimit256)
-  , "ComplianceResourceId" :: NullOrUndefined (BaseResourceId)
+  { "ComplianceResourceTypes" :: Maybe (ComplianceResourceTypes)
+  , "TagKey" :: Maybe (StringWithCharLimit128)
+  , "TagValue" :: Maybe (StringWithCharLimit256)
+  , "ComplianceResourceId" :: Maybe (BaseResourceId)
   }
 derive instance newtypeScope :: Newtype Scope _
 derive instance repGenericScope :: Generic Scope _
@@ -2358,12 +2357,12 @@ instance encodeScope :: Encode Scope where encode = genericEncode options
 
 -- | Constructs Scope from required parameters
 newScope :: Scope
-newScope  = Scope { "ComplianceResourceId": (NullOrUndefined Nothing), "ComplianceResourceTypes": (NullOrUndefined Nothing), "TagKey": (NullOrUndefined Nothing), "TagValue": (NullOrUndefined Nothing) }
+newScope  = Scope { "ComplianceResourceId": Nothing, "ComplianceResourceTypes": Nothing, "TagKey": Nothing, "TagValue": Nothing }
 
 -- | Constructs Scope's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newScope' :: ( { "ComplianceResourceTypes" :: NullOrUndefined (ComplianceResourceTypes) , "TagKey" :: NullOrUndefined (StringWithCharLimit128) , "TagValue" :: NullOrUndefined (StringWithCharLimit256) , "ComplianceResourceId" :: NullOrUndefined (BaseResourceId) } -> {"ComplianceResourceTypes" :: NullOrUndefined (ComplianceResourceTypes) , "TagKey" :: NullOrUndefined (StringWithCharLimit128) , "TagValue" :: NullOrUndefined (StringWithCharLimit256) , "ComplianceResourceId" :: NullOrUndefined (BaseResourceId) } ) -> Scope
-newScope'  customize = (Scope <<< customize) { "ComplianceResourceId": (NullOrUndefined Nothing), "ComplianceResourceTypes": (NullOrUndefined Nothing), "TagKey": (NullOrUndefined Nothing), "TagValue": (NullOrUndefined Nothing) }
+newScope' :: ( { "ComplianceResourceTypes" :: Maybe (ComplianceResourceTypes) , "TagKey" :: Maybe (StringWithCharLimit128) , "TagValue" :: Maybe (StringWithCharLimit256) , "ComplianceResourceId" :: Maybe (BaseResourceId) } -> {"ComplianceResourceTypes" :: Maybe (ComplianceResourceTypes) , "TagKey" :: Maybe (StringWithCharLimit128) , "TagValue" :: Maybe (StringWithCharLimit256) , "ComplianceResourceId" :: Maybe (BaseResourceId) } ) -> Scope
+newScope'  customize = (Scope <<< customize) { "ComplianceResourceId": Nothing, "ComplianceResourceTypes": Nothing, "TagKey": Nothing, "TagValue": Nothing }
 
 
 
@@ -2371,7 +2370,7 @@ newScope'  customize = (Scope <<< customize) { "ComplianceResourceId": (NullOrUn
 newtype Source = Source 
   { "Owner" :: (Owner)
   , "SourceIdentifier" :: (StringWithCharLimit256)
-  , "SourceDetails" :: NullOrUndefined (SourceDetails)
+  , "SourceDetails" :: Maybe (SourceDetails)
   }
 derive instance newtypeSource :: Newtype Source _
 derive instance repGenericSource :: Generic Source _
@@ -2381,20 +2380,20 @@ instance encodeSource :: Encode Source where encode = genericEncode options
 
 -- | Constructs Source from required parameters
 newSource :: Owner -> StringWithCharLimit256 -> Source
-newSource _Owner _SourceIdentifier = Source { "Owner": _Owner, "SourceIdentifier": _SourceIdentifier, "SourceDetails": (NullOrUndefined Nothing) }
+newSource _Owner _SourceIdentifier = Source { "Owner": _Owner, "SourceIdentifier": _SourceIdentifier, "SourceDetails": Nothing }
 
 -- | Constructs Source's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSource' :: Owner -> StringWithCharLimit256 -> ( { "Owner" :: (Owner) , "SourceIdentifier" :: (StringWithCharLimit256) , "SourceDetails" :: NullOrUndefined (SourceDetails) } -> {"Owner" :: (Owner) , "SourceIdentifier" :: (StringWithCharLimit256) , "SourceDetails" :: NullOrUndefined (SourceDetails) } ) -> Source
-newSource' _Owner _SourceIdentifier customize = (Source <<< customize) { "Owner": _Owner, "SourceIdentifier": _SourceIdentifier, "SourceDetails": (NullOrUndefined Nothing) }
+newSource' :: Owner -> StringWithCharLimit256 -> ( { "Owner" :: (Owner) , "SourceIdentifier" :: (StringWithCharLimit256) , "SourceDetails" :: Maybe (SourceDetails) } -> {"Owner" :: (Owner) , "SourceIdentifier" :: (StringWithCharLimit256) , "SourceDetails" :: Maybe (SourceDetails) } ) -> Source
+newSource' _Owner _SourceIdentifier customize = (Source <<< customize) { "Owner": _Owner, "SourceIdentifier": _SourceIdentifier, "SourceDetails": Nothing }
 
 
 
 -- | <p>Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for <code>SourceDetail</code> only for custom rules. </p>
 newtype SourceDetail = SourceDetail 
-  { "EventSource" :: NullOrUndefined (EventSource)
-  , "MessageType" :: NullOrUndefined (MessageType)
-  , "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency)
+  { "EventSource" :: Maybe (EventSource)
+  , "MessageType" :: Maybe (MessageType)
+  , "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency)
   }
 derive instance newtypeSourceDetail :: Newtype SourceDetail _
 derive instance repGenericSourceDetail :: Generic SourceDetail _
@@ -2404,12 +2403,12 @@ instance encodeSourceDetail :: Encode SourceDetail where encode = genericEncode 
 
 -- | Constructs SourceDetail from required parameters
 newSourceDetail :: SourceDetail
-newSourceDetail  = SourceDetail { "EventSource": (NullOrUndefined Nothing), "MaximumExecutionFrequency": (NullOrUndefined Nothing), "MessageType": (NullOrUndefined Nothing) }
+newSourceDetail  = SourceDetail { "EventSource": Nothing, "MaximumExecutionFrequency": Nothing, "MessageType": Nothing }
 
 -- | Constructs SourceDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSourceDetail' :: ( { "EventSource" :: NullOrUndefined (EventSource) , "MessageType" :: NullOrUndefined (MessageType) , "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) } -> {"EventSource" :: NullOrUndefined (EventSource) , "MessageType" :: NullOrUndefined (MessageType) , "MaximumExecutionFrequency" :: NullOrUndefined (MaximumExecutionFrequency) } ) -> SourceDetail
-newSourceDetail'  customize = (SourceDetail <<< customize) { "EventSource": (NullOrUndefined Nothing), "MaximumExecutionFrequency": (NullOrUndefined Nothing), "MessageType": (NullOrUndefined Nothing) }
+newSourceDetail' :: ( { "EventSource" :: Maybe (EventSource) , "MessageType" :: Maybe (MessageType) , "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) } -> {"EventSource" :: Maybe (EventSource) , "MessageType" :: Maybe (MessageType) , "MaximumExecutionFrequency" :: Maybe (MaximumExecutionFrequency) } ) -> SourceDetail
+newSourceDetail'  customize = (SourceDetail <<< customize) { "EventSource": Nothing, "MaximumExecutionFrequency": Nothing, "MessageType": Nothing }
 
 
 
@@ -2424,7 +2423,7 @@ instance encodeSourceDetails :: Encode SourceDetails where encode = genericEncod
 
 -- | <p/>
 newtype StartConfigRulesEvaluationRequest = StartConfigRulesEvaluationRequest 
-  { "ConfigRuleNames" :: NullOrUndefined (ReevaluateConfigRuleNames)
+  { "ConfigRuleNames" :: Maybe (ReevaluateConfigRuleNames)
   }
 derive instance newtypeStartConfigRulesEvaluationRequest :: Newtype StartConfigRulesEvaluationRequest _
 derive instance repGenericStartConfigRulesEvaluationRequest :: Generic StartConfigRulesEvaluationRequest _
@@ -2434,12 +2433,12 @@ instance encodeStartConfigRulesEvaluationRequest :: Encode StartConfigRulesEvalu
 
 -- | Constructs StartConfigRulesEvaluationRequest from required parameters
 newStartConfigRulesEvaluationRequest :: StartConfigRulesEvaluationRequest
-newStartConfigRulesEvaluationRequest  = StartConfigRulesEvaluationRequest { "ConfigRuleNames": (NullOrUndefined Nothing) }
+newStartConfigRulesEvaluationRequest  = StartConfigRulesEvaluationRequest { "ConfigRuleNames": Nothing }
 
 -- | Constructs StartConfigRulesEvaluationRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartConfigRulesEvaluationRequest' :: ( { "ConfigRuleNames" :: NullOrUndefined (ReevaluateConfigRuleNames) } -> {"ConfigRuleNames" :: NullOrUndefined (ReevaluateConfigRuleNames) } ) -> StartConfigRulesEvaluationRequest
-newStartConfigRulesEvaluationRequest'  customize = (StartConfigRulesEvaluationRequest <<< customize) { "ConfigRuleNames": (NullOrUndefined Nothing) }
+newStartConfigRulesEvaluationRequest' :: ( { "ConfigRuleNames" :: Maybe (ReevaluateConfigRuleNames) } -> {"ConfigRuleNames" :: Maybe (ReevaluateConfigRuleNames) } ) -> StartConfigRulesEvaluationRequest
+newStartConfigRulesEvaluationRequest'  customize = (StartConfigRulesEvaluationRequest <<< customize) { "ConfigRuleNames": Nothing }
 
 
 
